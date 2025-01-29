@@ -169,7 +169,6 @@ definePageMeta({
 
 import { ref, onMounted } from 'vue';
 import gsap from 'gsap';
-import MainHeader from '~/components/MainHeader.vue';
 
 const runtimeConfig = useRuntimeConfig();
 
