@@ -87,7 +87,7 @@ const messageContainer = ref(null);
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 const router = useRouter();
-const socket = io('http://localhost:1337');
+const socket = io('http://backend.o-dots.com');
 
 const discussionId = route.params.id;
 
