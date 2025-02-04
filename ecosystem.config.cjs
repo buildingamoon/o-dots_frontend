@@ -22,16 +22,11 @@ module.exports = {
       env: {
         NODE_ENV: 'development',
         PORT: 3000
-      }
-    },
-    {
-      name: 'o-dotsbackend-dev',
-      script: 'npm',
-      args: 'run dev',
-      env: {
+      },
+      env_development: {
         NODE_ENV: 'development',
-        PORT: 8080
+        PORT: 3000
       }
     }
   ]
-}
+};
