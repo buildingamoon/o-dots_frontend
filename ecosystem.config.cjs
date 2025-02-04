@@ -14,6 +14,24 @@ module.exports = {
         NODE_ENV: 'development',
         BASE_URL: 'http://localhost:3000'
       }
+    },
+    {
+      name: 'o-dotsfrontend-dev',
+      script: 'npm',
+      args: 'run dev',
+      env: {
+        NODE_ENV: 'development',
+        PORT: 3000
+      }
+    },
+    {
+      name: 'o-dotsbackend-dev',
+      script: 'npm',
+      args: 'run dev',
+      env: {
+        NODE_ENV: 'development',
+        PORT: 8080
+      }
     }
   ]
 }
