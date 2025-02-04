@@ -43,35 +43,40 @@ const runtimeConfig = useRuntimeConfig();
 const router = useRouter();
 
 const signin = async () => {
-  const { data, error } = await useFetch(runtimeConfig.public.apiBase + 'auth/login', {
-    method: "post",
-    body: {
-      email: email.value,
-      password: password.value
-    }
-  });
+  try {
+    const apiUrl = runtimeConfig.public.apiBase + 'auth/login';
+    console.log('API URL:', apiUrl);  // Debug line to check the API URL
+    const response = await $fetch(apiUrl, {
+      method: "post",
+      body: {
+        email: email.value,
+        password: password.value
+      }
+    });
 
-  if (data.value) {
-    alert('Login success!');
-    useSetSession(data.value);
+    console.log('API Response:', response);  // Debug line to check the API response
 
-    // Store tokens in localStorage
-    localStorage.setItem('token', data.value.accessToken); // Store access token
-    localStorage.setItem('refreshToken', data.value.refreshToken); // Store refresh token
+    if (response) {
+      alert('Login success!');
+      useSetSession(response);
 
-    // Retrieve the target URL from localStorage
-    const targetUrl = localStorage.getItem('targetUrl');
-    if (targetUrl) {
-      // Redirect to the target URL
-      router.push(targetUrl);
-      // Clear the stored target URL
-      localStorage.removeItem('targetUrl');
+      localStorage.setItem('token', response.accessToken);
+      localStorage.setItem('refreshToken', response.refreshToken);
+
+      const targetUrl = localStorage.getItem('targetUrl');
+      if (targetUrl) {
+        router.push(targetUrl);
+        localStorage.removeItem('targetUrl');
+      } else {
+        router.push("/");
+      }
     } else {
-      // Default to home page
-      router.push("/");
+      alert('Login failed. Please try again.');
     }
-  } else if (error.value) {
-    alert(error.value.data.message);
+  } catch (err) {
+    console.error('Error during sign-in:', err);
+    alert('An unexpected error occurred. Please try again later.');
   }
 };
+
 </script>
