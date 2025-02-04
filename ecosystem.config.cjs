@@ -5,7 +5,7 @@ module.exports = {
       port: '3000',
       exec_mode: 'cluster',
       instances: 'max',
-      script: './.output/server/index.js',
+      script: './.output/server/index.mjs',
       env: {
         NODE_ENV: 'production',
         BASE_URL: 'https://o-dots.com'
