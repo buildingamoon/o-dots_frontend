@@ -1,4 +1,5 @@
 import { messageReducer, messageReviver } from './utils/messagePayload';
+import path from 'path'; // Ensure you import the path module
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -39,6 +40,7 @@ export default defineNuxtConfig({
   },
 
   modules: ['nuxt-emoji-picker'],
+  
   render: {
     csp: {
       policies: {
@@ -46,6 +48,18 @@ export default defineNuxtConfig({
         'img-src': ["'self'", "data:", "blob:", "*"],
         'media-src': ["'self'", "data:", "blob:", "*"],
         'trusted-types': ["'self'"],
+      }
+    }
+  },
+  
+  build: {
+    extend(config, ctx) {
+      if (ctx.isServer) {
+        config.target = 'node'
+        config.output = {
+          path: path.resolve(__dirname, '.output/server'),
+          filename: 'index.mjs',
+        }
       }
     }
   }
