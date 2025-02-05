@@ -1,5 +1,5 @@
 import { messageReducer, messageReviver } from './utils/messagePayload';
-import path from 'path'; // Ensure you import the path module
+import path from 'path';
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      htmlAttrs: { lang: 'en'}
+      htmlAttrs: { lang: 'en' }
     }
   },
 
@@ -51,7 +51,7 @@ export default defineNuxtConfig({
       }
     }
   },
-  
+
   build: {
     extend(config, ctx) {
       if (ctx.isServer) {
@@ -59,8 +59,20 @@ export default defineNuxtConfig({
         config.output = {
           path: path.resolve(__dirname, '.output/server'),
           filename: 'index.mjs',
-        }
+        };
+      } else {
+        config.output = {
+          path: path.resolve(__dirname, '.output/public/_nuxt'),
+        };
       }
+    }
+  },
+
+  nitro: {
+    output: {
+      dir: '.output',
+      publicDir: '.output/public',
+      serverDir: '.output/server',
     }
   }
 });
