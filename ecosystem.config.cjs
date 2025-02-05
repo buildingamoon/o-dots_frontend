@@ -19,6 +19,7 @@ module.exports = {
       name: 'o-dotsfrontend-dev',
       script: 'npm',
       args: 'run dev',
+      cwd: '/home/O-dots/frontend',
       env: {
         NODE_ENV: 'development',
         PORT: 3000
