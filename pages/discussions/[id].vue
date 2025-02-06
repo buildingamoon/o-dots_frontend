@@ -87,7 +87,11 @@ const messageContainer = ref(null);
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 const router = useRouter();
-const socket = io('https://backend.o-dots.com');
+const socket = io('https://backend.o-dots.com', {
+  transports: ['websocket', 'polling'], // Ensure fallback options are set
+  secure: true, // Ensure secure connection if using HTTPS
+});
+
 
 const discussionId = route.params.id;
 
