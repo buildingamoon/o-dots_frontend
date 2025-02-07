@@ -178,6 +178,11 @@ body, html {
   margin: 5vh 0;
 }
 .arrow {
+  text-shadow: -1px 1px 1px rgba(248, 248, 248, 0.9);
+  border: 1px solid white;
+  padding: 2vh;
+  background: rgb(255 255 255 / 50%);
+  border-radius: 10px;
   position: absolute;
   bottom: 10vh;
   font-size: 1em;

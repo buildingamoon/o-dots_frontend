@@ -302,3 +302,9 @@ const handleClick = (event, targetPage) => {
   }
 };
 </script>
+<style>
+h5{
+  background: rgb(255 255 255 / 30%);
+    font-size: 0.4em;
+}
+</style>

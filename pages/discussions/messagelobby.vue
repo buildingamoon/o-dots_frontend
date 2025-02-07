@@ -46,17 +46,19 @@
             </div>
             <button class="carousel-control next" @click="nextSlide">›</button>
           </div>
-          <p>Discussing Today</p>
-          <div class="todaydicsussionwrap">
-            <router-link v-for="discussion in todayDiscussions" :key="discussion._id" :to="`/discussions/${discussion._id}`">
-              <div class="row row1">
-                <div class="newbox1" :style="discussionBackgroundStyle(discussion.photos)">
-                  <p>{{ discussion.topic }}</p>
+          <div>
+            <p>Discussing Today</p>
+            <div class="todaydicsussionwrap">
+              <router-link v-for="discussion in todayDiscussions" :key="discussion._id" :to="`/discussions/${discussion._id}`">
+                <div class="row row1">
+                  <div class="newbox1" :style="discussionBackgroundStyle(discussion.photos)">
+                    <p>{{ discussion.topic }}</p>
+                  </div>
                 </div>
-              </div>
-            </router-link>
-          </div>
-          <button><a href="/discussions/addChitchat"> +NEW</a></button>
+              </router-link>
+            </div>
+        </div>
+        <div class="addbtn"><a href="/discussions/addChitchat"> +NEW</a></div>
         </div>
       </div>
     </div>
@@ -263,6 +265,7 @@ onMounted(async () => {
   position: relative;
   overflow-y: auto;
   flex-direction: column;
+  overflow-x: hidden;
 }
 .chitchatwrapper .left .box1 ul {
   display: flex;
@@ -354,9 +357,10 @@ onMounted(async () => {
   background-position: center;
 }
 .chitchatwrapper .right button {
+  align-self: center;
   display: flex;
   flex: 0;
-  width: 90%;
+  width: 30%;
   height: 20%;
   box-sizing: border-box;
   background-color: white;
@@ -401,14 +405,33 @@ onMounted(async () => {
   display: flex;
   background-color: rgba(128, 128, 128, 0.288);
   flex: 2;
-  width: 8.5em; /* Fixed width */
-  height: 5em; /* Fixed height */
+  width: 11.5em;
+  height: 10em;
   box-sizing: border-box;
   position: relative;
   overflow-y: auto;
   flex-direction: column;
   margin:0.2em;
 }
+.addbtn{
+  width:30%;
+  margin-top: 2vh;
+}
+.addbtn a{
+  color: white;
+    border: 1px solid white;
+    padding: 2vh;
+    background: rgb(255 255 255 / 20%);
+    border-radius: 10px;
+}
+.newbox1 p{
+  background: #00000099;
+  height:20%;
+}
+.box1 ul{
+  background: white;
+}
+
 
 </style>
   

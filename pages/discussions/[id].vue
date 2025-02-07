@@ -291,8 +291,8 @@ const sendMessage = () => {
 
 .emoji-picker {
   position: absolute;
-  bottom: 50px;
-  right: 0;
+  top: -419px;
+  right: 364px;
   z-index: 2000; /* Adjust the z-index */
 }
 
@@ -309,7 +309,6 @@ const sendMessage = () => {
 
 .upper {
   overflow-y: auto;
-  max-height: 300px; /* Adjust height as needed */
   width: auto;
   height: 3vh;
 }
@@ -358,6 +357,8 @@ const sendMessage = () => {
 }
 
 .date-separator {
+  width: 30%;
+  align-self: center;
   font-size: 1em;
   font-weight: bold;
   margin: 1vh 0;

@@ -323,7 +323,7 @@ li a{
     flex-wrap: wrap;
     width: 100%;
     min-height: 77%;
-    padding-top: 127vh;
+    padding-top: 16vh;
     overflow-y: auto;
     color: white;
     background-color: black;
@@ -339,7 +339,7 @@ li a{
     background-color: #f4f4f4;
     padding: 20px;
     flex: 1 1 calc(45% - 20px);
-    height: 100vh;
+    height: 44vh;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -347,6 +347,8 @@ li a{
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
+    position:relative;
+    overflow:hidden;
     border: 1px dotted gray;
   }
   
@@ -994,7 +996,7 @@ left: 45%;
   }
   
   .chitchatwrapper .right .lower textarea {
-    flex: 1;
+    flex: 0.5;
     width: 95%;
     min-height: 5vh;
     margin-bottom: 1vh;
@@ -1681,5 +1683,8 @@ left: 45%;
 }
 .page2wrapper{
     margin-top: 5vh;
+}
+.chitchatwrapper{
+    flex-direction: column;
 }
 }
