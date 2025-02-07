@@ -16,8 +16,8 @@
           <div class="chitchatmediawrapper">
             <div class="overlay">
               <div class="overlaytextwrapper">
-                <p>{{ discussion.topic }}</p>
-                <p>{{ discussion.content }}</p>
+                <p class="title">{{ discussion.topic }}</p>
+                <p class="content">{{ discussion.content }}</p>
               </div>
             </div>
           </div>
