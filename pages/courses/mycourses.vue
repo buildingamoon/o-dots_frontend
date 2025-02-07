@@ -181,9 +181,6 @@ onMounted(async () => {
 .coursewrapper {
   display: flex;
 }
-.coursecol {
-  flex: 1;
-}
 .coursecol.left {
   display: flex;
   flex-direction: column;

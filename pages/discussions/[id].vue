@@ -319,7 +319,7 @@ const sendMessage = () => {
   font-weight: 300;
   display: flex;
   flex-direction: column;
-  background: #e0d3d329;
+
   margin: 0.5vh;
   width: auto;
   min-height: 5vh;
@@ -348,6 +348,7 @@ const sendMessage = () => {
 .message-sender {
   font-weight: bold;
   color: red;
+  font-size: 0.9em;
 }
 
 .message-timestamp {

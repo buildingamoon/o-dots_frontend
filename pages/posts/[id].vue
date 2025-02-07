@@ -12,10 +12,12 @@
       <div class="content-inner">
         <h2>{{ post.title }}</h2>
         <div class="metatag">
-          <div v-if="userIcon" class="metatagitem metatagitem1" :style="{ backgroundImage: `url(${userIcon})` }"></div>
-          <div class="metatagitem metatagitem2">{{ user.name }}</div>
+          <div>
+            <div v-if="userIcon" class="metatagitem metatagitem1" :style="{ backgroundImage: `url(${userIcon})` }"></div>
+            <div class="metatagitem metatagitem2">{{ user.name }}</div>
+          </div>
           <div class="metatagitem metatagitem3">
-            <div v-for="(category, index) in post.categories" :key="index" class="category" :style="{ borderRadius: '20%', background: 'red' }">
+            <div v-for="(category, index) in post.categories" :key="index" class="category" :style="{ borderRadius: '15%', background: 'red' }">
               {{ category }}
             </div>
           </div>
@@ -169,6 +171,7 @@ body, html {
 .cover h1 {
   font-size: 3em;
   margin: 5vh 0;
+  text-shadow: -4px 1px 1px rgba(248, 248, 248, 0.6);
 }
 .cover p {
   font-size: 1.5em;
@@ -217,7 +220,7 @@ body, html {
   margin: 0 auto;
 }
 .content h2 {
-  font-size: 1.5em;
+  font-size: 2.5em;
   margin-bottom: 5%;
   text-align: center;
 }
@@ -248,8 +251,8 @@ body, html {
   padding: 2vh;
 }
 .metatagitem1 {
-  width: 10vh;
-  height: 10vh;
+  width: 7vh;
+  height: 7vh;
   border-radius: 50%;
   background-color: gray;
   background-size: cover;
@@ -257,11 +260,13 @@ body, html {
 }
 .metatagitem2 {
   flex: 1;
-  font-size: 1em;
+  font-size: 0.6em;
 }
 .metatagitem3 {
   display: flex;
   gap: 1em;
+  align-self: center;
+  justify-content: center;
 }
 .category {
   padding: 0.5em 1em;
@@ -270,7 +275,6 @@ body, html {
   color: white;
 }
 .metatagitem4 {
-  flex: 1;
   font-size: 0.7em;
 }
 </style>
