@@ -4,24 +4,25 @@
     <div id="classChitchat">
       <div class="chitchatwrapper">
         <!-- Left Section -->
-        <div class="chitchatcol left" v-for="discussion in discussions" :key="discussion._id">
-          <p>Host of the TALK</p>
-          <img :src="discussion.host?.userIcon" alt="Host Image" v-if="discussion.host?.userIcon" />
-          <br />
-          <p>{{ discussion.host?.name }}</p>
-        </div>
+        <div class="bigwrap">
+          <div class="chitchatcol left" v-for="discussion in discussions" :key="discussion._id">
+            <img :src="discussion.host?.userIcon" alt="Host Image" v-if="discussion.host?.userIcon" />
+            <p>{{ discussion.host?.name }}</p>
+          </div>
 
-        <!-- Middle Section -->
-        <div class="chitchatcol middle" v-for="discussion in discussions" :key="discussion._id">
-          <div class="chitchatmediawrapper">
-            <div class="overlay">
-              <div class="overlaytextwrapper">
-                <p class="title">{{ discussion.topic }}</p>
-                <p class="content">{{ discussion.content }}</p>
+          <!-- Middle Section -->
+          <div class="chitchatcol middle" v-for="discussion in discussions" :key="discussion._id">
+            <div class="chitchatmediawrapper">
+              <div class="overlay">
+                <div class="overlaytextwrapper">
+                  <p class="title">{{ discussion.topic }}</p>
+                  <p class="content">{{ discussion.content }}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+      </div>
+
 
         <!-- Right Section -->
         <div class="chitchatcol right">
@@ -59,7 +60,7 @@
               <div v-if="emojiPickerVisible">
                 <emoji-picker @select="addEmoji" class="emoji-picker" />
               </div>
-              <button class="lowerbtn" @click="sendMessage">Send</button>
+              <button class="lowerbtn" @click="sendMessage"><img src="/public/picture/circleright.png"></button>
             </div>
           </div>
         </div>
@@ -388,6 +389,44 @@ const sendMessage = () => {
   height: 4em;
   border-radius: 17%;
   padding-right: 10vh;
+}
+.lowerbtn img{
+  height:5vh;
+}
+.bigwrap{
+    display: flex;
+    flex-direction: row;
+    flex:4;
+
+}
+
+@media (max-width: 600px) {
+.app {
+    overflow: hidden; /* Hide scrollbars */
+}
+.bigwrap{
+    display: flex;
+    flex-direction: row;
+    flex:1.5;
+
+}
+.chitchatwrapper .right .lower{
+  flex-direction: row;
+}
+.lowerbtn img{
+  height:8vh;
+}
+.emoji-container{
+  width:0;
+  height:auto;
+}
+.lower .lowerbtn{
+  border:none;
+}
+.emoji-toggle{
+  opacity: 0;
+  width:0;
+}
 }
 
 </style>
