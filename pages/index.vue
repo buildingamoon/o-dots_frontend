@@ -15,7 +15,7 @@
         <section class="page page1 active">
               <div class="pagewrapper page1wrapper">
                   <div class="upper">
-                      <video autoplay muted loop>
+                    <video autoplay muted loop>
                           <source src="/video/full-width.mp4" type="video/mp4">
                       </video>
                       <div class="container"></div>
