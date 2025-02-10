@@ -431,6 +431,19 @@ onMounted(async () => {
 .box1 ul{
   background: white;
 }
+@media (max-width: 600px) {
+.app {
+    overflow: hidden; /* Hide scrollbars */
+}
+.chitchatwrapper .lower{
+  flex-direction: column-reverse;
+}
+.chitchatwrapper .upper{
+  opacity: 0;
+  width:0;
+  height:0;
+}
+}
 
 
 </style>

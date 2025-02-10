@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Courseheader />
+    <Chitchatbackheader />
     <div id="classChitchat">
       <div class="chitchatwrapper">
         <!-- Left Section -->

@@ -5,7 +5,7 @@
       <div class="coursewrapper">
         <div class="coursecol left">
           <div class="image-preview">
-            <img :src="userIcon" @click="openFileDialog" width="250" height="250" alt="User Icon" style="cursor: pointer;" />
+            <img :src="userIcon" @click="openFileDialog" class="mycourseusericon" alt="User Icon" style="cursor: pointer;" />
             <input type="file" ref="fileInput" @change="onFileChange" style="display:none;">
           </div>
           <br>
@@ -169,6 +169,10 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.mycourseusericon{
+  width:250px;
+  height:250px;
+}
 .coursewrapper .coursecol.left img {
   cursor: pointer;
 }
@@ -227,5 +231,38 @@ onMounted(async () => {
 .upload-controls {
   text-align: center;
   margin-top: 10px;
+}
+@media (max-width: 600px) {
+.app {
+    overflow: hidden; /* Hide scrollbars */
+}
+.coursewrapper{
+  flex-direction: column;
+}
+.coursecol.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    margin-top: 17vh;
+}
+.coursecol.middle{
+    display: flex;
+    flex-wrap: wrap;
+    flex:4;
+}
+.mycourseusericon{
+  width:25vh;
+  height:25vh;
+}
+.image-preview img{
+  width:10vh;
+  height:10vh;
+}
+.coursecol.middle{
+  margin-top:0;
+  flex-direction: row;
+}
+
 }
 </style>
