@@ -17,7 +17,7 @@
             <div class="metatagitem metatagitem2">{{ user.name }}</div>
           </div>
           <div class="metatagitem metatagitem3">
-            <div v-for="(category, index) in post.categories" :key="index" class="category" :style="{ borderRadius: '15%', background: 'red' }">
+            <div v-for="(category, index) in post.categories" :key="index" class="category" :style="{ background: 'red' }">
               {{ category }}
             </div>
           </div>
@@ -273,7 +273,7 @@ body, html {
 }
 .category {
   padding: 0.5em 1em;
-  border-radius: 2px;
+  border-radius: 25px;
   background: rgba(255, 0, 0, 0.551);
   color: white;
 }
@@ -283,7 +283,7 @@ body, html {
 
 @media(max-width:600px){
   .content h2{
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
 }
 </style>

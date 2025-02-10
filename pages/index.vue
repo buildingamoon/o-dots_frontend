@@ -80,9 +80,6 @@
       </section>
         <section class="page page3">
               <div class="pagewrapper page3wrapper">
-                  <div class="promotionslogan">
-                      <p>Let's dive into the creativity pool!</p>
-                  </div>
                   <div class="promotionslogan2">
                       <a href="/courses/mycourses">My Courses</a>
                       <a href="/courses/allcourses">All Courses in O-dots!</a>
@@ -317,6 +314,14 @@ h5{
         margin-top: 27vh;
         margin-bottom: 10vh;
     }
+  .page3cover .upperlayer{
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  ._isfeaturedcourse{
+    margin-left:0;
+  }
   
 }
 </style>
