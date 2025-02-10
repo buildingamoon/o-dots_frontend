@@ -490,7 +490,6 @@ li a{
 }
 .upperlayer a{
     text-decoration: none;
-    width:100%;
     display: flex;
     justify-content: center;
 }
@@ -1676,6 +1675,7 @@ body{
 .promotionslogan2{
     font-size: 0.8em;
     color:white;
+    margin: 2vh;
 }
 .promotionslogan2 a{
     text-decoration: none;

@@ -318,6 +318,7 @@ h5{
   }
   ._isfeaturedcourse{
     margin-left:0;
+    margin-top: 2vh;
   }
   .row .box{
     width:20vh;
