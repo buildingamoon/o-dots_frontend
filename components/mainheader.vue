@@ -11,6 +11,7 @@
                 <a v-if='!session.data?.user' href='/users/signin'>Login</a>
                 <a v-else href='/users/signout'>
                     Logout
+                    <div :style="{ backgroundImage: `url(${user.userIcon})`, backgroundSize: 'cover', backgroundPosition: 'center' }" class="msguserIcon"></div>
                     <p class="loginemail">({{ session.data?.user.email }})</p>
                 </a>
             </div>
@@ -64,5 +65,48 @@
 
   <script setup>
    const session =useSession();
+   const userIcon = ref('');
+   const user = reactive({});
+   const route = useRoute();
+   const runtimeConfig = useRuntimeConfig();
+
+   const fetchUserData = async () => {
+  try {
+    const session = useSession();
+    if (!session.value || !session.value.data) {
+      throw new Error('No session data available');
+    }
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('No token available');
+    }
+    const response = await fetch(`${runtimeConfig.public.apiBase}users?email=${session.value.data.user.email}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error('Failed to fetch user data');
+    }
+    const data = await response.json();
+    Object.assign(user, data);
+    if (data.userIcon) {
+      userIcon.value = data.userIcon;
+    }
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    router.push('/users/signin');
+  }
+};
 </script>
+
+<style>
+@media(max-width:600px){
+  .loginemail{
+    opacity: 0;
+    height:0;
+    width:0;
+  }
+}
+</style>
   
