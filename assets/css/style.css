@@ -548,10 +548,14 @@ li a{
     
 }
 .courselooptitle{
-    font-size: 1.5em;
+    font-size: 1em;
 }
 .courseloopcatagories{
-    border-radius: 1em;
+    border-radius: 0.8em;
+}
+.coursecontainer1 a{
+    text-decoration: none;
+    color:black;
 }
 .row .box{
     width:30vh;
