@@ -1599,37 +1599,7 @@ left: 45%;
     z-index: 50;
 }
     
-.secondnav{
-    position: fixed;
-    bottom: 0px;
-    background-color: black;
-    z-index: 55;
-    width: 150%;
-    left: -20vh;
 
-}
-.secondnav ul{
-    justify-content: space-evenly;
-    display: flex;
-    flex-direction: row;
-
-}
-.secondnav ul li a{
-    color: white;
-    text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly
-    
-}
-.secondnav ul li a .nav-icon{ 
-    display: block;
-    fill:white;
-    padding:20px;
-}
-.secondnav ul li a p{ 
-    display: none; /* Show SVG icons on smaller screens */ 
-}
 
 .page1wrapper { 
     padding-bottom: 70px;

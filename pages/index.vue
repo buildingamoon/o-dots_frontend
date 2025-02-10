@@ -307,4 +307,16 @@ h5{
   background: rgb(255 255 255 / 30%);
     font-size: 0.4em;
 }
+@media (max-width: 600px) {
+  .page2wrapper {
+      margin-top: 13vh;
+  }
+  .page2 .whole {
+        width: 100%;
+        flex-direction: column;
+        margin-top: 27vh;
+        margin-bottom: 10vh;
+    }
+  
+}
 </style>
