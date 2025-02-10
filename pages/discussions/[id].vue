@@ -427,6 +427,45 @@ const sendMessage = () => {
   opacity: 0;
   width:0;
 }
+.chitchatwrapper{
+    flex-direction: column;
+}
+.chitchatwrapper .left{
+    flex-direction: column;
+    flex:1;
+}
+.chitchatcol.left img{
+    width: 8vh;
+    height: 8vh;
+    margin-bottom: 1vh;
+    margin: 1vh;
+}
+.chitchatcol.middle{
+    flex:3;
+    background: white;
+}
+.overlaytextwrapper .title{
+    font-size: 1em;
+}
+.overlaytextwrapper .content{
+    font-size: 0.8em;
+}
+.chitchatcol.right .date-separator{
+    background:rgba(0, 0, 0, 0.622);
+    color:white;
+    font-size: 0.65em;
+    width:auto;
+}
+.chitchatcol.right .lower textarea::placeholder {
+    font-size: 8px; /* Adjust the font size as needed */
+    color: #999; /* Optional: Adjust the color of the placeholder text */
+}
+.msgusername{
+  margin-right: 0vh;
+  opacity: 0;
+  width: 0;
+}
+
 }
 
 </style>
