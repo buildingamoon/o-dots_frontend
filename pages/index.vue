@@ -327,6 +327,13 @@ h5{
  .coursecontainer2{
   margin-top: -203px;
  }
+ .upperlayer .coursecontainer .row {
+    display: flex;
+    flex: 1 1 calc(50%-1vh);
+    flex-direction: column;
+    margin: 0 .5vh;
+    row-gap: 1vh;
+}
   
 }
 </style>

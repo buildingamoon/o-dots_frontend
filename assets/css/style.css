@@ -464,10 +464,11 @@ li a{
     border-radius: 5px;
     color: #020286;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .promotionslogan2 a{
     align-self: center;
+    color: white;
 }
 .promotionslogan2 a:hover{
     color: #020286;
