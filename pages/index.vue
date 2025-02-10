@@ -319,6 +319,14 @@ h5{
   ._isfeaturedcourse{
     margin-left:0;
   }
+  .row .box{
+    width:20vh;
+    height:20vh;
+   
+}
+ .coursecontainer2{
+  margin-top: -203px;
+ }
   
 }
 </style>

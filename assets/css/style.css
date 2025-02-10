@@ -261,8 +261,8 @@ body {
     flex:3;
     background:white;
     border-radius:0.2em;
-    min-width:24vh;
-    min-height:24vh;
+    min-width:20vh;
+    min-height:20vh;
     margin:1.5vh;
     position: relative;
 }
