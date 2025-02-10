@@ -1675,4 +1675,8 @@ body{
 .promotionslogan2 a{
     text-decoration: none;
 }
+.websiteicon{
+    height: 2em;
+    opacity: 1;
+}
 }
