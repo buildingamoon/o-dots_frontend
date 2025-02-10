@@ -85,9 +85,6 @@
                       <a href="/courses/allcourses">All Courses in O-dots!</a>
                   </div>
                   <div class="page3videocontainer">
-                      <video autoplay muted loop>
-                          <source src="/video/sea.mp4" type="video/mp4">
-                      </video>
                       <div class="page3cover"></div>
                       <div class="upperlayer">
                           <!-- Featured Course -->
