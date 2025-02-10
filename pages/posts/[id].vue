@@ -243,8 +243,6 @@ body, html {
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin: 2vh;
-  padding: 0px 2vh;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -253,11 +251,11 @@ body, html {
 .metatagitem {
   flex: 1;
   font-size: 0.7em;
-  padding: 2vh;
+  margin-top:1vh;
 }
 .metatagitem1 {
-  width: 7vh;
-  height: 7vh;
+  width: 5vh;
+  height: 5vh;
   border-radius: 50%;
   background-color: gray;
   background-size: cover;
@@ -281,5 +279,11 @@ body, html {
 }
 .metatagitem4 {
   font-size: 0.7em;
+}
+
+@media(max-width:600px){
+  .content h2{
+    font-size: 1.2em;
+  }
 }
 </style>
