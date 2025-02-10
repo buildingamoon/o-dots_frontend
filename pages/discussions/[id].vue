@@ -457,13 +457,16 @@ const sendMessage = () => {
     width:auto;
 }
 .chitchatcol.right .lower textarea::placeholder {
-    font-size: 8px; /* Adjust the font size as needed */
+    font-size: 0.8em; /* Adjust the font size as needed */
     color: #999; /* Optional: Adjust the color of the placeholder text */
 }
 .msgusername{
   margin-right: 0vh;
   opacity: 0;
   width: 0;
+}
+.sent-message{
+ font-size: 0.8em;
 }
 
 }
