@@ -131,7 +131,7 @@
     padding: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    min-width: calc(50% - 3em);
+    min-width: calc(70% - 3em);
     background-color: black;
     background-size: cover;
     background-position: center;
