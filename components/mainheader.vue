@@ -97,6 +97,9 @@ onMounted(fetchUserData);
     height: 0;
     width: 0;
   }
+  .navcontainer, .secondnav{
+    font-size: 0.8em;
+  }
 }
 
 /* Add styles for .msguserIcon */
