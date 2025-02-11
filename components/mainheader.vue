@@ -9,7 +9,7 @@
           <div class="websitename navitems">O-dots!</div>
           <div class="loginmsg menu">
             <a v-if='!session.data?.user' href='/users/signin'>Login</a>
-            <a v-else href='/users/signout' class="signedin">
+            <a v-else href='/users/signout'>
               Logout
               <div :style="{ backgroundImage: `url(${user.userIcon})`, backgroundSize: 'cover', backgroundPosition: 'center' }" class="msguserIcon"></div>
               <p class="loginemail">({{ session.data?.user.email }})</p>
@@ -19,12 +19,42 @@
       </section>
       <div class="secondnav">
         <ul>
-          <li><a href="#" data-target="page1"> 
-            <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="menu-item1 nav-icon"> <g> <path fill="none" d="M0 0h24v24H0z"/> <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zM6.023 15.416C7.491 17.606 9.695 19 12.16 19c2.464 0 4.669-1.393 6.136-3.584A8.968 8.968 0 0 0 12.16 13a8.968 8.968 0 0 0-6.137 2.416zM12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/> </g> 
-            </svg> <br><p>Home</p> </a></li> <li><a href="#" data-target="page2"> <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="menu-item2 nav-icon"> <g> <path fill="none" d="M0 0h24v24H0z"/> <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zM6.023 15.416C7.491 17.606 9.695 19 12.16 19c2.464 0 4.669-1.393 6.136-3.584A8.968 8.968 0 0 0 12.16 13a8.968 8.968 0 0 0-6.137 2.416zM12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/> </g> 
-            </svg> <br><p>Hot-dots!</p> </a></li> <li><a href="#" data-target="page3"> <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="menu-item3 nav-icon"> <g> <path fill="none" d="M0 0h24v24H0z"/> <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zM6.023 15.416C7.491 17.606 9.695 19 12.16 19c2.464 0 4.669-1.393 6.136-3.584A8.968 8.968 0 0 0 12.16 13a8.968 8.968 0 0 0-6.137 2.416zM12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/> </g> 
-            </svg> <br><p>Dot Academy</p> </a></li> <li><a href="#" data-target="page4"> <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="menu-item4 nav-icon"> <g> <path fill="none" d="M0 0h24v24H0z"/> <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zM6.023 15.416C7.491 17.606 9.695 19 12.16 19c2.464 0 4.669-1.393 6.136-3.584A8.968 8.968 0 0 0 12.16 13a8.968 8.968 0 0 0-6.137 2.416zM12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/> </g> </svg> 
-              <br><p>My O-dots!</p> </a></li>
+          <li><a href="#" data-target="page1" @click="handleClick($event, 'page1')" :class="{ 'active-nav-item': activePage === 'page1' }">
+            <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="menu-item1 nav-icon">
+              <g>
+                <path fill="none" d="M0 0h24v24H0z"/>
+                <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zM6.023 15.416C7.491 17.606 9.695 19 12.16 19c2.464 0 4.669-1.393 6.136-3.584A8.968 8.968 0 0 0 12.16 13a8.968 8.968 0 0 0-6.137 2.416zM12 11a3 3 0 1 0 0-6 3 3  0 0 0 0 6z"/>
+              </g>
+            </svg>
+            <br><p>Home</p>
+          </a></li>
+          <li><a href="#" data-target="page2" @click="handleClick($event, 'page2')" :class="{ 'active-nav-item': activePage === 'page2' }">
+            <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="menu-item2 nav-icon">
+              <g>
+                <path fill="none" d="M0 0h24v24H0z"/>
+                <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zM6.023 15.416C7.491 17.606 9.695 19 12.16 19c2.464 0 4.669-1.393 6.136-3.584A8.968 8.968 0 0 0 12.16 13a8.968 8.968 0 0 0-6.137 2.416zM12 11a3 3 0 1 0 0-6 3 3  0 0 0 0 6z"/>
+              </g>
+            </svg>
+            <br><p>Hot-dots!</p>
+          </a></li>
+          <li><a href="#" data-target="page3" @click="handleClick($event, 'page3')" :class="{ 'active-nav-item': activePage === 'page3' }">
+            <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="menu-item3 nav-icon">
+              <g>
+                <path fill="none" d="M0 0h24v24H0z"/>
+                <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zM6.023 15.416C7.491 17.606 9.695 19 12.16 19c2.464 0 4.669-1.393 6.136-3.584A8.968 8.968 0 0 0 12.16 13a8.968 8.968 0 0 0-6.137 2.416zM12 11a3 3 0 1 0 0-6 3 3  0 0 0 0 6z"/>
+              </g>
+            </svg>
+            <br><p>Dot Academy</p>
+          </a></li>
+          <li><a href="#" data-target="page4" @click="handleClick($event, 'page4')" :class="{ 'active-nav-item': activePage === 'page4' }">
+            <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="menu-item4 nav-icon">
+              <g>
+                <path fill="none" d="M0 0h24v24H0z"/>
+                <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zM6.023 15.416C7.491 17.606 9.695 19 12.16 19c2.464 0 4.669-1.393 6.136-3.584A8.968 8.968 0 0 0 12.16 13a8.968 8.968 0 0 0-6.137 2.416zM12 11a3 3 0 1 0 0-6 3 3  0 0 0 0 6z"/>
+              </g>
+            </svg>
+            <br><p>My O-dots!</p>
+          </a></li>
         </ul>
       </div>
     </header>
@@ -43,6 +73,7 @@ const user = reactive({});
 const route = useRoute();
 const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
+const activePage = ref('');
 
 const fetchUserData = async () => {
   try {
@@ -66,15 +97,20 @@ const fetchUserData = async () => {
     if (data.userIcon) {
       userIcon.value = data.userIcon;
     }
-    console.log('User icon URL:', data.userIcon);  // Add this line to check the userIcon URL
   } catch (error) {
     console.error('Error fetching user data:', error);
     router.push('/users/signin');
   }
 };
 
+const handleClick = (event, targetPage) => {
+  event.preventDefault();
+  activePage.value = targetPage;
+};
+
 onMounted(fetchUserData);
 </script>
+
 
 <style>
 .signedin{
@@ -89,6 +125,9 @@ onMounted(fetchUserData);
   background-color: #ddd;  /* Fallback color */
   background-size: cover;
   background-position: center;
+}
+.active-nav-item {
+  color: yellow /* Change the text color to yellow */
 }
 
 @media (max-width: 600px) {

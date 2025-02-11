@@ -3,8 +3,8 @@
     <div class="loader">
       <div class="loaderwrap">
         <div>
-          <img src="/picture/logobody.png" class="bodyloader">
-          <img src="/picture/logoeyes.png" class="eyesloader">
+          <img src="/public/picture/logobody.png" class="bodyloader">
+          <img src="/public/picture/logoeyes.png" class="eyesloader">
           <div class="loaderwebsitename">O-dots!</div>
         </div>
       </div>
