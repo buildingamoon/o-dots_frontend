@@ -5,7 +5,7 @@
         <div class="container">
           <div class="regformuouter">
             <div class="regiforminner part1">
-              <img src="/public/picture/logonobg.png">
+              <img src="/public/picture/logonobg.png" alt="Logo">
               <div class="alert alert-primary regiforminner" role="alert">
                 <br><br>
               </div>
@@ -23,7 +23,7 @@
                 <input v-model="password" type="password" class="form-control">
               </div>
               <p class="joinus">New to O-dots? <a href="/users/register">JOIN US!</a></p>
-              <small><a href="/users/forgotpassword">forgot password?</a></small><br>
+              <small><a href="/users/forgotpassword">Forgot password?</a></small><br>
               <button @click.prevent="signin" type="submit" class="loginbtn btn-primary">Sign In</button>
             </div>
           </div>
@@ -45,7 +45,6 @@ const router = useRouter();
 const signin = async () => {
   try {
     const apiUrl = runtimeConfig.public.apiBase + 'auth/login';
-    console.log('API URL:', apiUrl);  // Debug line to check the API URL
     const response = await $fetch(apiUrl, {
       method: "post",
       body: {
@@ -53,8 +52,6 @@ const signin = async () => {
         password: password.value
       }
     });
-
-    console.log('API Response:', response);  // Debug line to check the API response
 
     if (response) {
       alert('Login success!');
@@ -78,5 +75,4 @@ const signin = async () => {
     alert('An unexpected error occurred. Please try again later.');
   }
 };
-
 </script>

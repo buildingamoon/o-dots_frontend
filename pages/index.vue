@@ -355,6 +355,19 @@ const fetchAllCourses = async () => {
   }
 };
 
+// router/index.js or where you define your routes
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = localStorage.getItem('token') !== null;
+
+  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
+    localStorage.setItem('targetUrl', to.fullPath);
+    next('/login');
+  } else {
+    next();
+  }
+});
+
+
 onMounted(() => {
   fetchAllPosts();
   fetchAllCourses();
