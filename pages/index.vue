@@ -421,6 +421,7 @@ const handleClick = (event, targetPage) => {
 h5{
   background: rgb(255 255 255 / 30%);
     font-size: 0.25em;
+    bottom: 27%;
 }
 @media (max-width: 600px) {
   .page2wrapper {

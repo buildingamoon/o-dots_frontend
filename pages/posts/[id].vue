@@ -184,7 +184,7 @@ body, html {
   background: rgb(255 255 255 / 50%);
   border-radius: 10px;
   position: absolute;
-  bottom: 10vh;
+  bottom: 26vh;
   font-size: 1em;
   cursor: pointer;
   animation: bounce 2s infinite;
@@ -285,5 +285,8 @@ body, html {
   .content h2{
     font-size: 1.5em;
   }
+.cover h1 {
+  font-size: 2em;
+}
 }
 </style>
