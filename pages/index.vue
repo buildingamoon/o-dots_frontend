@@ -129,12 +129,33 @@
         <section class="page page4">
               <div class="pagewrapper page4wrapper">
                   <div class="left">
-                      <img src="/picture/inner.png" class="usericon">
-                      <p>User Name</p>
+                    <div class="image-preview">
+                      <img :src="userIcon" @click="openFileDialog" class="mycourseusericon" alt="User Icon" style="cursor: pointer;" />
+                      <input type="file" ref="fileInput" @change="onFileChange" style="display:none;">
+                    </div>
+                    <input
+                      v-if="isEditing"
+                      type="text"
+                      v-model="user.name"
+                      @blur="saveUserName"
+                      @keyup.enter="saveUserName"
+                    />
+                    <p v-else @click="isEditing = true">{{ user.name }}</p>
+                    <p>{{ user.email }}</p>
+                    <a v-if='!session.data?.user' href='/users/signin'>Login</a>
+                      <a v-else href='/users/signout'>
+                        Logout
+                      </a>
+                      <div class="upload-controls">
+                      <label :for="'uploadUserIcon'">
+                      </label>
+                      <p v-if='uploadingUserIcon'>Uploading...</p>
+                    </div>
+
                   </div>
                   <div class="middle">
                       <div class="title">
-                          <h4>My Clips</h4>
+                          <h4>My Courses</h4>
                       </div>
                       <div class="loopbox">
                           <!-- Clip boxes here -->
@@ -142,7 +163,7 @@
                   </div>
                   <div class="right">
                       <div class="title">
-                          <h4>My Courses</h4>
+                          <h4>My Clips</h4>
                       </div>
                       <div class="loopbox">
                           <!-- Course boxes here -->
@@ -157,8 +178,10 @@
 </template>
 
 <script setup>
+const session = useSession();
+
 definePageMeta({
-    middleware:["auth"]
+    middleware: ["auth"]
 })
 
 import { ref, onMounted } from 'vue';
@@ -172,6 +195,102 @@ const featuredPosts = ref([]);
 const courses = ref([]);
 const featuredCourse = ref(null);
 const recentCourses = ref([]);
+const user = ref({ name: '' });
+const userIcon = ref('/public/picture/inner.jpg');
+const uploadingUserIcon = ref(false);
+const fileInput = ref(null);
+const router = useRouter();
+const isEditing = ref(false);
+
+const fetchUserData = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${runtimeConfig.public.apiBase}auth/profile`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    user.value = data.user;
+    if (data.user.userIcon) {
+      userIcon.value = data.user.userIcon;
+    }
+    console.log('Fetched user icon:', userIcon.value);
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    router.push('/users/signin');
+  }
+};
+
+// Highlighted method for handling input change and saving
+const saveUserName = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${runtimeConfig.public.apiBase}/auth/profile`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify({ name: user.value.name }),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+    console.log('Saved user name:', user.value.name);
+    isEditing.value = false;
+  } catch (error) {
+    console.error('Error saving user name:', error);
+  }
+};
+
+const openFileDialog = () => {
+  fileInput.value.click();
+};
+
+const validateFile = (file) => {
+  const allowedFileTypes = ['image/jpeg', 'image/png', 'image/gif'];
+  if (!allowedFileTypes.includes(file.type)) {
+    alert('Invalid file type. Only JPEG, PNG, and GIF images are allowed.');
+    return false;
+  }
+
+  const maxSizeInMB = 2;
+  const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+  if (file.size > maxSizeInBytes) {
+    alert(`File size exceeds the maximum limit of ${maxSizeInMB} MB.`);
+    return false;
+  }
+
+  return true;
+};
+
+const onFileChange = async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (validateFile(file)) {
+    uploadingUserIcon.value = true;
+    const imageUrl = await uploadImage(file);
+    if (imageUrl) {
+      userIcon.value = imageUrl;
+      await saveUserIcon(imageUrl);
+    }
+    uploadingUserIcon.value = false;
+  }
+};
+
+const changeIcon = async (icon) => {
+  userIcon.value = icon;
+  uploadingUserIcon.value = true;
+  await saveUserIcon(icon);
+  uploadingUserIcon.value = false;
+};
+
+onMounted(async () => {
+  await fetchUserData();
+});
 
 const fetchAllPosts = async () => {
   let page = 1;
@@ -290,12 +409,14 @@ const handleClick = (event, targetPage) => {
       targetElement.classList.add('active');
       targetElement.style.visibility = 'visible';
       targetElement.style.opacity = '1';
+
     } else {
       console.error(`No element found for the class: ${targetPage}`);
     }
   }
 };
 </script>
+
 <style>
 h5{
   background: rgb(255 255 255 / 30%);

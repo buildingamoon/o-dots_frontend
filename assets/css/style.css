@@ -603,22 +603,22 @@ li a{
 
 }
 .page4wrapper .left,.page4wrapper .middle,.page4wrapper .right{
-    display: flex;
     gap:5vh;
+    text-align: center;
     
 }
 
 .page4wrapper .middle,.page4wrapper .right{
     flex-direction: column;
-    flex:5;
+    flex:2;
     flex-wrap: wrap;
     display: flex;
     gap:5vh;
+    color:yellow;
     
 }
 .page4wrapper .left{
     flex-direction: column;
-    flex:2;
     align-items: center;
 }
 .page4wrapper .box{
