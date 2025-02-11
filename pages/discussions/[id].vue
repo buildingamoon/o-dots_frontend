@@ -57,6 +57,10 @@
             <textarea v-model="newMessage" class="sent-message" id="comment" placeholder="Type your message..."></textarea>
             <div class="emoji-container">
               <button class="lowerbtn" @click="sendMessage"><img src="/public/picture/circleright.png"></button>
+              <button @click="toggleEmojiPicker" class="emoji-toggle">😀</button>
+              <div v-if="emojiPickerVisible">
+                <emoji-picker @select="addEmoji" class="emoji-picker" />
+              </div>
             </div>
           </div>
         </div>
