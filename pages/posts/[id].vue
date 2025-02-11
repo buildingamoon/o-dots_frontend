@@ -1,5 +1,5 @@
 <template>
-  <postbackheader/>
+  <Backpostheder/>
   <div>
     <div class="cover" ref="cover" :style="{ backgroundImage: `url(${post.photos})` }">
       <h1 ref="title">{{ post.title }}</h1>
@@ -281,6 +281,7 @@ body, html {
 .metatagitem4 {
   font-size: 0.7em;
 }
+
 
 @media(max-width:600px){
   .content h2{

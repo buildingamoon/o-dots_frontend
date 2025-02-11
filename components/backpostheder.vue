@@ -4,7 +4,7 @@
         <section id="nav">
           <div class="navcontainer">
             <a href="/posts/allposts" class="navitems">
-              <img class="websiteiconback" src="/public/picture/backtext.png" alt="o-dots!">
+              <img class="websiteicon" src="/public/picture/backtext.png" alt="o-dots!">
             </a>
           </div>
         </section>
@@ -14,7 +14,6 @@
 
 <script setup>
     const session =useSession();
-    const router = useRouter();
 </script>
 
 <style>

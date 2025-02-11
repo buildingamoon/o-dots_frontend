@@ -1,5 +1,4 @@
 <template>
-  <mainheader/>
     <div class="allposts-wrapper">
       <h1>All Blog Posts</h1>
       <div>
@@ -48,6 +47,7 @@
   import { ref, onMounted, watch } from 'vue';
   import { useRuntimeConfig } from '#imports';
   
+  const session = useSession();
   const posts = ref([]);
   const categories = ref([]);
   const selectedCategory = ref('');
