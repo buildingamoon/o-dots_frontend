@@ -426,6 +426,7 @@ const sendMessage = () => {
 .emoji-toggle{
   opacity: 0;
   width:0;
+  height: 0;
 }
 .chitchatwrapper{
     flex-direction: column;
