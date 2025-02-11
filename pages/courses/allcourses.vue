@@ -50,7 +50,7 @@
   const selectedCategory = ref('');
   const currentPage = ref(1);
   const totalPages = ref(1);
-  const itemsPerPage = 4;
+  const itemsPerPage = 6;
   const runtimeConfig = useRuntimeConfig();
   
   const fetchCourses = async (page, category) => {
@@ -131,7 +131,7 @@
     padding: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    min-width: calc(70% - 3em);
+    min-width: calc(50% - 3em);
     background-color: black;
     background-size: cover;
     background-position: center;
@@ -191,6 +191,14 @@
   
   .pagination span {
     margin: 0 10px;
+  }
+
+  @media(max-width:600px){
+    .course {
+
+    min-width: calc(80% - 3em);
+    
+  }
   }
   </style>
   

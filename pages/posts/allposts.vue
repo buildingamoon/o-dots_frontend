@@ -16,6 +16,7 @@
           :key="post._id"
           :to="`/posts/${post._id}`"
           class="post"
+          :style="{ backgroundImage: post.photos ? `url(${post.photos})` : 'none' }"
         >
           <div class="post-content">
             <div class="title">{{ post.title }}</div>
@@ -193,6 +194,14 @@
   
   .pagination span {
     margin: 0 10px;
+  }
+
+  @media(max-width:600px){
+    .post {
+
+    min-width: calc(80% - 3em);
+    
+  }
   }
   </style>
   
