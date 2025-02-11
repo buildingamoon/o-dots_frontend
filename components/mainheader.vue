@@ -149,5 +149,6 @@ onMounted(fetchUserData);
   background-color: #ddd;  /* Fallback color */
   background-size: cover;
   background-position: center;
+  align-self: flex-end;
 }
 </style>

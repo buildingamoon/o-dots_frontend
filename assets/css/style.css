@@ -135,6 +135,9 @@ body {
 }
 .loginmsg a,.loginmsg p{
     color: white;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
 }
 .loginemail{
     font-size: 0.8em;
