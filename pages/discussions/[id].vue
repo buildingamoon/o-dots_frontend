@@ -417,7 +417,7 @@ const sendMessage = () => {
   height:8vh;
 }
 .emoji-container{
-  width:0;
+  width:10px;
   height:auto;
 }
 .lower .lowerbtn{
