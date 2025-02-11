@@ -408,6 +408,7 @@ const sendMessage = () => {
 }
 .chitchatwrapper .right .lower{
   flex-direction: row;
+  margin-left: 2vh;
 }
 .lowerbtn img{
   height:8vh;
