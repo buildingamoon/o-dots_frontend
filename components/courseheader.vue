@@ -29,3 +29,15 @@
 <script setup>
     const session =useSession();
 </script>
+<style>
+@media (max-width: 600px) {
+  .loginemail {
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  .coursenavitems{
+    font-size: 0.8em;
+  }
+}
+</style>
