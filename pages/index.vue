@@ -202,6 +202,7 @@ const fileInput = ref(null);
 const router = useRouter();
 const isEditing = ref(false);
 
+
 const fetchUserData = async () => {
   try {
     const token = localStorage.getItem('token');

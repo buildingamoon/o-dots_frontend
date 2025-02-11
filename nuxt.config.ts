@@ -74,5 +74,24 @@ export default defineNuxtConfig({
       publicDir: '.output/public',
       serverDir: '.output/server',
     }
+  },
+
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/',
+        name: 'Home',
+        component: resolve(__dirname, 'pages/index.vue'),
+      });
+      routes.push({
+        path: '/users/signin',
+        name: 'SignIn',
+        component: resolve(__dirname, 'pages/users/signin.vue'),
+      });
+      routes.push({
+        path: '/:catchAll(.*)*', // Catch-all route for undefined paths
+        component: resolve(__dirname, 'pages/404.vue'),
+      });
+    },
   }
 });

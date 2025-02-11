@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <header class="active">
@@ -75,33 +76,62 @@ const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
 const activePage = ref('');
 
+const waitForSessionData = () => {
+  return new Promise((resolve) => {
+    const checkSessionData = () => {
+      const sessionData = session.value?.data;
+      if (sessionData) {
+        resolve(sessionData);
+      } else {
+        setTimeout(checkSessionData, 100); // Retry after 100ms
+      }
+    };
+    checkSessionData();
+  });
+};
+
 const fetchUserData = async () => {
   try {
-    if (!session.value || !session.value.data) {
-      throw new Error('No session data available');
-    }
+    const sessionData = await waitForSessionData();
+    console.log('Session Data:', sessionData); // Log the session data for debugging
+
     const token = localStorage.getItem('token');
+    console.log('Token:', token); // Log the token for debugging
     if (!token) {
       throw new Error('No token available');
     }
-    const response = await fetch(`${runtimeConfig.public.apiBase}users?email=${session.value.data.user.email}`, {
+
+    const response = await fetch(`${runtimeConfig.public.apiBase}users?email=${sessionData.user.email}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
     });
+
     if (!response.ok) {
-      throw new Error('Failed to fetch user data');
+      const error = await response.json();
+      console.error(`Failed to fetch user data: ${response.status} - ${error.message}`);
+      throw new Error(`Failed to fetch user data: ${response.status} - ${error.message}`);
     }
+
     const data = await response.json();
+    console.log('User Data:', data); // Log the user data for debugging
     Object.assign(user, data);
     if (data.userIcon) {
       userIcon.value = data.userIcon;
     }
   } catch (error) {
-    console.error('Error fetching user data:', error);
+    console.error('Error fetching user data:', error.message);
     router.push('/users/signin');
   }
 };
+
+onMounted(async () => {
+  console.log('Mounted'); // Log when the component is mounted
+  await fetchUserData();
+});
+
+
+
 
 const handleClick = (event, targetPage) => {
   event.preventDefault();
@@ -111,23 +141,24 @@ const handleClick = (event, targetPage) => {
 onMounted(fetchUserData);
 </script>
 
-
 <style>
-.signedin{
+.signedin {
   display: flex;
   flex-direction: column;
   align-items: end;
 }
+
 .msguserIcon {
   width: 40px;
   height: 40px;
   border-radius: 10%;
-  background-color: #ddd;  /* Fallback color */
+  background-color: #ddd;
   background-size: cover;
   background-position: center;
 }
+
 .active-nav-item {
-  color: yellow /* Change the text color to yellow */
+  color: yellow;
 }
 
 @media (max-width: 600px) {
@@ -136,23 +167,13 @@ onMounted(fetchUserData);
     height: 0;
     width: 0;
   }
-  .navcontainer, .secondnav{
+  .navcontainer, .secondnav {
     font-size: 0.8em;
   }
-  .loginmsg a{
-  font-size: 0.7em;
+  .loginmsg a {
+    font-size: 0.7em;
+  }
 }
-}
-
-/* Add styles for .msguserIcon */
-.msguserIcon {
-  width: 30px;
-  height: 30px;
-  border-radius: 10%;
-  background-color: #ddd;  /* Fallback color */
-  background-size: cover;
-  background-position: center;
-  align-self: flex-end;
-}
-
 </style>
+
+

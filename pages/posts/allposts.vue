@@ -1,4 +1,5 @@
 <template>
+    <mainheader/>
     <div class="allposts-wrapper">
       <h1>All Blog Posts</h1>
       <div>
