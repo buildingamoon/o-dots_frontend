@@ -10,9 +10,9 @@
           <div class="loginmsg menu">
             <a v-if='!session.data?.user' href='/users/signin'>Login</a>
             <a v-else href='/users/signout'>
-              Logout
               <div :style="{ backgroundImage: `url(${user.userIcon})`, backgroundSize: 'cover', backgroundPosition: 'center' }" class="msguserIcon"></div>
               <p class="loginemail">({{ session.data?.user.email }})</p>
+              Logout
             </a>
           </div>
         </div>
@@ -139,6 +139,9 @@ onMounted(fetchUserData);
   .navcontainer, .secondnav{
     font-size: 0.8em;
   }
+  .loginmsg a{
+  font-size: 0.7em;
+}
 }
 
 /* Add styles for .msguserIcon */
@@ -151,4 +154,5 @@ onMounted(fetchUserData);
   background-position: center;
   align-self: flex-end;
 }
+
 </style>
