@@ -420,7 +420,7 @@ const handleClick = (event, targetPage) => {
 <style>
 h5{
   background: rgb(255 255 255 / 30%);
-    font-size: 0.4em;
+    font-size: 0.25em;
 }
 @media (max-width: 600px) {
   .page2wrapper {
@@ -455,6 +455,10 @@ h5{
     flex-direction: column;
     margin: 0 .5vh;
     row-gap: 1vh;
+}
+.page4wrapper .middle,.page4wrapper .right{
+    align-self: center;    
+    margin-top:1vh;
 }
   
 }

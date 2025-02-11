@@ -618,11 +618,14 @@ li a{
     display: flex;
     gap:5vh;
     color:yellow;
+    align-self: flex-start;
+    margin-top: 10vh;
     
 }
 .page4wrapper .left{
     flex-direction: column;
     align-items: center;
+    margin-left:2vh;
 }
 .page4wrapper .box{
     width:16vh;
@@ -732,6 +735,13 @@ left: 45%;
 }
 .joinus a{
     text-decoration:none;
+    color: yellow;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+.regiforminner a{
+    text-decoration:none;
+    color: yellow;
+    text-shadow: 1px 1px 0.5px rgb(0, 0, 0);
 }
 /*Dot Dot Courses*/
 /*courseheader*/
