@@ -1,6 +1,7 @@
 <template>
-    <mainheader/>
+    
     <div class="allposts-wrapper">
+      <backhomeheader/>
       <h1>All Blog Posts</h1>
       <div>
         <label for="category">Filter by Category:</label>
@@ -200,10 +201,11 @@
 
   @media(max-width:600px){
     .post {
-
     min-width: calc(80% - 3em);
-    
   }
+  .secondnav {
+        opacity: 0;
+    }
   }
   </style>
   

@@ -4,7 +4,7 @@
     <header class="active">
       <section id="nav">
         <div class="navcontainer">
-          <a href="" class="navitems">
+          <a href="/" class="navitems">
             <img class="websiteicon" src="/public/picture/logonoword.png" alt="o-dots!" href='/'>
           </a>
           <div class="websitename navitems">O-dots!</div>
