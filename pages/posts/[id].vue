@@ -1,4 +1,5 @@
 <template>
+  <postbackheader/>
   <div>
     <div class="cover" ref="cover" :style="{ backgroundImage: `url(${post.photos})` }">
       <h1 ref="title">{{ post.title }}</h1>
