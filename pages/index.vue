@@ -456,6 +456,7 @@ h5{
   ._isfeaturedcourse{
     margin-left:0;
     margin-top: 2vh;
+    width:90%;
   }
   .row .box{
     width:20vh;
@@ -492,7 +493,7 @@ h5{
     flex:none;
   }
   .page2wrapper .whole {
-    padding-top: 15vh;
+    padding-top: 30vh;
 
   }
   
