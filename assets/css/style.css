@@ -325,7 +325,7 @@ li a{
     flex-wrap: wrap;
     width: 100%;
     min-height: 77%;
-    padding-top: 26vh;
+    padding-top: 38vh;
     overflow-y: auto;
     color: white;
     background-color: black;
@@ -501,7 +501,7 @@ li a{
     align-content: center; 
     justify-content: center; 
     margin-top: 10vh; 
-   
+    flex-direction: column;
     background-size: cover; /* Ensure background image covers the container */ 
     background-position: center;
     flex-wrap: wrap; /* Center the background image */ 
