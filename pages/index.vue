@@ -444,7 +444,7 @@ h5{
   .page2 .whole {
         width: 100%;
         flex-direction: column;
-        margin-top: 15vh;
+        margin-top: 80vh;
         margin-bottom: 10vh;
     }
   .page3cover .upperlayer{
