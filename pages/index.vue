@@ -78,53 +78,54 @@
           </div>
         </div>
       </section>
-        <section class="page page3">
-              <div class="pagewrapper page3wrapper">
-                  <div class="promotionslogan2">
-                      <a href="/courses/mycourses">My Courses</a>
-                      <a href="/courses/allcourses">All Courses in O-dots!</a>
-                  </div>
-                  <div class="page3videocontainer">
-                      <div class="page3cover"></div>
-                      <div class="upperlayer">
-                          <!-- Featured Course -->
-                          <div class="coursecontainer coursecontainer1" v-if="featuredCourse" :style="{ backgroundImage: `url(${featuredCourse.photos[0]})` }">
-                              <router-link :to="`/courses/${featuredCourse._id}`" class="course-link">
-                                  <div class="_isfeaturedcourse">
-                                      <p class="courselooptitle">{{ featuredCourse.title }}</p>
-                                      <p class="courseloopcatagories">{{ featuredCourse.categories.join(', ') }}</p>
-                                  </div>
-                              </router-link>
-                          </div>
+      <section class="page page3">
+        <div class="pagewrapper page3wrapper">
+            <div class="promotionslogan2">
+                <a href="/courses/mycourses">My Courses</a>
+                <a href="/courses/allcourses">All Courses in O-dots!</a>
+            </div>
+            <div class="page3videocontainer">
+                <div class="page3cover"></div>
+                <div class="upperlayer">
+                    <!-- Featured Course -->
+                    <div class="coursecontainer coursecontainer1" v-if="featuredCourse">
+                        <router-link :to="`/courses/${featuredCourse._id}`" class="course-link">
+                            <div class="_isfeaturedcourse" :style="{ backgroundImage: `url(${featuredCourse.photos[0]})`, backgroundSize: 'cover' }">
+                                <p class="courselooptitle">{{ featuredCourse.title }}</p>
+                                <p class="courseloopcatagories">{{ featuredCourse.categories.join(', ') }}</p>
+                            </div>
+                        </router-link>
+                    </div>
 
-                          <!-- Recent Courses -->
-                          <div class="coursecontainer coursecontainer2">
-                              <div class="row row1" v-if="recentCourses.length">
-                                  <router-link v-for="course in recentCourses.slice(0, 2)" :key="course._id" :to="`/courses/${course._id}`" class="course-link">
-                                      <div class="box box1" :style="{ backgroundImage: `url(${course.photos[0]})` }">
-                                          <div>{{ course.title }}</div>
-                                          <div v-for="category in course.categories" :key="category">
-                                              {{ category }}
-                                          </div>
-                                      </div>
-                                  </router-link>
-                              </div>
-                              <div class="row row2" v-if="recentCourses.length">
-                                  <router-link v-for="course in recentCourses.slice(2, 4)" :key="course._id" :to="`/courses/${course._id}`" class="course-link">
-                                      <div class="box box1" :style="{ backgroundImage: `url(${course.photos[0]})` }">
-                                          <div>{{ course.title }}</div>
-                                          <div v-for="category in course.categories" :key="category">
-                                              {{ category }}
-                                          </div>
-                                      </div>
-                                  </router-link>
-                              </div>
+                    <!-- Recent Courses -->
+                    <div class="coursecontainer coursecontainer2">
+                        <div class="row row1" v-if="recentCourses.length">
+                            <router-link v-for="course in recentCourses.slice(0, 2)" :key="course._id" :to="`/courses/${course._id}`" class="course-link">
+                                <div class="box box1" :style="{ backgroundImage: `url(${course.photos[0]})`, backgroundSize: 'cover' }">
+                                    <div>{{ course.title }}</div>
+                                    <div v-for="category in course.categories" :key="category">
+                                        {{ category }}
+                                    </div>
+                                </div>
+                            </router-link>
+                        </div>
+                        <div class="row row2" v-if="recentCourses.length">
+                            <router-link v-for="course in recentCourses.slice(2, 4)" :key="course._id" :to="`/courses/${course._id}`" class="course-link">
+                                <div class="box box1" :style="{ backgroundImage: `url(${course.photos[0]})`, backgroundSize: 'cover' }">
+                                    <div>{{ course.title }}</div>
+                                    <div v-for="category in course.categories" :key="category">
+                                        {{ category }}
+                                    </div>
+                                </div>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </section>
+
 
         <section class="page page4">
               <div class="pagewrapper page4wrapper">
@@ -462,14 +463,15 @@ h5{
    
 }
  .coursecontainer2{
-  margin-top: -203px;
+  margin-top: -164px;
  }
  .upperlayer .coursecontainer .row {
     display: flex;
     flex: 1 1 calc(50%-1vh);
     flex-direction: column;
     margin: 0 .5vh;
-    row-gap: 1vh;
+    row-gap: 2vh;
+    margin: 2vh;
 }
 .page4wrapper .middle,.page4wrapper .right{
     align-self: center;    
@@ -478,6 +480,13 @@ h5{
 .page1wrapper .upper {
     flex: 0.5;
     width: 100%;
+}
+.coursecontainer1 a {
+    color: #000;
+    text-decoration: none;
+    width: 80%;
+    height: 100%;
+    margin-top: 8vh;
 }
   
 }

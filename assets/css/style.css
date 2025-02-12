@@ -548,9 +548,11 @@ li a{
 }
 .courselooptitle{
     font-size: 1em;
+    background: #ffffff;
 }
 .courseloopcatagories{
-    border-radius: 0.8em;
+    
+    background: #ffffff;
 }
 .coursecontainer1 a{
     text-decoration: none;
