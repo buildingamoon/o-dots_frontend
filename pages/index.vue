@@ -479,8 +479,9 @@ h5{
     margin-top:1vh;
 }
 .page1wrapper .upper {
-    flex: 0.5;
+    flex: 0.3;
     width: 100%;
+    overflow-y: auto;
 }
 .coursecontainer1 a {
     color: #000;
