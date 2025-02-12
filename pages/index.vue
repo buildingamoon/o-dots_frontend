@@ -488,6 +488,13 @@ h5{
     height: 100%;
     margin-top: 8vh;
 }
+.page2box {
+    flex:none;
+  }
+  .page2wrapper .whole {
+    padding-top: 15vh;
+
+  }
   
 }
 </style>
