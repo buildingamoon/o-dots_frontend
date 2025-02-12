@@ -18,7 +18,7 @@
                     <video autoplay muted loop>
                           <source src="/video/full-width.mp4" type="video/mp4">
                       </video>
-                      <div class="container"></div>
+
                   </div>
                   <div class="lower">
                       <a href="#">
@@ -444,7 +444,7 @@ h5{
   .page2 .whole {
         width: 100%;
         flex-direction: column;
-        margin-top: 27vh;
+        margin-top: 15vh;
         margin-bottom: 10vh;
     }
   .page3cover .upperlayer{
@@ -474,6 +474,10 @@ h5{
 .page4wrapper .middle,.page4wrapper .right{
     align-self: center;    
     margin-top:1vh;
+}
+.page1wrapper .upper {
+    flex: 0.5;
+    width: 100%;
 }
   
 }

@@ -149,6 +149,7 @@ onMounted(fetchUserData);
 }
 
 .msguserIcon {
+  align-self: flex-end;
   width: 40px;
   height: 40px;
   border-radius: 10%;
