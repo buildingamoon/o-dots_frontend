@@ -257,7 +257,7 @@ body {
     flex-wrap: wrap;
     gap:1vh;
     position: relative;
-    background-color: #000000a3;
+    background: #000000a3;
     height: 100%;
     overflow: hidden;
 }
@@ -272,8 +272,7 @@ body {
     display:flex;
     flex-direction: column;
     height:100%;
-    background:black;
-    padding:1vh;
+    background: #000000a3;
 }
 .secondnav{
     position:fixed;

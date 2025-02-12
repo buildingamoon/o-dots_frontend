@@ -559,7 +559,7 @@ h5{
   flex-wrap: wrap;
   gap: 1vh;
   position: relative;
-  background-color: #000000a3;
+  background-color: #00000017;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -569,14 +569,14 @@ h5{
   flex:1;
   display:flex;
   flex-direction: row;
-  margin:1vh;
+
   align-content: flex-end;
   align-items: center;
 }
 .page1wrapper .lower .one img{
   background: white;
-  width:7vh;
-  height: 7vh;
+  width:8vh;
+  height: 8vh;
   border-radius: 50%;
   
 }
@@ -607,6 +607,7 @@ h5{
   display:flex;
   flex-direction: column;
   text-align: left;
+  margin-left:1vh;
 }
 .page1wrapper .lower .three .datetag{
   font-size: 0.8em;
