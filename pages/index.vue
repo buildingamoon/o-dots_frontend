@@ -615,9 +615,10 @@ h5{
 .page1wrapper .lower a{
   width: 100%;
   height: 565px;
+  margin-top: 10vh;
 }
 .page1loopbox {
-margin-top: 834px;
+margin-top: 290px;
 }
 }
 </style>
