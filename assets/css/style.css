@@ -248,7 +248,7 @@ body {
 }
 
 .page1wrapper .lower{
-    flex:1.5;
+    flex:1.8;
     width:100%;
     display: flex;
     align-items: center;
@@ -258,6 +258,8 @@ body {
     gap:1vh;
     position: relative;
     background-color: #000000a3;
+    height: 100%;
+    overflow: hidden;
 }
 .page1loopbox{
     flex:3;
@@ -265,8 +267,13 @@ body {
     border-radius:0.2em;
     min-width:20vh;
     min-height:20vh;
-    margin:1.5vh;
     position: relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    background:black;
+    padding:1vh;
 }
 .secondnav{
     position:fixed;

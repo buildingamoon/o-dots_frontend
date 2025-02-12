@@ -22,33 +22,67 @@
                   </div>
                   <div class="lower">
                       <a href="#">
-                          <div class="page1loopbox box1" style="background-image:url(/picture/demo1.jpg); background-size: cover;">
-                              <p>title title title</p>
+                          <div class="page1loopbox box1">
+                              <div class="one">
+                                  <img src="/public/picture/inner.png">
+                                  <br>
+                                  <div class="acc">Name</div>
+                              </div>
+                              <div class="two">
+                                  <iframe style="background-image:url(/picture/demo1.jpg); background-size: cover;"></iframe>
+                              </div>
+                              <div class="three">
+                                  <div class="textboxcontent">123456789</div>
+                                  <div class="datetag">datetag</div>
+                              </div>
                           </div>
                       </a>
                       <a href="#">
-                          <div class="page1loopbox box2">
-                              <p>title title title</p>
+                          <div class="page1loopbox box1">
+                              <div class="one">
+                                  <img src="/public/picture/inner.png">
+                                  <br>
+                                  <div class="acc">Name</div>
+                              </div>
+                              <div class="two">
+                                  <iframe style="background-image:url(/picture/demo1.jpg); background-size: cover;"></iframe>
+                              </div>
+                              <div class="three">
+                                  <div class="textboxcontent">123456789</div>
+                                  <div class="datetag">datetag</div>
+                              </div>
                           </div>
                       </a>
                       <a href="#">
-                          <div class="page1loopbox box3">
-                              <p>title title title</p>
+                          <div class="page1loopbox box1">
+                              <div class="one">
+                                  <img src="/public/picture/inner.png">
+                                  <br>
+                                  <div class="acc">Name</div>
+                              </div>
+                              <div class="two">
+                                  <iframe style="background-image:url(/picture/demo1.jpg); background-size: cover;"></iframe>
+                              </div>
+                              <div class="three">
+                                  <div class="textboxcontent">123456789</div>
+                                  <div class="datetag">datetag</div>
+                              </div>
                           </div>
                       </a>
                       <a href="#">
-                          <div class="page1loopbox box4">
-                              <p>title title title</p>
-                          </div>
-                      </a>
-                      <a href="#">
-                          <div class="page1loopbox box5">
-                              <p>title title title</p>
-                          </div>
-                      </a>
-                      <a href="#">
-                          <div class="page1loopbox box6">
-                              <p>title title title</p>
+                          <div class="page1loopbox box1">
+                              <div class="one">
+                                  <img src="/public/picture/inner.png">
+                                  <br>
+                                  <div class="acc">Name</div>
+                              </div>
+                              <div class="two">
+                                  <iframe style="background-image:url(/picture/demo1.jpg); background-size: cover;"></iframe>
+                              </div>
+                              <div class="three">
+                                  <div class="textboxcontent">123456789</div>
+                                  <div class="datetag">datetag</div>
+                              </div>
                           </div>
                       </a>
                   </div>
@@ -438,6 +472,24 @@ h5{
     font-size: 0.25em;
     bottom: 27%;
 }
+.page1wrapper .lower .one{
+  flex:1;
+  display:flex;
+  flex-direction: row;
+  margin:1vh;
+  align-content: flex-end;
+  align-items: end;
+}
+.page1wrapper .lower img{
+  width:5vh;
+  height:5vh;
+  border-radius: 50%;
+  margin: 1vh 1vh;
+}
+.page1wrapper .lower .two iframe{
+
+  border: black;
+}
 @media (max-width: 600px) {
   .page2wrapper {
       margin-top: 13vh;
@@ -497,6 +549,87 @@ h5{
     padding-top: 30vh;
 
   }
+  .page1wrapper .lower {
+  flex: 1.5;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 1vh;
+  position: relative;
+  background-color: #000000a3;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-direction: row;
+}
+.page1wrapper .lower .one{
+  flex:1;
+  display:flex;
+  flex-direction: row;
+  margin:1vh;
+  align-content: flex-end;
+  align-items: center;
+}
+.page1wrapper .lower .one img{
+  background: white;
+  width:7vh;
+  height: 7vh;
+  border-radius: 50%;
   
 }
+.page1wrapper .lower .one .acc{
+  color: white;
+  padding-left:1vh;
+}
+.page1wrapper .lower .two{
+  flex:7;
+  display:flex;
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  height:100%;
+}
+.page1wrapper .lower .two iframe{
+  height:100%;
+  width:100%;
+  overflow:hidden;
+  position: relative;
+  border: black;
+}
+
+
+.page1wrapper .lower .three{
+  margin-top:1vh;
+  flex:2;
+  display:flex;
+  flex-direction: column;
+  text-align: left;
+}
+.page1wrapper .lower .three .datetag{
+  font-size: 0.8em;
+}
+.page1wrapper .lower a{
+  width: 100%;
+  height: 565px;
+}
+.page1loopbox {
+margin-top: 290px;
+}
+}
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
