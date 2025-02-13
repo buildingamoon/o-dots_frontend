@@ -28,8 +28,8 @@ const redirectToStripe = async () => {
     });
 
     const data = await response.json();
-    const stripe = await loadStripe(runtimeConfig.public.stripeTestKey);
-    //const stripe = await loadStripe(runtimeConfig.public.stripePublishKey);
+    // const stripe = await loadStripe(runtimeConfig.public.stripeTestKey);
+    const stripe = await loadStripe(runtimeConfig.public.stripePublishKey);
     await stripe.redirectToCheckout({ sessionId: data.id });
   } catch (error) {
     console.error('Error during redirect to Stripe:', error);
