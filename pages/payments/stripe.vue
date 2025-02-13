@@ -25,8 +25,8 @@ const redirectToStripe = async () => {
     const data = await response.json();
     console.log(data); // Log the response to check the session ID
 
-    const stripe = await loadStripe(runtimeConfig.public.stripeTestKey);
-    //const stripe = await loadStripe(runtimeConfig.public.stripePublishKey);
+    //const stripe = await loadStripe(runtimeConfig.public.stripeTestKey);
+    const stripe = await loadStripe(runtimeConfig.public.stripePublishKey);
     if (stripe) {
       const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
       if (error) {
