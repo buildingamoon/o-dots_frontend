@@ -88,7 +88,6 @@ const fetchDiscussions = async () => {
   try {
     const response = await fetch(`${runtimeConfig.public.apiBase}discussions`);
     const data = await response.json();
-    console.log('API Response:', data); // Log the response
 
     if (Array.isArray(data.discussions)) {
       discussions.value = data.discussions.filter(discussion => discussion.type === 'discussion');
@@ -111,9 +110,6 @@ const fetchDiscussions = async () => {
         )
         .slice(0, 5);
 
-      console.log('Filtered Discussions:', discussions.value);
-      console.log('Filtered Events:', events.value);
-      console.log('Filtered Today Discussions:', todayDiscussions.value);
     } else {
       console.error('API Response does not contain an array of discussions');
     }

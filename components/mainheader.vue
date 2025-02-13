@@ -93,10 +93,9 @@ const waitForSessionData = () => {
 const fetchUserData = async () => {
   try {
     const sessionData = await waitForSessionData();
-    console.log('Session Data:', sessionData); // Log the session data for debugging
+
 
     const token = localStorage.getItem('token');
-    console.log('Token:', token); // Log the token for debugging
     if (!token) {
       throw new Error('No token available');
     }
@@ -114,7 +113,6 @@ const fetchUserData = async () => {
     }
 
     const data = await response.json();
-    console.log('User Data:', data); // Log the user data for debugging
     Object.assign(user, data);
     if (data.userIcon) {
       userIcon.value = data.userIcon;
@@ -126,7 +124,6 @@ const fetchUserData = async () => {
 };
 
 onMounted(async () => {
-  console.log('Mounted'); // Log when the component is mounted
   await fetchUserData();
 });
 

@@ -251,7 +251,7 @@ const fetchUserData = async () => {
     if (data.user.userIcon) {
       userIcon.value = data.user.userIcon;
     }
-    console.log('Fetched user icon:', userIcon.value);
+
   } catch (error) {
     console.error('Error fetching user data:', error);
     router.push('/users/signin');
@@ -274,7 +274,6 @@ const saveUserName = async () => {
     if (!response.ok) {
       throw new Error(data.message);
     }
-    console.log('Saved user name:', user.value.name);
     isEditing.value = false;
   } catch (error) {
     console.error('Error saving user name:', error);
@@ -352,8 +351,6 @@ const fetchAllPosts = async () => {
       .filter(post => post.is_featured)
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       .slice(0, 4);
-    console.log('All fetched posts:', posts.value); // Log all fetched posts
-    console.log('Featured posts:', featuredPosts.value); // Log featured posts
   } catch (error) {
     console.error('Error fetching posts:', error);
   }
@@ -383,9 +380,6 @@ const fetchAllCourses = async () => {
     recentCourses.value = allCourses
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       .slice(0, 4);
-    console.log('All fetched courses:', courses.value); // Log all fetched courses
-    console.log('Featured course:', featuredCourse.value); // Log featured course
-    console.log('Recent courses:', recentCourses.value); // Log recent courses
   } catch (error) {
     console.error('Error fetching courses:', error);
   }
