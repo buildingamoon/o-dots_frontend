@@ -14,11 +14,11 @@ const redirectToStripe = async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        productName: 'Some Name',
+        productName: 'O-dots!',
         price: 1000,
         quantity: 1,
-        successUrl: "https://hypesurf.com/test/payment/success?session_id={CHECKOUT_SESSION_ID}",
-        failUrl: "https://hypesurf.com/test/payment/fail",
+        successUrl: "https://o-dots/payments/success?session_id={CHECKOUT_SESSION_ID}",
+        failUrl: "https://https://o-dots/payments/fail",
       })
     });
 
@@ -26,6 +26,7 @@ const redirectToStripe = async () => {
     console.log(data); // Log the response to check the session ID
 
     const stripe = await loadStripe(runtimeConfig.public.stripeTestKey);
+    //const stripe = await loadStripe(runtimeConfig.public.stripePublishKey);
     if (stripe) {
       const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
       if (error) {
