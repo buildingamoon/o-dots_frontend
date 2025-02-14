@@ -32,7 +32,7 @@
             <img :src="photo" alt="Course Photo" class="course-photo">
           </div>
           <div v-if="course.Price !== null && course.Price !== 0">
-            <h3>Price: ${{ course.Price }}</h3>
+            <h3>Price: ${{ formatPrice(course.Price) }}</h3>
             <button @click="redirectToStripe">Proceed to Payment</button>
           </div>
           <div v-else>
