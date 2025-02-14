@@ -14,11 +14,7 @@
           <div class="course-info">
             <div class="tutor">Tutor: {{ course.tutor }}</div>
             <div class="categories">
-              <span
-                v-for="category in course.categories"
-                :key="category"
-                class="category"
-              >
+              <span v-for="category in course.categories" :key="category" class="category">
                 {{ category }}
               </span>
             </div>
@@ -37,7 +33,7 @@
           </div>
           <div v-if="course.Price !== null && course.Price !== 0">
             <h3>Price: ${{ course.Price }}</h3>
-            <button @click="proceedToPayment">Proceed to Payment</button>
+            <button @click="redirectToStripe">Proceed to Payment</button>
           </div>
           <div v-else>
             <button @click="watchItNow">Watch it now</button>
@@ -54,7 +50,6 @@ import { useRoute, useRouter } from 'vue-router';
 import { useRuntimeConfig } from '#imports';
 import { loadStripe } from '@stripe/stripe-js';
 
-
 const course = ref(null);
 const route = useRoute();
 const router = useRouter();
@@ -65,41 +60,35 @@ const fetchCourse = async () => {
 
   try {
     const response = await fetch(`${runtimeConfig.public.apiBase}courses/${courseId}`);
+    if (!response.ok) {
+      throw new Error(`Error fetching course details: ${response.status} ${response.statusText}`);
+    }
     const data = await response.json();
     course.value = data;
   } catch (error) {
     console.error('Error fetching course details:', error);
+    course.value = null;
   }
 };
 
-const proceedToPayment = async () => {
-  const stripe = await loadStripe(runtimeConfig.public.stripePubishKey);
-
-  // Create a checkout session on the server
-  const sessionResponse = await fetch(`${runtimeConfig.public.apiBase}create-checkout-session`, {
+const redirectToStripe = async () => {
+  const response = await fetch(runtimeConfig.public.apiBase + '/payments/create-checkout-session', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       productName: course.value.title,
       price: course.value.Price,
-      successUrl: window.location.origin + '/success',
-      failUrl: window.location.origin + '/cancel',
       quantity: 1,
-    }),
+      successUrl: window.location.origin + '/success?session_id={CHECKOUT_SESSION_ID}',
+      failUrl: window.location.origin + '/fail'
+    })
   });
 
-  const session = await sessionResponse.json();
-
-  // Redirect to Stripe Checkout
-  const { error } = await stripe.redirectToCheckout({
-    sessionId: session.id,
-  });
-
-  if (error) {
-    console.error('Error redirecting to checkout:', error);
-  }
+  const data = await response.json();
+  const stripe = await loadStripe(runtimeConfig.public.stripePubishKey);
+  await stripe.redirectToCheckout({ sessionId: data.id });
 };
 
 const watchItNow = () => {
