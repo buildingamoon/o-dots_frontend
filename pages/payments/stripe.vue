@@ -9,6 +9,8 @@ import { ref } from 'vue';
 import { useRuntimeConfig } from '#imports';
 import { loadStripe } from '@stripe/stripe-js';
 
+
+
 const runtimeConfig = useRuntimeConfig();
 
 const redirectToStripe = async () => {
@@ -27,9 +29,11 @@ const redirectToStripe = async () => {
       }),
     });
 
+
+
     const data = await response.json();
     // const stripe = await loadStripe(runtimeConfig.public.stripeTestKey);
-    const stripe = await loadStripe(runtimeConfig.public.stripePublishKey);
+   const stripe = await loadStripe(runtimeConfig.public.stripePublishKey);
     await stripe.redirectToCheckout({ sessionId: data.id });
   } catch (error) {
     console.error('Error during redirect to Stripe:', error);
