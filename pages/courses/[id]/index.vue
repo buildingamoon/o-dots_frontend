@@ -32,7 +32,7 @@
             <img :src="photo" alt="Course Photo" class="course-photo">
           </div>
           <div v-if="course.Price !== null && course.Price !== 0">
-            <h3>Price: ${{ formatPrice(course.Price) }}</h3>
+            <h3>Price: ${{ course.Price }}</h3>
             <button @click="redirectToStripe">Proceed to Payment</button>
           </div>
           <div v-else>
@@ -57,8 +57,6 @@ const runtimeConfig = useRuntimeConfig();
 
 const redirectToStripe = async () => {
   try {
-    const priceInCents = course.value.Price * 100;
-
     const response = await fetch(`${runtimeConfig.public.apiBase}/payments/create-checkout-session`, {
       method: 'POST',
       headers: {
