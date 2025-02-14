@@ -35,8 +35,8 @@
             productName: 'Some Name',
             price: 1000,
             quantity: 1,
-            successUrl: "https://hypesurf.com/test/payment/success?session_id={CHECKOUT_SESSION_ID}",
-            failUrl: "https://hypesurf.com/test/payment/fail",
+            successUrl: "https://o-dots.com/payments/success?session_id={CHECKOUT_SESSION_ID}",
+            failUrl: "https://o-dots.com/payments/fail",
      
           })
       });
