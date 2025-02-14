@@ -32,7 +32,7 @@
             <img :src="photo" alt="Course Photo" class="course-photo">
           </div>
           <div v-if="course.Price !== null && course.Price !== 0">
-            <h3>Price: ${{ course.Price }}</h3>
+            <h3>Price: ${{ formatPrice(course.Price) }}</h3>
             <button @click="redirectToStripe">Proceed to Payment</button>
           </div>
           <div v-else>
@@ -51,32 +51,14 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useRuntimeConfig } from '#imports';
 import { loadStripe } from '@stripe/stripe-js';
 
-const course = ref(null);
-const route = useRoute();
-const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
-
-const fetchCourse = async () => {
-  const courseId = route.params.id;
-
-  try {
-    const response = await fetch(`${runtimeConfig.public.apiBase}courses/${courseId}`);
-    if (!response.ok) {
-      throw new Error(`Error fetching course details: ${response.status} ${response.statusText}`);
-    }
-    const data = await response.json();
-    course.value = data;
-  } catch (error) {
-    console.error('Error fetching course details:', error);
-    course.value = null;
-  }
-};
 
 const redirectToStripe = async () => {
   try {
+    const priceInCents = course.value.Price * 100;
+
     const response = await fetch(`${runtimeConfig.public.apiBase}/payments/create-checkout-session`, {
       method: 'POST',
       headers: {
@@ -97,7 +79,7 @@ const redirectToStripe = async () => {
       throw new Error('No session ID returned from API');
     }
 
-    const stripe = await loadStripe(runtimeConfig.public.stripePublishKey);
+    const stripe = await loadStripe(runtimeConfig.public.stripePubishKey);
     await stripe.redirectToCheckout({ sessionId: data.id });
   } catch (error) {
     console.error('Error redirecting to Stripe:', error);
@@ -106,6 +88,26 @@ const redirectToStripe = async () => {
 
 const watchItNow = () => {
   router.push(`/courses/${course.value._id}/watch`);
+};
+
+const course = ref(null);
+const route = useRoute();
+const router = useRouter();
+
+const fetchCourse = async () => {
+  const courseId = route.params.id;
+
+  try {
+    const response = await fetch(`${runtimeConfig.public.apiBase}courses/${courseId}`);
+    if (!response.ok) {
+      throw new Error(`Error fetching course details: ${response.status} ${response.statusText}`);
+    }
+    const data = await response.json();
+    course.value = data;
+  } catch (error) {
+    console.error('Error fetching course details:', error);
+    course.value = null;
+  }
 };
 
 onMounted(async () => {
@@ -130,7 +132,6 @@ onMounted(async () => {
   flex-direction: row;
   width: 100%;
 }
-
 .course-left {
   flex: 2;
   display: flex;
@@ -150,7 +151,6 @@ onMounted(async () => {
   overflow-y: auto;
   margin: 5px 0%;
 }
-
 .course-right {
   flex: 1;
   display: flex;
@@ -162,7 +162,6 @@ onMounted(async () => {
   padding-top: 5%;
   text-align: center;
 }
-
 .course-details {
   border: 1px solid #ddd;
   padding: 20px;
@@ -174,12 +173,10 @@ onMounted(async () => {
   flex-direction: row;
   justify-content: space-between;
 }
-
 .course-photo {
   max-width: 50%;
   height: auto;
 }
-
 .mediawrapper {
   margin-top: 10px;
   aspect-ratio: 16/9;
@@ -187,20 +184,17 @@ onMounted(async () => {
   overflow: hidden;
   border: 1px solid #ddd;
 }
-
 .categories {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
-
 .category {
   padding: 2px 8px;
   background-color: rgba(237, 48, 48, 0.6);
   border-radius: 1em;
   font-size: 0.8em;
 }
-
 button {
   padding: 10px 20px;
   margin-top: 20px;
@@ -209,7 +203,6 @@ button {
   border: none;
   cursor: pointer;
 }
-
 button:hover {
   background-color: #45a049;
 }

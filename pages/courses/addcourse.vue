@@ -35,7 +35,7 @@
         </div>
       </div>
       <div>
-        <label for="Price">Price:</label>
+        <label for="Price">Price (in $):</label>
         <input type="number" id="Price" v-model="course.Price">
       </div>
       <div>
@@ -191,7 +191,10 @@ const submitCourse = async () => {
         'Content-Type': 'application/json',
         "Authorization": "Bearer " + user?.accessToken
       },
-      body: JSON.stringify(course.value)
+      body: JSON.stringify({
+        ...course.value,
+        Price: course.value.Price * 100 // Convert price to smallest currency unit (cents)
+      })
     });
     if (!response.ok) {
       throw new Error('Failed to add course');
@@ -216,6 +219,7 @@ onMounted(() => {
   });
 });
 </script>
+
 
 <style scoped>
 form {
