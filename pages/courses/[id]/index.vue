@@ -35,10 +35,13 @@
           <div v-if="course.photos.length" v-for="photo in course.photos" :key="photo">
             <img :src="photo" alt="Course Photo" class="course-photo">
           </div>
-          <div v-if="course.Price">
+          <div v-if="course.Price !== null && course.Price !== 0">
             <h3>Price: ${{ course.Price }}</h3>
+            <button @click="proceedToPayment">Proceed to Payment</button>
           </div>
-          <button @click="proceedToPayment">Proceed to Payment</button>
+          <div v-else>
+            <button @click="watchItNow">Watch it now</button>
+          </div>
         </div>
       </div>
     </div>
@@ -49,6 +52,8 @@
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useRuntimeConfig } from '#imports';
+import { loadStripe } from '@stripe/stripe-js';
+
 
 const course = ref(null);
 const route = useRoute();
@@ -67,8 +72,38 @@ const fetchCourse = async () => {
   }
 };
 
-const proceedToPayment = () => {
-  router.push(`courses/${course.value._id}/payment`);
+const proceedToPayment = async () => {
+  const stripe = await loadStripe(runtimeConfig.public.stripePubishKey);
+
+  // Create a checkout session on the server
+  const sessionResponse = await fetch(`${runtimeConfig.public.apiBase}create-checkout-session`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      productName: course.value.title,
+      price: course.value.Price,
+      successUrl: window.location.origin + '/success',
+      failUrl: window.location.origin + '/cancel',
+      quantity: 1,
+    }),
+  });
+
+  const session = await sessionResponse.json();
+
+  // Redirect to Stripe Checkout
+  const { error } = await stripe.redirectToCheckout({
+    sessionId: session.id,
+  });
+
+  if (error) {
+    console.error('Error redirecting to checkout:', error);
+  }
+};
+
+const watchItNow = () => {
+  router.push(`/courses/${course.value._id}/watch`);
 };
 
 onMounted(async () => {
