@@ -41,6 +41,10 @@
         </div>
       </div>
     </div>
+    <div v-else>
+      <h2>Course not found</h2>
+      <p>We couldn't find the course you're looking for. Please check the URL or try again later.</p>
+    </div>
   </div>
 </template>
 
@@ -72,23 +76,32 @@ const fetchCourse = async () => {
 };
 
 const redirectToStripe = async () => {
-  const response = await fetch(runtimeConfig.public.apiBase + '/payments/create-checkout-session', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      productName: course.value.title,
-      price: course.value.Price,
-      quantity: 1,
-      successUrl: window.location.origin + '/success?session_id={CHECKOUT_SESSION_ID}',
-      failUrl: window.location.origin + '/fail'
-    })
-  });
+  try {
+    const response = await fetch(`${runtimeConfig.public.apiBase}/payments/create-checkout-session`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        productName: course.value.title,
+        price: course.value.Price,
+        quantity: 1,
+        successUrl: window.location.origin + '/success?session_id={CHECKOUT_SESSION_ID}',
+        failUrl: window.location.origin + '/fail'
+      })
+    });
 
-  const data = await response.json();
-  const stripe = await loadStripe(runtimeConfig.public.stripePubishKey);
-  await stripe.redirectToCheckout({ sessionId: data.id });
+    const data = await response.json();
+
+    if (!data.id) {
+      throw new Error('No session ID returned from API');
+    }
+
+    const stripe = await loadStripe(runtimeConfig.public.stripePublishKey);
+    await stripe.redirectToCheckout({ sessionId: data.id });
+  } catch (error) {
+    console.error('Error redirecting to Stripe:', error);
+  }
 };
 
 const watchItNow = () => {
