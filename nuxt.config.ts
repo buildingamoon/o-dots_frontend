@@ -29,6 +29,10 @@ export default defineNuxtConfig({
       stripeTestKey: process.env.STRIPE_TEST_KEY
     }
   },
+  modules: ['@nuxtjs/google-fonts'],
+  googleFonts: {
+    families: ['Roboto', 'Inter', 'Josefin+Sans', 'Lato', 'Raleway', 'Crimson Pro','Poppins'],
+  },
 
   payload: {
     reducers: {
@@ -39,10 +43,8 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: [
-    'nuxt-emoji-picker',
-    'nuxt-swiper' // Add nuxt-swiper module here
-  ],
+  modules: ['nuxt-emoji-picker', // Add nuxt-swiper module here
+  'nuxt-swiper', '@nuxtjs/google-fonts'],
 
   swiper: {
     // Swiper options
@@ -84,6 +86,10 @@ export default defineNuxtConfig({
       publicDir: '.output/public',
       serverDir: '.output/server',
     }
+  },
+
+  experimental: {
+    renderJsonPayloads: false,
   },
 
   router: {

@@ -131,6 +131,10 @@
                         </router-link>
                     </div>
 
+                    <div>
+                      
+                    </div>
+
                     <!-- Recent Courses -->
                     <div class="coursecontainer coursecontainer2">
                         <div class="row row1" v-if="recentCourses.length">
@@ -143,6 +147,7 @@
                                 </div>
                             </router-link>
                         </div>
+                        
                         <div class="row row2" v-if="recentCourses.length">
                             <router-link v-for="course in recentCourses.slice(2, 4)" :key="course._id" :to="`/courses/${course._id}`" class="course-link">
                                 <div class="box box1" :style="{ backgroundImage: `url(${course.photos[0]})`, backgroundSize: 'cover' }">
@@ -152,6 +157,9 @@
                                     </div>
                                 </div>
                             </router-link>
+                        </div>
+                        <div>
+                          <Swipercarouselclean/>
                         </div>
                     </div>
                 </div>
@@ -221,6 +229,8 @@ definePageMeta({
 
 import { ref, onMounted } from 'vue';
 import gsap from 'gsap';
+import Swipercarousel from '~/components/Swipercarousel.vue';
+import Swipercarouselclean from '~/components/Swipercarouselclean.vue';
 
 const runtimeConfig = useRuntimeConfig();
 
