@@ -120,7 +120,7 @@
             </div>
             <div class="page3videocontainer">
                 <div class="page3cover"></div>
-                <div class="upperlayer">
+                  <div class="upperlayer">
                     <!-- Featured Course -->
                     <div class="coursecontainer coursecontainer1" v-if="featuredCourse">
                         <router-link :to="`/courses/${featuredCourse._id}`" class="course-link">
