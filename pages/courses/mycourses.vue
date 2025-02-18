@@ -244,7 +244,7 @@ onMounted(async () => {
     flex-direction: column;
     align-items: center;
     flex: 1;
-    margin-top: 17vh;
+    margin-top: 11vh;
 }
 .coursecol.middle{
     display: flex;

@@ -197,7 +197,7 @@
     .course {
 
     min-width: calc(80% - 3em);
-    
+    max-width: calc(80% - 3em);
   }
   }
   </style>

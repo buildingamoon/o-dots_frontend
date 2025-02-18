@@ -475,16 +475,14 @@ li a{
 .promotionslogan2 a{
     align-self: center;
     color: white;
+    padding: 0vh 2vh;
+    border-radius: 20vh;
+    font-size: 0.8em;
+    border: 1px solid rgb(224, 221, 221);
 }
-.promotionslogan2 a:hover{
-    color: #020286;
-    background: white;
-    border-radius: 1vh;
-    padding:0.5vh;
-}
+
 .upperlayer{
     position: absolute;
-    top: 18vh;
     left: 0;
     background-color: transparent;
     width: 100%;

@@ -39,8 +39,18 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['nuxt-emoji-picker'],
-  
+  modules: [
+    'nuxt-emoji-picker',
+    'nuxt-swiper' // Add nuxt-swiper module here
+  ],
+
+  swiper: {
+    // Swiper options
+    prefix: 'Swiper',
+    styleLang: 'css',
+    modules: ['navigation', 'pagination'], // Import necessary modules
+  },
+
   render: {
     csp: {
       policies: {

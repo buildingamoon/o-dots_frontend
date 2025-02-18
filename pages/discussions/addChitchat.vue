@@ -3,12 +3,11 @@
     <Courseheader />
     <div class="addchitchatwrapper">
       <div class="left">
-        <div class="image-preview">
+        <p>Featured Photo</p>
+        <div class="image-preview2">
           <img :src="featurePhoto" @click="openFileDialog" width="250" height="250" alt="Feature Photo" style="cursor: pointer;" />
           <input type="file" ref="fileInput" @change="onFileChange" style="display:none;">
         </div>
-        <br>
-        <p>Feature Photo</p>
         <div class="upload-controls">
           <p v-if="uploading">Uploading...</p>
         </div>
@@ -21,14 +20,14 @@
             <option value="discussion">Discussion</option>
             <option value="event">Event</option>
           </select>
-          <emoji-picker @emoji-click="addEmoji"></emoji-picker>
+          <emoji-picker @emoji-click="addEmoji"style="opacity:0;height:0;">Emoji</emoji-picker>
           <div v-if="discussion.type === 'event'">
             <input v-model="discussion.startDate" type="date" placeholder="Start Date" />
             <input v-model="discussion.endDate" type="date" placeholder="End Date" />
             <input v-model="discussion.startTime" type="time" placeholder="Start Time" />
           </div>
-          <textarea v-model="discussion.content" placeholder="Content" required></textarea>
-          <button type="submit">Go!</button>
+          <textarea v-model="discussion.content" placeholder="type your content here..." required></textarea>
+          <button class="confirm" type="submit">PULISH</button>
         </form>
       </div>
     </div>
@@ -42,7 +41,7 @@ import { useRouter } from 'vue-router';
 import { useRuntimeConfig } from '#imports';
 import { useSession } from '@/composables/state';
 
-const router = useRouter();
+
 const runtimeConfig = useRuntimeConfig();
 const session = useSession();
 
@@ -60,7 +59,9 @@ const discussion = ref({
   startTime: '',
 });
 
-const featurePhoto = ref('/public/picture/inner.png');
+const router = useRouter();
+
+const featurePhoto = ref('/picture/ADDBG.png');
 const uploading = ref(false);
 const fileInput = ref(null);
 
@@ -221,8 +222,8 @@ const createDiscussion = async () => {
 }
 .addchitchatwrapper .left img {
   margin-top: 10%;
-  width: 13vh;
-  height: 13vh;
+  width: 50vh;
+  height: 50vh;
   cursor: pointer;
 }
 .addchitchatwrapper .right {
@@ -245,7 +246,7 @@ const createDiscussion = async () => {
   padding-top: 2%;
 }
 .addchitchatwrapper .right .rightwrap textarea {
-  height: 60%;
+  height: 81%;
 }
 .emoji-picker {
   position: absolute;
@@ -268,4 +269,25 @@ const createDiscussion = async () => {
   text-align: center;
   margin-top: 10px;
 }
+.image-preview2 {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+
+@media(max-width:600px){
+    .confirm {
+      height: 6vh;
+      background: #fffde769;
+      border: #F9A825;
+  }
+  .addchitchatwrapper .left img {
+  margin-top: 10%;
+  width: 20vh;
+  height: 20vh;
+  cursor: pointer;
+}
+  }
 </style>

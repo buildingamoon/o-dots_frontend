@@ -164,7 +164,7 @@
         <section class="page page4">
               <div class="pagewrapper page4wrapper">
                   <div class="left">
-                    <div class="image-preview">
+                    <div class="image-preview2">
                       <img :src="userIcon" @click="openFileDialog" class="mycourseusericon" alt="User Icon" style="cursor: pointer;" />
                       <input type="file" ref="fileInput" @change="onFileChange" style="display:none;">
                     </div>
@@ -612,7 +612,13 @@ h5{
   margin-top: 10vh;
 }
 .page1loopbox {
-margin-top: 290px;
+  margin-top: 915px;
+}
+.image-preview2 {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
 }
 }
 </style>
