@@ -72,44 +72,18 @@
                 <a href="/courses/allcourses">All Courses in O-dots!</a>
             </div>
             <div class="page3videocontainer">
-                <div class="page3cover"></div>
                   <div class="upperlayer">
                     <!-- Featured Course -->
                     <div class="coursecontainer coursecontainer1" v-if="featuredCourse">
                         <router-link :to="`/courses/${featuredCourse._id}`" class="course-link">
                             <div class="_isfeaturedcourse" :style="{ backgroundImage: `url(${featuredCourse.photos[0]})`, backgroundSize: 'cover' }">
-                                <p class="courselooptitle">{{ featuredCourse.title }}</p>
-                                <p class="courseloopcatagories">{{ featuredCourse.categories.join(', ') }}</p>
+                              <div class="page3cover"></div>
+                              <p class="courselooptitle">{{ featuredCourse.title }}</p>
+                              <p class="courseloopcatagories">{{ featuredCourse.categories.join(', ') }}</p>
                             </div>
                         </router-link>
                     </div>
-                    <!-- Recent Courses -->
-                    <div class="coursecontainer coursecontainer2">
-                        <div class="row row1" v-if="recentCourses.length">
-                            <router-link v-for="course in recentCourses.slice(0, 2)" :key="course._id" :to="`/courses/${course._id}`" class="course-link">
-                                <div class="box box1" :style="{ backgroundImage: `url(${course.photos[0]})`, backgroundSize: 'cover' }">
-                                    <div>{{ course.title }}</div>
-                                    <div v-for="category in course.categories" :key="category">
-                                        {{ category }}
-                                    </div>
-                                </div>
-                            </router-link>
-                        </div>
-                        
-                        <div class="row row2" v-if="recentCourses.length">
-                            <router-link v-for="course in recentCourses.slice(2, 4)" :key="course._id" :to="`/courses/${course._id}`" class="course-link">
-                                <div class="box box1" :style="{ backgroundImage: `url(${course.photos[0]})`, backgroundSize: 'cover' }">
-                                    <div>{{ course.title }}</div>
-                                    <div v-for="category in course.categories" :key="category">
-                                        {{ category }}
-                                    </div>
-                                </div>
-                            </router-link>
-                        </div>
-                        <div>
-                          <Swipercarouselclean/>
-                        </div>
-                    </div>
+                    <Swipercarousel/>
                 </div>
             </div>
         </div>
@@ -419,6 +393,10 @@ const handleClick = (event, targetPage) => {
 </script>
 
 <style>
+.page3wrapper .upperlayer{
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .page1photolow{
   display:flex;
   flex-direction: row;
@@ -500,7 +478,7 @@ h5{
     text-decoration: none;
     width: 100%;
     height: 100%;
-    margin-top: 40vh;
+    margin-top: 30vh;
 }
 .page2box {
     flex:none;

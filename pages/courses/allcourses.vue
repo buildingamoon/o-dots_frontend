@@ -135,7 +135,7 @@
     background-color: black;
     background-size: cover;
     background-position: center;
-    height: 200px;
+    height: 494px;
     display: flex;
     flex-direction: column;
     color: white;
@@ -198,6 +198,7 @@
 
     min-width: calc(80% - 3em);
     max-width: calc(80% - 3em);
+    height: 200px;
   }
   }
   </style>

@@ -553,18 +553,27 @@ li a{
     background: #f5f5f29c;
     width: 45vh;
     height: 35vh;
-    color: #414001;
-    font-size: 3em;
+
     margin-top: 10vh;
     position: relative;
     overflow: hidden;
     border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+
+    letter-spacing: 0.8px;
+    font-weight: 700;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    padding-top: 10vh;
+    text-align: left;
+    padding-left: 3vh;
+    color: #010152;
 }
 .courseloopcatagories{
     
         background: #defa80ba;
     width: 50%;
-    color: #ffffff;
+    color: #415602;
     border: 1px dotted white;
     padding: 1vh;
 }
@@ -1651,7 +1660,7 @@ body{
 
 .page1wrapper { 
     padding-bottom: 70px;
-    height: 100vh;
+            height: 100vh;
  }
  .page2 .whole{
     width:100%;
