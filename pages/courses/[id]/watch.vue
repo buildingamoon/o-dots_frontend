@@ -178,18 +178,18 @@ flex: 3;
 padding: 3vh;
 }
 @media(max-width:600px){
-  .singlecourse .bigright[data-v-04796bb4] {
+  .singlecourse .bigright{
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     margin-left: 0;
 }
-.singlecourse .middle[data-v-04796bb4] {
+.singlecourse .middle{
     flex: 7;
     padding:0vh;
 }
-.sidemenu[data-v-04796bb4] {
+.sidemenu{
     position: absolute;
     top: 63%;
     left: 0;
