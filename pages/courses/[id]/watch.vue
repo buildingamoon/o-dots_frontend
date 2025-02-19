@@ -200,6 +200,9 @@ padding: 3vh;
     cursor: pointer;
     font-size:0.7em;
 }
+.singlecourse .left{
+    font-size: 0.9em;
+}
 }
 </style>
 
