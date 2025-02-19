@@ -1087,7 +1087,10 @@ left: 45%;
     position:relative;
     overflow:hidden;
     padding:3vh;
-    background:gray;
+    position: absolute;
+    width: 25%;
+    left: 0%;
+    background: #80808087;
 }
 .coursenav{
     overflow-x: auto;
