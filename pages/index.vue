@@ -80,6 +80,7 @@
                               <div class="page3cover"></div>
                               <p class="courselooptitle">{{ featuredCourse.title }}</p>
                               <p class="courseloopcatagories">{{ featuredCourse.categories.join(', ') }}</p>
+                              <button class="watchnow">Watch Now</button>
                             </div>
                         </router-link>
                     </div>
@@ -425,6 +426,24 @@ h5{
 
   border: black;
 }
+.watchnow{
+  width: 13%;
+    height: 9%;
+    border-radius: 5%;
+    background: #d9d927e0;
+    color: #ebebeb;
+    position: absolute;
+    top: 81%;
+    right: 0;
+    z-index: 2;
+    font-weight: 700;
+    background: #defa80ba;
+    width: 13%;
+    color: #415602;
+    border: 1px dotted white;
+    padding: 1vh;
+    font-size: 1.5em;
+}
 @media (max-width: 600px) {
   .page2wrapper {
       margin-top: 13vh;
@@ -575,6 +594,51 @@ h5{
 .page3wrapper .upperlayer{
   overflow-y: auto;
   overflow-x: hidden;
+}
+.courselooptitle {
+    background: #f5f5f269;
+    width: 33vh;
+    height: 18vh;
+    margin-top: 29vh;
+    position: relative;
+    overflow: hidden;
+    border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+    letter-spacing: 0.8px;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.2;
+    padding: 5vh;
+    text-align: left;
+    /* padding-left: 3vh; */
+    color: #17171e;
+}
+.courseloopcatagories {
+    background: #defa80ba;
+    width: 30%;
+    color: #415602;
+    border: 1px dotted white;
+    padding: 1vh;
+    font-size: 0.8em;
+}
+.watchnow {
+    width: 13%;
+    height: 8%;
+    border-bottom-left-radius: 10%;
+    background: #d9d927e0;
+    border-top-left-radius: 10%;
+    color: #ebebeb;
+    position: absolute;
+    top: 23%;
+    right: 0;
+    z-index: 2;
+    font-weight: 500;
+    background: #defa80ba;
+    width: 21%;
+    color: #415602;
+    border: 1px dotted white;
+    padding: 1vh;
+    font-size: 0.8em;
 }
 }
 </style>

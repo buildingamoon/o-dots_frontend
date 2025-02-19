@@ -1,12 +1,12 @@
 <template>
   <main>
     <div class="content">
-      <h2>Welcome to O-dots Online Learning</h2>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quam magnam obcaecati error consequatur repellat fugiat, deleniti nisi eum voluptates.</p>
+      <h2>What's Trending Now</h2>
+      <p>Pocket courses combine with fun, leisure and learning, build you extraordinary habits here </p>
       <ul class="counter">
         <li>
           <h3><i class="fa-solid fa-book"></i>68+k</h3>
-          <span>book collections</span>
+          <span>Collections</span>
         </li>
         <li>
           <h3><i class="fa-solid fa-user"></i>25,634</h3>
@@ -20,29 +20,29 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide swiper-slide--one">
-            <span>bestseller</span>
+            <span>Personal Growth</span>
             <div class="slide-content">
               <h3>The Raven</h3>
             </div>
           </div>
           <div class="swiper-slide swiper-slide--two">
-            <span>bestseller</span>
+            <span>Creativeity</span>
             <div class="slide-content">
               <h3>Mademoiselle</h3>
               <p>epic drama</p>
             </div>
           </div>
           <div class="swiper-slide swiper-slide--three">
-            <span>bestseller</span>
+            <span>Leisure</span>
           </div>
           <div class="swiper-slide swiper-slide--four">
-            <span>bestseller</span>
+            <span>Travel</span>
           </div>
           <div class="swiper-slide swiper-slide--five">
-            <span>bestseller</span>
+            <span>Finance</span>
           </div>
           <div class="swiper-slide swiper-slide--six">
-            <span>bestseller</span>
+            <span>Technology</span>
             <div class="slide-content">
               <h3>Woman in the dark</h3>
             </div>
@@ -190,7 +190,7 @@ main .counter span {
 }
 
 main .btn {
-  background-color: #d51a6d;
+  background-color:#d9d927e0;
   border: none;
   color: white;
   padding: 12px 20px;
