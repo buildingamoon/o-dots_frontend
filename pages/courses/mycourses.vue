@@ -220,7 +220,6 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ddd;
   padding: 10px;
 }
 .image-preview img {
