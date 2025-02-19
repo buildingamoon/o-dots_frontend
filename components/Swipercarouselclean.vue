@@ -82,9 +82,6 @@
   </script>
   
   <style scoped>
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Courgette&family=Noto+Serif+Vithkuqi:wght@500&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Chonburi&display=swap");
   
   * {
     margin: 0;

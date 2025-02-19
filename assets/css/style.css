@@ -331,7 +331,7 @@ li a{
     flex-wrap: wrap;
     width: 100%;
     min-height: 77%;
-    padding-top: 38vh;
+    padding-top: 20vh;
     overflow-y: auto;
     color: white;
     background-color: black;
@@ -407,7 +407,7 @@ li a{
 /*page3*/
 .page3wrapper{
     position:relative;
-    height: 200vh;
+    height: 100vh;
 }
 .page3videocontainer{ 
     margin:0px;
@@ -556,6 +556,9 @@ li a{
     color: #414001;
     font-size: 3em;
     margin-top: 10vh;
+    position: relative;
+    overflow: hidden;
+    border-top-right-radius: 20%;
 }
 .courseloopcatagories{
     
@@ -1658,6 +1661,7 @@ body{
 }
 .upperlayer{
     flex-direction: column;
+    height: 95.5vh;
 }
 .page4wrapper{
     flex-direction: column;

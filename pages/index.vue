@@ -53,38 +53,6 @@
                               </div>
                           </div>
                       </a>
-                      <a href="#">
-                          <div class="page1loopbox box1">
-                              <div class="one">
-                                  <img src="/public/picture/inner.png">
-                                  <br>
-                                  <div class="acc">Name</div>
-                              </div>
-                              <div class="two">
-                                  <iframe style="background-image:url(/picture/demo1.jpg); background-size: cover;"></iframe>
-                              </div>
-                              <div class="three">
-                                  <div class="textboxcontent">123456789</div>
-                                  <div class="datetag">datetag</div>
-                              </div>
-                          </div>
-                      </a>
-                      <a href="#">
-                          <div class="page1loopbox box1">
-                              <div class="one">
-                                  <img src="/public/picture/inner.png">
-                                  <br>
-                                  <div class="acc">Name</div>
-                              </div>
-                              <div class="two">
-                                  <iframe style="background-image:url(/picture/demo1.jpg); background-size: cover;"></iframe>
-                              </div>
-                              <div class="three">
-                                  <div class="textboxcontent">123456789</div>
-                                  <div class="datetag">datetag</div>
-                              </div>
-                          </div>
-                      </a>
                   </div>
               </div>
           </section>
@@ -501,18 +469,20 @@ h5{
   .page2 .whole {
         width: 100%;
         flex-direction: column;
-        margin-top: 80vh;
+        margin-top: -29vh;
         margin-bottom: 10vh;
     }
   .page3cover .upperlayer{
     flex-direction: column;
     display: flex;
     flex-wrap: wrap;
+    height: 95vh;
   }
   ._isfeaturedcourse{
     margin-left:0;
-    margin-top: 2vh;
-    width:90%;
+    margin-top: -17vh;
+    width:100%;
+    height: 82vh;
   }
   .row .box{
     width:20vh;
@@ -542,9 +512,9 @@ h5{
 .coursecontainer1 a {
     color: #000;
     text-decoration: none;
-    width: 80%;
+    width: 100%;
     height: 100%;
-    margin-top: 8vh;
+    margin-top: 40vh;
 }
 .page2box {
     flex:none;
@@ -622,7 +592,7 @@ h5{
   margin-top: 10vh;
 }
 .page1loopbox {
-  margin-top: 915px;
+  margin-top: 5vh;
 }
 .image-preview2 {
   display: flex;
