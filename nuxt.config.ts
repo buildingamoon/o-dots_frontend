@@ -31,7 +31,7 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxtjs/google-fonts'],
   googleFonts: {
-    families: ['Roboto', 'Inter', 'Josefin+Sans', 'Lato', 'Raleway', 'Crimson Pro','Poppins'],
+    families: ['Roboto', 'Inter', 'Josefin+Sans', 'Lato', 'Raleway', 'Crimson Pro','Poppins','Dancing Script'],
   },
 
   payload: {

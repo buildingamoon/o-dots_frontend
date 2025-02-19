@@ -1651,6 +1651,7 @@ body{
 
 .page1wrapper { 
     padding-bottom: 70px;
+    height: 100vh;
  }
  .page2 .whole{
     width:100%;

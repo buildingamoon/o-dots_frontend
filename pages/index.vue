@@ -23,34 +23,19 @@
                   <div class="lower">
                       <a href="#">
                           <div class="page1loopbox box1">
-                              <div class="one">
-                                  <img src="/public/picture/inner.png">
-                                  <br>
-                                  <div class="acc">Name</div>
-                              </div>
                               <div class="two">
-                                  <iframe style="background-image:url(/picture/demo1.jpg); background-size: cover;"></iframe>
+                                  <Swipercarouselclean/>
                               </div>
-                              <div class="three">
-                                  <div class="textboxcontent">123456789</div>
-                                  <div class="datetag">datetag</div>
-                              </div>
-                          </div>
-                      </a>
-                      <a href="#">
-                          <div class="page1loopbox box1">
-                              <div class="one">
-                                  <img src="/public/picture/inner.png">
-                                  <br>
-                                  <div class="acc">Name</div>
-                              </div>
-                              <div class="two">
-                                  <iframe style="background-image:url(/picture/demo1.jpg); background-size: cover;"></iframe>
-                              </div>
-                              <div class="three">
-                                  <div class="textboxcontent">123456789</div>
-                                  <div class="datetag">datetag</div>
-                              </div>
+                              <div class="page1photolow">
+                                <div class="three">
+                                    <div class="textboxcontent">123Hello World</div>
+                                    <div class="datetag">datetag</div>
+                                </div>
+                                <div class="one">
+                                    <img src="/public/picture/inner.png">
+                                    <div class="acc">Name</div>
+                                </div>
+                            </div>
                           </div>
                       </a>
                   </div>
@@ -98,11 +83,6 @@
                             </div>
                         </router-link>
                     </div>
-
-                    <div>
-                      
-                    </div>
-
                     <!-- Recent Courses -->
                     <div class="coursecontainer coursecontainer2">
                         <div class="row row1" v-if="recentCourses.length">
@@ -439,6 +419,11 @@ const handleClick = (event, targetPage) => {
 </script>
 
 <style>
+.page1photolow{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+}
 h5{
   background: rgb(255 255 255 / 30%);
     font-size: 0.25em;
@@ -465,6 +450,7 @@ h5{
 @media (max-width: 600px) {
   .page2wrapper {
       margin-top: 13vh;
+      height: 100vh;
   }
   .page2 .whole {
         width: 100%;
@@ -520,7 +506,7 @@ h5{
     flex:none;
   }
   .page2wrapper .whole {
-    padding-top: 30vh;
+    padding-top: 141vh;
 
   }
   .page1wrapper .lower {
@@ -540,23 +526,24 @@ h5{
   flex-direction: row;
 }
 .page1wrapper .lower .one{
-  flex:1;
+  flex:0.2;
   display:flex;
-  flex-direction: row;
-
+  flex-direction: column;
   align-content: flex-end;
   align-items: center;
 }
 .page1wrapper .lower .one img{
   background: white;
-  width:8vh;
-  height: 8vh;
+  width:5vh;
+  height: 5vh;
   border-radius: 50%;
   
 }
 .page1wrapper .lower .one .acc{
   color: white;
   padding-left:1vh;
+  font-size: 0.7em;
+  text-align: center;
 }
 .page1wrapper .lower .two{
   flex:7;
@@ -568,10 +555,12 @@ h5{
 }
 .page1wrapper .lower .two iframe{
   height:100%;
-  width:100%;
+  width:95%;
   overflow:hidden;
   position: relative;
   border: black;
+  left: 1.5vh;
+  top: 3vh;
 }
 
 
@@ -581,7 +570,8 @@ h5{
   display:flex;
   flex-direction: column;
   text-align: left;
-  margin-left:1vh;
+  margin-left:2vh;
+  overflow-y:auto;
 }
 .page1wrapper .lower .three .datetag{
   font-size: 0.8em;
@@ -592,13 +582,21 @@ h5{
   margin-top: 10vh;
 }
 .page1loopbox {
-  margin-top: 5vh;
+  margin-top: -8vh;
 }
 .image-preview2 {
   display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
+}
+.textboxcontent {
+  flex: 3;
+  font-family: 'Dancing Script', cursive;
+}
+.page3wrapper .upperlayer{
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 }
 </style>
