@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="content">
-      <h2>Welcome to Online Book Store</h2>
+      <h2>Welcome to O-dots Online Learning</h2>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quam magnam obcaecati error consequatur repellat fugiat, deleniti nisi eum voluptates.</p>
       <ul class="counter">
         <li>
