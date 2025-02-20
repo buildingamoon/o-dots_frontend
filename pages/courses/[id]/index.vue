@@ -54,15 +54,9 @@ import { useRoute, useRouter } from 'vue-router';
 import { loadStripe } from '@stripe/stripe-js';
 
 const runtimeConfig = useRuntimeConfig();
-const getCurrentUserId = () => {
-  // 实现获取当前用户ID的逻辑
-  // 假设用户ID保存在本地存储中
-  return localStorage.getItem('userId');
-};
 
 const redirectToStripe = async () => {
   try {
-    const customerId = getCurrentUserId();
     const response = await fetch(`${runtimeConfig.public.apiBase}/payments/create-checkout-session`, {
       method: 'POST',
       headers: {
@@ -74,7 +68,6 @@ const redirectToStripe = async () => {
         quantity: 1,
         successUrl: "https://o-dots.com/payments/success?session_id={CHECKOUT_SESSION_ID}",
         failUrl: "https://o-dots.com/payments/fail",
-        customer: customerId
       })
     });
 

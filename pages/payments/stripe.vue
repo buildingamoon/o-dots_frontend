@@ -1,6 +1,7 @@
 <template>
   <div>
       <button  @click.prevent="redirectToStripe" > Pay </button>
+      <p>testing</p>
   </div>
 </template>
 

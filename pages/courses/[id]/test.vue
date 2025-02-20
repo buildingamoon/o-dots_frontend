@@ -52,6 +52,7 @@
   import { ref, onMounted } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import { useRuntimeConfig } from '#imports';
+  import { loadStripe } from '@stripe/stripe-js';
   
   const course = ref(null);
   const route = useRoute();
@@ -74,7 +75,7 @@
     const stripe = await loadStripe('your_publishable_key_here');
   
     // Create a checkout session on the server
-    const sessionResponse = await fetch(`${runtimeConfig.public.apiBase}create-checkout-session`, {
+    const sessionResponse = await fetch(`${runtimeConfig.public.apiBase}payments/create-checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
