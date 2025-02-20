@@ -62,7 +62,7 @@ const getCurrentUserId = () => {
 
 const redirectToStripe = async () => {
   try {
-    const buyerId = getCurrentUserId();
+    const customerId = getCurrentUserId();
     const response = await fetch(`${runtimeConfig.public.apiBase}/payments/create-checkout-session`, {
       method: 'POST',
       headers: {
@@ -74,7 +74,7 @@ const redirectToStripe = async () => {
         quantity: 1,
         successUrl: "https://o-dots.com/payments/success?session_id={CHECKOUT_SESSION_ID}",
         failUrl: "https://o-dots.com/payments/fail",
-        buyer: buyerId
+        customer: customerId
       })
     });
 
