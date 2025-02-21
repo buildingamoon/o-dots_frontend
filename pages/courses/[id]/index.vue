@@ -63,10 +63,6 @@ const name = ref('');
 const email = ref('');
 
 
-
-const name = ref('');
-const email = ref('');
-
 const fetchUserProfile = async () => {
     try {
         const token = localStorage.getItem('token');
@@ -149,7 +145,7 @@ const redirectToStripe = async () => {
     console.error('Error redirecting to Stripe:', error);
   }
 };
-
+</script>
       
 
 
