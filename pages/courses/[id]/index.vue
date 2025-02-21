@@ -56,16 +56,18 @@ import { useRuntimeConfig } from '#imports';
 import { useSession } from '@/composables/state';
 
 const session = useSession();
-const runtimeConfig = useRuntimeConfig();
 const userData = ref({});
 
 const name = ref('');
 const email = ref('');
+const course = ref(null); // Initialize course as a reactive reference
 
+const runtimeConfig = useRuntimeConfig();
 
 const fetchUserProfile = async () => {
     try {
         const token = localStorage.getItem('token');
+        console.log('Token:', token); // Log the token
         if (!token) {
             throw new Error('No token available');
         }
@@ -77,17 +79,23 @@ const fetchUserProfile = async () => {
         });
 
         const data = await response.json(); // Store user data
+        console.log('Fetched user profile data:', data); // Log the fetched data
+
         userData.value = data;
-        name.value = data.name; // Update reactive reference
-        email.value = data.email; // Update reactive reference
-        console.log('Fetched user data:', data);
-        console.log('Name:', name.value); // Log the name
-        console.log('Email:', email.value); // Log the email
+        if (data) {
+            name.value = data.user.name; // Update reactive reference
+            email.value = data.user.email; // Update reactive reference
+            console.log('Name after fetch:', name.value); // Log the name
+            console.log('Email after fetch:', email.value); // Log the email
+        } else {
+            console.error('No user data found');
+        }
 
     } catch (error) {
         console.error('Error fetching user profile:', error);
     }
 };
+
 
 const redirectToStripe = async () => {
   try {
@@ -145,8 +153,36 @@ const redirectToStripe = async () => {
     console.error('Error redirecting to Stripe:', error);
   }
 };
+
+const watchItNow = () => {
+  router.push(`/courses/${course.value._id}/watch`);
+};
+
+const route = useRoute();
+const router = useRouter();
+
+const fetchCourse = async () => {
+  const courseId = route.params.id;
+
+  try {
+    const response = await fetch(`${runtimeConfig.public.apiBase}courses/${courseId}`);
+    if (!response.ok) {
+      throw new Error(`Error fetching course details: ${response.status} ${response.statusText}`);
+    }
+    const data = await response.json();
+    course.value = data;
+    console.log('Fetched course data:', course.value); // Log the course data
+  } catch (error) {
+    console.error('Error fetching course details:', error);
+    course.value = null;
+  }
+};
+
+onMounted(async () => {
+  await fetchUserProfile();
+  await fetchCourse();
+});
 </script>
-      
 
 
 <style scoped>
@@ -244,6 +280,5 @@ button:hover {
   width: 85%;
 }
 </style>
-
 
 
