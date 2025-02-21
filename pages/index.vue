@@ -121,7 +121,7 @@
                 <div v-for="product in paidProducts" :key="product._id" class="product">
                   <h3>{{ product.productName }}</h3>
                   <!-- Add console log to inspect the data structure -->
-                  <img :src="product.product_id && product.product_id.photos && product.product_id.photos.length ? product.product_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
+                  <img :src="product.product_id && product.course_id.photos && product.course_id.photos.length ? product.product_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
                   <p>Date Purchased: {{ new Date(product.createdAt).toLocaleDateString() }}</p>
                 </div>
               </div>
