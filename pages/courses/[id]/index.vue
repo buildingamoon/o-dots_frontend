@@ -52,11 +52,56 @@
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { loadStripe } from '@stripe/stripe-js';
+import { useRuntimeConfig } from '#imports';
+import { useSession } from '@/composables/state';
+
+
+const session = useSession();
+const userData = ref({}); 
+
 
 const runtimeConfig = useRuntimeConfig();
 
+const fetchUserProfile = async () => {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error('No token available');
+        }
+        const response = await fetch(runtimeConfig.public.apiBase +'auth/profile', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Include token if needed
+            },
+        });
+        
+        const data = await response.json(); // Store user data
+        userData.value = data;
+        console.log('Fetched user data:', data); 
+
+    } catch (error) {
+        console.error('Error fetching user profile:', error);
+    }
+};
+
+
+
 const redirectToStripe = async () => {
   try {
+
+        // Correct API base URL
+        const { data: customerData, error: customerError } = await useFetch(`${runtimeConfig.public.apiBase}payments/create-customer`, {
+      method: "POST",
+      body: {
+        email: userData.value.email,
+        name: userData.value.name,
+      }
+    });
+
+    if (customerError) {
+      throw new Error('Error creating customer: ' + customerError.message);
+    }
+    // Proceed to create checkout session only if customer creation was successful
     const response = await fetch(`${runtimeConfig.public.apiBase}/payments/create-checkout-session`, {
       method: 'POST',
       headers: {
@@ -66,19 +111,21 @@ const redirectToStripe = async () => {
         productName: course.value.title,
         price: course.value.Price,
         quantity: 1,
+        email: userData.value.email, // Include email
+        name: userData.value.name,   // Include name
         successUrl: "https://o-dots.com/payments/success?session_id={CHECKOUT_SESSION_ID}",
         failUrl: "https://o-dots.com/payments/fail",
       })
     });
 
-    const data = await response.json();
+    const checkoutSessionData = await response.json();
 
-    if (!data.id) {
+    if (!checkoutSessionData.id) {
       throw new Error('No session ID returned from API');
     }
 
     const stripe = await loadStripe(runtimeConfig.public.stripePubishKey);
-    await stripe.redirectToCheckout({ sessionId: data.id });
+    await stripe.redirectToCheckout({ sessionId: checkoutSessionData.id });
   } catch (error) {
     console.error('Error redirecting to Stripe:', error);
   }
@@ -109,8 +156,10 @@ const fetchCourse = async () => {
 };
 
 onMounted(async () => {
+  await fetchUserProfile(); // Call fetchUserProfile when the component mounts
   await fetchCourse();
 });
+
 </script>
 
 <style scoped>
@@ -208,3 +257,6 @@ button:hover {
   width: 85%;
 }
 </style>
+
+
+
