@@ -13,34 +13,33 @@
     <main>
       <div v-if="currentPage === 'page1'">
         <section class="page page1 active">
-              <div class="pagewrapper page1wrapper">
-                  <div class="upper">
-                    <video autoplay muted loop>
-                          <source src="/video/full-width.mp4" type="video/mp4">
-                      </video>
-
+          <div class="pagewrapper page1wrapper">
+            <div class="upper">
+              <video autoplay muted loop>
+                <source src="/video/full-width.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="lower">
+              <a href="#">
+                <div class="page1loopbox box1">
+                  <div class="two">
+                    <Swipercarouselclean />
                   </div>
-                  <div class="lower">
-                      <a href="#">
-                          <div class="page1loopbox box1">
-                              <div class="two">
-                                  <Swipercarouselclean/>
-                              </div>
-                              <div class="page1photolow">
-                                <div class="three">
-                                    <div class="textboxcontent">123Hello World</div>
-                                    <div class="datetag">datetag</div>
-                                </div>
-                                <div class="one">
-                                    <img src="/public/picture/inner.png">
-                                    <div class="acc">Name</div>
-                                </div>
-                            </div>
-                          </div>
-                      </a>
+                  <div class="page1photolow">
+                    <div class="three">
+                      <div class="textboxcontent">123Hello World</div>
+                      <div class="datetag">datetag</div>
+                    </div>
+                    <div class="one">
+                      <img src="/public/picture/inner.png">
+                      <div class="acc">Name</div>
+                    </div>
                   </div>
-              </div>
-          </section>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
       </div>
       <section class="page page2">
         <div class="pagewrapper page2wrapper">
@@ -67,105 +66,97 @@
       </section>
       <section class="page page3">
         <div class="pagewrapper page3wrapper">
-            <div class="promotionslogan2">
-                <a href="/courses/mycourses">My Courses</a>
-                <a href="/courses/allcourses">All Courses in O-dots!</a>
-            </div>
-            <div class="page3videocontainer">
-                  <div class="upperlayer">
-                    <!-- Featured Course -->
-                    <div class="coursecontainer coursecontainer1" v-if="featuredCourse">
-                        <router-link :to="`/courses/${featuredCourse._id}`" class="course-link">
-                            <div class="_isfeaturedcourse" :style="{ backgroundImage: `url(${featuredCourse.photos[0]})`, backgroundSize: 'cover' }">
-                              <div class="page3cover"></div>
-                              <p class="courselooptitle">{{ featuredCourse.title }}</p>
-                              <p class="courseloopcatagories">{{ featuredCourse.categories.join(', ') }}</p>
-                              <button class="watchnow">Watch Now</button>
-                            </div>
-                        </router-link>
-                    </div>
-                    <Swipercarousel/>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-        <section class="page page4">
-              <div class="pagewrapper page4wrapper">
-                  <div class="left">
-                    <div class="image-preview2">
-                      <img :src="userIcon" @click="openFileDialog" class="mycourseusericon" alt="User Icon" style="cursor: pointer;" />
-                      <input type="file" ref="fileInput" @change="onFileChange" style="display:none;">
-                    </div>
-                    <input
-                      v-if="isEditing"
-                      type="text"
-                      v-model="user.name"
-                      @blur="saveUserName"
-                      @keyup.enter="saveUserName"
-                    />
-                    <p v-else @click="isEditing = true">{{ user.name }}</p>
-                    <p>{{ user.email }}</p>
-                    <a v-if='!session.data?.user' href='/users/signin'>Login</a>
-                      <a v-else href='/users/signout'>
-                        Logout
-                      </a>
-                      <div class="upload-controls">
-                      <label :for="'uploadUserIcon'">
-                      </label>
-                      <p v-if='uploadingUserIcon'>Uploading...</p>
-                    </div>
-
+          <div class="promotionslogan2">
+            <a href="/courses/mycourses">My Courses</a>
+            <a href="/courses/allcourses">All Courses in O-dots!</a>
+          </div>
+          <div class="page3videocontainer">
+            <div class="upperlayer">
+              <div class="coursecontainer coursecontainer1" v-if="featuredCourse">
+                <router-link :to="`/courses/${featuredCourse._id}`" class="course-link">
+                  <div class="_isfeaturedcourse" :style="{ backgroundImage: `url(${featuredCourse.photos[0]})`, backgroundSize: 'cover' }">
+                    <div class="page3cover"></div>
+                    <p class="courselooptitle">{{ featuredCourse.title }}</p>
+                    <p class="courseloopcatagories">{{ featuredCourse.categories.join(', ') }}</p>
+                    <button class="watchnow">Watch Now</button>
                   </div>
-                  <div class="middle">
-                      <div class="title">
-                          <h4>My Courses</h4>
-                          <h2>Your Purchased Products</h2>
-                          <div v-if="paidProducts.length">
-                            <div v-for="product in paidProducts" :key="product._id" class="product">
-                              <h3>{{ product.productName }}</h3>
-                              <img :src="product.photo" alt="Product Photo">
-                              <p>Date Purchased: {{ new Date(product.createdAt).toLocaleDateString() }}</p>
-                            </div>
-                          </div>
-                          <div v-else>
-                            <p>No products found.</p>
-                          </div>
-                      </div>
-                      <div class="loopbox">
-                          <!-- Clip boxes here -->
-                      </div>
-                  </div>
-                  <div class="right">
-                      <div class="title">
-                          <h4>My Clips</h4>
-                      </div>
-                      <div class="loopbox">
-                          <!-- Course boxes here -->
-                      </div>
-                  </div>
+                </router-link>
               </div>
-          </section>
-
+              <Swipercarousel />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="page page4">
+        <div class="pagewrapper page4wrapper">
+          <div class="left">
+            <div class="image-preview2">
+              <img :src="userIcon" @click="openFileDialog" class="mycourseusericon" alt="User Icon" style="cursor: pointer;" />
+              <input type="file" ref="fileInput" @change="onFileChange" style="display:none;">
+            </div>
+            <input
+              v-if="isEditing"
+              type="text"
+              v-model="user.name"
+              @blur="saveUserName"
+              @keyup.enter="saveUserName"
+            />
+            <p v-else @click="isEditing = true">{{ user.name }}</p>
+            <p>{{ user.email }}</p>
+            <a v-if='!session.data?.user' href='/users/signin'>Login</a>
+            <a v-else href='/users/signout'>
+              Logout
+            </a>
+            <div class="upload-controls">
+              <label :for="'uploadUserIcon'">
+              </label>
+              <p v-if='uploadingUserIcon'>Uploading...</p>
+            </div>
+          </div>
+          <div class="middle">
+            <div class="title">
+              <h4>My Courses</h4>
+              <h2>Your Purchased Products</h2>
+              <div v-if="paidProducts.length">
+                <div v-for="product in paidProducts" :key="product._id" class="product">
+                  <h3>{{ product.productName }}</h3>
+                  <!-- Add console log to inspect the data structure -->
+                  <img :src="product.product_id && product.product_id.photos && product.product_id.photos.length ? product.product_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
+                  <p>Date Purchased: {{ new Date(product.createdAt).toLocaleDateString() }}</p>
+                </div>
+              </div>
+              <div v-else>
+                <p>No products found.</p>
+              </div>
+            </div>
+            <div class="loopbox">
+              <!-- Clip boxes here -->
+            </div>
+          </div>
+          <div class="right">
+            <div class="title">
+              <h4>My Clips</h4>
+            </div>
+            <div class="loopbox">
+              <!-- Course boxes here -->
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer></footer>
   </div>
 </template>
 
 <script setup>
-const session = useSession();
-
-definePageMeta({
-    middleware: ["auth"]
-})
-
 import { ref, onMounted } from 'vue';
 import gsap from 'gsap';
+
 import Swipercarousel from '~/components/Swipercarousel.vue';
 import Swipercarouselclean from '~/components/Swipercarouselclean.vue';
 
+const session = useSession();
+const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
 
 const currentPage = ref('page1'); // Default to Page 1
@@ -178,9 +169,9 @@ const user = ref({ name: '' });
 const userIcon = ref('/public/picture/inner.jpg');
 const uploadingUserIcon = ref(false);
 const fileInput = ref(null);
-const router = useRouter();
 const isEditing = ref(false);
 const paidProducts = ref([]);
+
 
 
 const fetchUserData = async () => {
@@ -405,26 +396,36 @@ const handleClick = (event, targetPage) => {
 };
 
 
-const fetchPaidProducts = async () => {
+const fetchAllPayments = async () => {
   try {
-    const response = await fetch(`${runtimeConfig.public.apiBase}payments/paid-products`, {
+    const token = session.data?.token || localStorage.getItem('token');
+
+    const response = await fetch(`${runtimeConfig.public.apiBase}/payments/paid-products`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}` // Include token if needed
+        'Authorization': `Bearer ${token}`
       }
     });
 
     const data = await response.json();
-    paidProducts.value = data;
-    console.log('Fetched paid products:', paidProducts.value);
+    if (response.ok) {
+      const userEmail = session.data?.user?.email;
+      // Filter data based on email
+      paidProducts.value = data.filter(payment => payment.email === userEmail);
+      console.log('Filtered paid products:', paidProducts.value);
+    } else {
+      console.error('Failed to fetch payments:', data.message);
+    }
   } catch (error) {
-    console.error('Error fetching paid products:', error);
+    console.error('Error fetching payments:', error);
   }
 };
 
 onMounted(async () => {
-  await fetchPaidProducts();
+  await fetchAllPayments();
 });
+
+
 
 </script>
 
