@@ -55,12 +55,17 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useRuntimeConfig } from '#imports';
 import { useSession } from '@/composables/state';
 
-
 const session = useSession();
-const userData = ref({}); 
-
-
 const runtimeConfig = useRuntimeConfig();
+const userData = ref({});
+
+const name = ref('');
+const email = ref('');
+
+
+
+const name = ref('');
+const email = ref('');
 
 const fetchUserProfile = async () => {
     try {
@@ -68,26 +73,32 @@ const fetchUserProfile = async () => {
         if (!token) {
             throw new Error('No token available');
         }
-        const response = await fetch(runtimeConfig.public.apiBase +'auth/profile', {
+        const response = await fetch(runtimeConfig.public.apiBase + 'auth/profile', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`, // Include token if needed
             },
         });
-        
+
         const data = await response.json(); // Store user data
         userData.value = data;
-        console.log('Fetched user data:', data); 
+        name.value = data.name; // Update reactive reference
+        email.value = data.email; // Update reactive reference
+        console.log('Fetched user data:', data);
+        console.log('Name:', name.value); // Log the name
+        console.log('Email:', email.value); // Log the email
 
     } catch (error) {
         console.error('Error fetching user profile:', error);
     }
 };
 
-
-
 const redirectToStripe = async () => {
   try {
+    console.log('Redirecting to Stripe...');
+    console.log('Email before request:', email.value); // Log the email before request
+    console.log('Name before request:', name.value);   // Log the name before request
+
     // Create customer and await the response
     const response = await fetch(`${runtimeConfig.public.apiBase}payments/create-customer`, {
       method: "POST",
@@ -96,8 +107,8 @@ const redirectToStripe = async () => {
         'Authorization': `Bearer ${localStorage.getItem('token')}` // Include token if needed
       },
       body: JSON.stringify({
-        email: userData.value.email,
-        name: userData.value.name,
+        email: email.value,
+        name: name.value,
       })
     });
 
@@ -105,6 +116,8 @@ const redirectToStripe = async () => {
     if (!response.ok) {
       throw new Error('Error creating customer: ' + (customerData.message || response.statusText));
     }
+
+    console.log('Customer created:', customerData); // Log the customer data
 
     // Proceed to create checkout session only if customer creation was successful
     const checkoutResponse = await fetch(`${runtimeConfig.public.apiBase}payments/create-checkout-session`, {
@@ -116,8 +129,8 @@ const redirectToStripe = async () => {
         productName: course.value.title,
         price: course.value.Price,
         quantity: 1,
-        email: userData.value.email, // Include email
-        name: userData.value.name,   // Include name
+        email: email.value, // Include email
+        name: name.value,   // Include name
         successUrl: "https://o-dots.com/payments/success?session_id={CHECKOUT_SESSION_ID}",
         failUrl: "https://o-dots.com/payments/fail",
       })
@@ -128,6 +141,8 @@ const redirectToStripe = async () => {
       throw new Error('No session ID returned from API');
     }
 
+    console.log('Checkout session created:', checkoutSessionData); // Log the checkout session data
+
     const stripe = await loadStripe(runtimeConfig.public.stripePubishKey);
     await stripe.redirectToCheckout({ sessionId: checkoutSessionData.id });
   } catch (error) {
@@ -135,37 +150,8 @@ const redirectToStripe = async () => {
   }
 };
 
+      
 
-const watchItNow = () => {
-  router.push(`/courses/${course.value._id}/watch`);
-};
-
-const course = ref(null);
-const route = useRoute();
-const router = useRouter();
-
-const fetchCourse = async () => {
-  const courseId = route.params.id;
-
-  try {
-    const response = await fetch(`${runtimeConfig.public.apiBase}courses/${courseId}`);
-    if (!response.ok) {
-      throw new Error(`Error fetching course details: ${response.status} ${response.statusText}`);
-    }
-    const data = await response.json();
-    course.value = data;
-  } catch (error) {
-    console.error('Error fetching course details:', error);
-    course.value = null;
-  }
-};
-
-onMounted(async () => {
-  await fetchUserProfile(); // Call fetchUserProfile when the component mounts
-  await fetchCourse();
-});
-
-</script>
 
 <style scoped>
 .coursedetailswhole {
