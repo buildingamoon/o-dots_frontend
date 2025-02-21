@@ -88,21 +88,26 @@ const fetchUserProfile = async () => {
 
 const redirectToStripe = async () => {
   try {
-
-        // Correct API base URL
-        const { data: customerData, error: customerError } = await useFetch(`${runtimeConfig.public.apiBase}payments/create-customer`, {
+    // Create customer and await the response
+    const response = await fetch(`${runtimeConfig.public.apiBase}payments/create-customer`, {
       method: "POST",
-      body: {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}` // Include token if needed
+      },
+      body: JSON.stringify({
         email: userData.value.email,
         name: userData.value.name,
-      }
+      })
     });
 
-    if (customerError) {
-      throw new Error('Error creating customer: ' + customerError.message);
+    const customerData = await response.json();
+    if (!response.ok) {
+      throw new Error('Error creating customer: ' + (customerData.message || response.statusText));
     }
+
     // Proceed to create checkout session only if customer creation was successful
-    const response = await fetch(`${runtimeConfig.public.apiBase}/payments/create-checkout-session`, {
+    const checkoutResponse = await fetch(`${runtimeConfig.public.apiBase}payments/create-checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -118,8 +123,7 @@ const redirectToStripe = async () => {
       })
     });
 
-    const checkoutSessionData = await response.json();
-
+    const checkoutSessionData = await checkoutResponse.json();
     if (!checkoutSessionData.id) {
       throw new Error('No session ID returned from API');
     }
@@ -130,6 +134,7 @@ const redirectToStripe = async () => {
     console.error('Error redirecting to Stripe:', error);
   }
 };
+
 
 const watchItNow = () => {
   router.push(`/courses/${course.value._id}/watch`);
