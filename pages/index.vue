@@ -122,6 +122,17 @@
                   <div class="middle">
                       <div class="title">
                           <h4>My Courses</h4>
+                          <h2>Your Purchased Products</h2>
+                          <div v-if="paidProducts.length">
+                            <div v-for="product in paidProducts" :key="product._id" class="product">
+                              <h3>{{ product.productName }}</h3>
+                              <img :src="product.photo" alt="Product Photo">
+                              <p>Date Purchased: {{ new Date(product.createdAt).toLocaleDateString() }}</p>
+                            </div>
+                          </div>
+                          <div v-else>
+                            <p>No products found.</p>
+                          </div>
                       </div>
                       <div class="loopbox">
                           <!-- Clip boxes here -->
@@ -169,6 +180,7 @@ const uploadingUserIcon = ref(false);
 const fileInput = ref(null);
 const router = useRouter();
 const isEditing = ref(false);
+const paidProducts = ref([]);
 
 
 const fetchUserData = async () => {
@@ -391,6 +403,29 @@ const handleClick = (event, targetPage) => {
     }
   }
 };
+
+
+const fetchPaidProducts = async () => {
+  try {
+    const response = await fetch(`${runtimeConfig.public.apiBase}payments/paid-products`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}` // Include token if needed
+      }
+    });
+
+    const data = await response.json();
+    paidProducts.value = data;
+    console.log('Fetched paid products:', paidProducts.value);
+  } catch (error) {
+    console.error('Error fetching paid products:', error);
+  }
+};
+
+onMounted(async () => {
+  await fetchPaidProducts();
+});
+
 </script>
 
 <style>
