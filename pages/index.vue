@@ -171,8 +171,6 @@ const fileInput = ref(null);
 const isEditing = ref(false);
 const paidProducts = ref([]);
 
-
-
 const fetchUserData = async () => {
   try {
     const token = localStorage.getItem('token');
@@ -186,14 +184,43 @@ const fetchUserData = async () => {
     if (data.user.userIcon) {
       userIcon.value = data.user.userIcon;
     }
-
+    console.log('User data fetched:', data.user); // Log the fetched user data
   } catch (error) {
     console.error('Error fetching user data:', error);
     router.push('/users/signin');
   }
 };
 
-// Highlighted method for handling input change and saving
+const fetchUserPayments = async () => {
+  try {
+    const token = session.data?.token || localStorage.getItem('token');
+    const userEmail = user.value.email; // Get the user email fetched by fetchUserData()
+
+    const response = await fetch(`${runtimeConfig.public.apiBase}/payments/user-coursesubscription?email=${userEmail}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (response.ok) {
+      const payments = await response.json();
+      console.log('Filtered Payments:', payments); // Log the filtered payments
+      paidProducts.value = payments;
+    } else {
+      const error = await response.json();
+      console.error('Failed to fetch payments:', error.message);
+    }
+  } catch (error) {
+    console.error('Error fetching payments:', error);
+  }
+};
+
+onMounted(async () => {
+  await fetchUserData(); // Ensure user data is fetched first
+  await fetchUserPayments(); // Fetch user payments after user data is available
+});
+
 const saveUserName = async () => {
   try {
     const token = localStorage.getItem('token');
@@ -258,10 +285,6 @@ const changeIcon = async (icon) => {
   uploadingUserIcon.value = false;
 };
 
-onMounted(async () => {
-  await fetchUserData();
-});
-
 const fetchAllPosts = async () => {
   let page = 1;
   const allPosts = [];
@@ -281,7 +304,6 @@ const fetchAllPosts = async () => {
     } while (page <= totalPages);
 
     posts.value = allPosts;
-    // Filter and sort the featured posts to get the most recent 4
     featuredPosts.value = allPosts
       .filter(post => post.is_featured)
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -310,7 +332,6 @@ const fetchAllCourses = async () => {
     } while (page <= totalPages);
 
     courses.value = allCourses;
-    // Filter and sort the featured courses to get the most recent ones
     featuredCourse.value = allCourses.find(course => course.is_featured) || null;
     recentCourses.value = allCourses
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -319,19 +340,6 @@ const fetchAllCourses = async () => {
     console.error('Error fetching courses:', error);
   }
 };
-
-// router/index.js or where you define your routes
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem('token') !== null;
-
-  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
-    localStorage.setItem('targetUrl', to.fullPath);
-    next('/login');
-  } else {
-    next();
-  }
-});
-
 
 onMounted(() => {
   fetchAllPosts();
@@ -393,42 +401,9 @@ const handleClick = (event, targetPage) => {
     }
   }
 };
-
-
-
-
-const userEmail = ref(session.data?.user?.email || '');
-
-const fetchAllPayments = async () => {
-  try {
-    const token = session.data?.token || localStorage.getItem('token');
-
-    const response = await fetch(`${runtimeConfig.public.apiBase}/payments/paid-products`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-
-    if (response.ok) {
-      const payments = await response.json();
-      console.log('Received payments:', JSON.stringify(payments, null, 2)); // Log the received payments
-      paidProducts.value = payments.filter(payment => payment.email === userEmail.value);
-      console.log('Filtered paid products:', JSON.stringify(paidProducts.value, null, 2)); // Log filtered paid products
-    } else {
-      const error = await response.json();
-      console.error('Failed to fetch payments:', error.message);
-    }
-  } catch (error) {
-    console.error('Error fetching payments:', error);
-  }
-};
-
-onMounted(async () => {
-  await fetchAllPayments();
-});
-
 </script>
+
+
 
 <style>
 .page3wrapper .upperlayer{

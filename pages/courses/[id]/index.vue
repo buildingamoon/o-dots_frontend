@@ -55,15 +55,14 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useRuntimeConfig } from '#imports';
 import { useSession } from '@/composables/state';
 
-
 const session = useSession();
 const userData = ref({});
+const route = useRoute();
+const router = useRouter();
 
 const name = ref('');
 const email = ref('');
 const course = ref(null); // Initialize course as a reactive reference
-const courseId = ref(route.params.id);
-
 const runtimeConfig = useRuntimeConfig();
 
 const fetchUserProfile = async () => {
@@ -98,12 +97,18 @@ const fetchUserProfile = async () => {
     }
 };
 
+const course_id = ref('');
+const courseId = ref(route.params.id);
 
 const redirectToStripe = async () => {
   try {
     console.log('Redirecting to Stripe...');
     console.log('Email before request:', email.value); // Log the email before request
     console.log('Name before request:', name.value);   // Log the name before request
+    console.log('Course ID before request:', courseId.value); // Log the course ID before request
+
+    // Ensure course_id is updated with courseId.value
+    course_id.value = courseId.value;
 
     // Create customer and await the response
     const response = await fetch(`${runtimeConfig.public.apiBase}payments/create-customer`, {
@@ -115,7 +120,7 @@ const redirectToStripe = async () => {
       body: JSON.stringify({
         email: email.value,
         name: name.value,
-        course_id: courseId.value,
+        course_id: course_id.value, // Use course_id.value
       })
     });
 
@@ -138,7 +143,7 @@ const redirectToStripe = async () => {
         quantity: 1,
         email: email.value, // Include email
         name: name.value,   // Include name
-        course_id: courseId.value,
+        course_id: course_id.value, // Use course_id.value
         successUrl: "https://o-dots.com/payments/success?session_id={CHECKOUT_SESSION_ID}",
         failUrl: "https://o-dots.com/payments/fail",
       })
@@ -162,9 +167,6 @@ const watchItNow = () => {
   router.push(`/courses/${course.value._id}/watch`);
 };
 
-const route = useRoute();
-const router = useRouter();
-
 const fetchCourse = async () => {
   const courseId = route.params.id;
 
@@ -187,6 +189,7 @@ onMounted(async () => {
   await fetchCourse();
 });
 </script>
+
 
 
 <style scoped>
