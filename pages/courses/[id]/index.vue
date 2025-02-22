@@ -55,12 +55,14 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useRuntimeConfig } from '#imports';
 import { useSession } from '@/composables/state';
 
+
 const session = useSession();
 const userData = ref({});
 
 const name = ref('');
 const email = ref('');
 const course = ref(null); // Initialize course as a reactive reference
+const courseId = ref(route.params.id);
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -113,6 +115,7 @@ const redirectToStripe = async () => {
       body: JSON.stringify({
         email: email.value,
         name: name.value,
+        course_id: courseId.value,
       })
     });
 
@@ -135,6 +138,7 @@ const redirectToStripe = async () => {
         quantity: 1,
         email: email.value, // Include email
         name: name.value,   // Include name
+        course_id: courseId.value,
         successUrl: "https://o-dots.com/payments/success?session_id={CHECKOUT_SESSION_ID}",
         failUrl: "https://o-dots.com/payments/fail",
       })

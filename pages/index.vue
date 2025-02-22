@@ -120,8 +120,7 @@
               <div v-if="paidProducts.length">
                 <div v-for="product in paidProducts" :key="product._id" class="product">
                   <h3>{{ product.productName }}</h3>
-                  <!-- Add console log to inspect the data structure -->
-                  <img :src="product.product_id && product.course_id.photos && product.course_id.photos.length ? product.product_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
+                  <img :src="product.course_id && product.course_id.photos && product.course_id.photos.length ? product.course_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
                   <p>Date Purchased: {{ new Date(product.createdAt).toLocaleDateString() }}</p>
                 </div>
               </div>
@@ -396,6 +395,10 @@ const handleClick = (event, targetPage) => {
 };
 
 
+
+
+const userEmail = ref(session.data?.user?.email || '');
+
 const fetchAllPayments = async () => {
   try {
     const token = session.data?.token || localStorage.getItem('token');
@@ -407,14 +410,14 @@ const fetchAllPayments = async () => {
       }
     });
 
-    const data = await response.json();
     if (response.ok) {
-      const userEmail = session.data?.user?.email;
-      // Filter data based on email
-      paidProducts.value = data.filter(payment => payment.email === userEmail);
-      console.log('Filtered paid products:', paidProducts.value);
+      const payments = await response.json();
+      console.log('Received payments:', JSON.stringify(payments, null, 2)); // Log the received payments
+      paidProducts.value = payments.filter(payment => payment.email === userEmail.value);
+      console.log('Filtered paid products:', JSON.stringify(paidProducts.value, null, 2)); // Log filtered paid products
     } else {
-      console.error('Failed to fetch payments:', data.message);
+      const error = await response.json();
+      console.error('Failed to fetch payments:', error.message);
     }
   } catch (error) {
     console.error('Error fetching payments:', error);
@@ -424,8 +427,6 @@ const fetchAllPayments = async () => {
 onMounted(async () => {
   await fetchAllPayments();
 });
-
-
 
 </script>
 
