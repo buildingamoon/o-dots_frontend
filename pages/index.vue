@@ -114,20 +114,11 @@
             </div>
           </div>
           <div class="middle">
-            <div class="title">
+            <div>
               <h4>My Courses</h4>
-              <h2>Your Purchased Products</h2>
-              <div v-if="paidProducts.length">
-                <div v-for="product in paidProducts" :key="product._id" class="product">
-                  <h3>{{ product.productName }}</h3>
-                  <img :src="product.course_id && product.course_id.photos && product.course_id.photos.length ? product.course_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
-                  <p>Date Purchased: {{ new Date(product.createdAt).toLocaleDateString() }}</p>
-                </div>
-              </div>
-              <div v-else>
-                <p>No products found.</p>
-              </div>
+              <Swipercauroselforsubscription :items="paidProducts" />
             </div>
+
             <div class="loopbox">
               <!-- Clip boxes here -->
             </div>
@@ -153,6 +144,7 @@ import gsap from 'gsap';
 
 import Swipercarousel from '~/components/Swipercarousel.vue';
 import Swipercarouselclean from '~/components/Swipercarouselclean.vue';
+import Swipercauroselforsubscription from '~/components/Swipercauroselforsubscription.vue';
 
 const session = useSession();
 const router = useRouter();
@@ -455,6 +447,12 @@ h5{
     border: 1px dotted white;
     padding: 1vh;
     font-size: 1.5em;
+}
+.swiper-slide img{
+    width:10vh;
+  }
+.product img{
+  width: 10vh;
 }
 @media (max-width: 600px) {
   .page2wrapper {

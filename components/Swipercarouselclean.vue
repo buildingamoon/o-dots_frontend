@@ -73,8 +73,14 @@
         0: {
           slidesPerView: 1,
         },
-        1600: {
-          slidesPerView: 1,
+        600: {
+          slidesPerView: 2,
+        },
+        955: {
+          slidesPerView: 3,
+        },
+        1200: {
+          slidesPerView: 4,
         },
       },
     });
@@ -130,8 +136,8 @@
   
   @media screen and (min-width: 960px) {
     .swiper-container {
-      width: 60%;
-      right: -60px;
+      width: 100%;
+      right: 20px;
     }
   }
   

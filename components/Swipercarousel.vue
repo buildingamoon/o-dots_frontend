@@ -1,50 +1,12 @@
 <template>
   <main>
-    <div class="content">
-      <h2>What's Trending Now</h2>
-      <p>Pocket courses combine with fun, leisure and learning, build you extraordinary habits here </p>
-      <ul class="counter">
-        <li>
-          <h3><i class="fa-solid fa-book"></i>68+k</h3>
-          <span>Collections</span>
-        </li>
-        <li>
-          <h3><i class="fa-solid fa-user"></i>25,634</h3>
-          <span>customers</span>
-        </li>
-      </ul>
-      <button class="btn">Go to Collections <i class="fa-solid fa-arrow-right"></i></button>
-    </div>
-
     <div class="swiper-container">
       <div class="swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide swiper-slide--one">
-            <span>Personal Growth</span>
+          <div class="swiper-slide swiper-slide--one" >
+            <span>bestseller</span>
             <div class="slide-content">
               <h3>The Raven</h3>
-            </div>
-          </div>
-          <div class="swiper-slide swiper-slide--two">
-            <span>Creativeity</span>
-            <div class="slide-content">
-              <h3>Mademoiselle</h3>
-              <p>epic drama</p>
-            </div>
-          </div>
-          <div class="swiper-slide swiper-slide--three">
-            <span>Leisure</span>
-          </div>
-          <div class="swiper-slide swiper-slide--four">
-            <span>Travel</span>
-          </div>
-          <div class="swiper-slide swiper-slide--five">
-            <span>Finance</span>
-          </div>
-          <div class="swiper-slide swiper-slide--six">
-            <span>Technology</span>
-            <div class="slide-content">
-              <h3>Woman in the dark</h3>
             </div>
           </div>
         </div>
@@ -87,10 +49,10 @@ onMounted(() => {
     },
     breakpoints: {
       0: {
-        slidesPerView: 1,
+        slidesPerView: 4,
       },
       1600: {
-        slidesPerView: 1,
+        slidesPerView: 4,
       },
     },
   });
@@ -98,9 +60,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Noto+Serif+Vithkuqi:wght@500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Chonburi&display=swap");
 
 * {
   margin: 0;
@@ -137,76 +96,6 @@ main {
     display: flex;
     padding-inline: 0;
   }
-}
-
-main .content {
-  width: 100%;
-  color: #fff;
-  position: relative;
-  z-index: 2;
-  margin-bottom: 3em;
-}
-
-@media screen and (min-width: 960px) {
-  main .content {
-    width: 40%;
-    padding-left: 5em;
-    margin-bottom: 0;
-  }
-}
-
-main h2 {
-  letter-spacing: 0.8px;
-  font-weight: 700;
-  font-size: 2.8rem;
-  line-height: 1.2;
-}
-
-main p {
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-inline: auto;
-  margin-top: 10px;
-}
-
-main .counter {
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  margin: 2.5em 0 2em 0;
-  gap: 2em;
-}
-
-main .counter i {
-  margin-right: 10px;
-}
-
-main .counter span {
-  display: block;
-  text-transform: capitalize;
-  font-size: 0.8rem;
-  color: #c1c1c1;
-  margin-top: 3px;
-}
-
-main .btn {
-  background-color:#d9d927e0;
-  border: none;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 4px;
-  transition: 0.3s ease-in;
-}
-
-main .btn i {
-  margin-left: 15px;
-}
-
-main .btn:hover {
-  background-color: #ae0a53;
 }
 
 .swiper-container {
@@ -310,15 +199,19 @@ main .btn:hover {
 .swiper-slide--three {
   background: url("https://upload.wikimedia.org/wikipedia/commons/9/92/THE_BOOK_cover_image.png") no-repeat 50% 50%/cover;
 }
+
 .swiper-slide--four {
   background: url("https://covers.audiobooks.com/images/covers/full/9781511358378.jpg") no-repeat 50% 50%/cover;
 }
+
 .swiper-slide--five {
   background: url("https://cdn.pixabay.com/photo/2015/02/20/16/59/deer-643340_1280.jpg") no-repeat 50% 50%/cover;
 }
+
 .swiper-slide--six {
   background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url("https://cdn.pixabay.com/photo/2022/11/04/23/15/woman-7570834_1280.jpg") no-repeat 50% 50%/cover;
 }
+
 .swiper-slide--six h3 {
   font-family: "Chonburi", cursive;
   font-weight: 400;
@@ -336,12 +229,14 @@ main .btn:hover {
   margin-top: 35px;
   width: auto;
 }
+
 .swiper-pagination-bullet {
   border-radius: 0;
   width: 1.5rem;
   height: 0.25rem;
   background: #fff;
 }
+
 .swiper-pagination-bullet-active {
   background: #fff;
 }
@@ -358,3 +253,4 @@ main .btn:hover {
   opacity: 0.7;
 }
 </style>
+
