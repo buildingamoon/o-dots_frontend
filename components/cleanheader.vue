@@ -13,7 +13,6 @@
                     Logout
                     <p class="loginemail">({{ session.data?.user.email }})</p>
                 </a>
-            </div>
           </div>
         </section>
       </header>

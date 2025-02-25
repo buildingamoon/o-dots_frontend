@@ -3,6 +3,7 @@
     <h1>Add a New Course</h1>
     <form @submit.prevent="submitCourse">
       <div>
+        <cleanheader />
         <label for="title">Course Title:</label>
         <input type="text" id="title" v-model="course.title" required>
       </div>

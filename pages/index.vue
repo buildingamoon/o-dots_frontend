@@ -116,7 +116,8 @@
           <div class="middle">
             <div>
               <h4>My Courses</h4>
-
+              <Swipercarouselclean />
+              
             </div>
 
             <div class="loopbox">
@@ -143,7 +144,7 @@ import { ref, onMounted } from 'vue';
 import gsap from 'gsap';
 
 import Swipercarouselclean from '~/components/Swipercarouselclean.vue';
-import Swipercarouselsub from '~/components/Swipercarouselsub.vue';
+
 
 const session = useSession();
 const router = useRouter();
@@ -447,12 +448,7 @@ h5{
     padding: 1vh;
     font-size: 1.5em;
 }
-.swiper-slide img{
-    width:10vh;
-  }
-.product img{
-  width: 10vh;
-}
+
 @media (max-width: 600px) {
   .page2wrapper {
       margin-top: 13vh;
