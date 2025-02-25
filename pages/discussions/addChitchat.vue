@@ -4,7 +4,7 @@
     <div class="addchitchatwrapper">
       <div class="left">
         <p>Featured Photo</p>
-        <div class="image-preview2">
+        <div class="image-preview">
           <img :src="featurePhoto" @click="openFileDialog" width="250" height="250" alt="Feature Photo" style="cursor: pointer;" />
           <input type="file" ref="fileInput" @change="onFileChange" style="display:none;">
         </div>

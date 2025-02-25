@@ -82,7 +82,7 @@
                   </div>
                 </router-link>
               </div>
-              <Swipercarousel />
+
             </div>
           </div>
         </div>
@@ -142,8 +142,6 @@
 import { ref, onMounted } from 'vue';
 import gsap from 'gsap';
 
-import Swipercarousel from '~/components/Swipercarousel.vue';
-import Swipercarouselclean from '~/components/Swipercarouselclean.vue';
 import Swipercauroselforsubscription from '~/components/Swipercauroselforsubscription.vue';
 
 const session = useSession();
@@ -652,7 +650,6 @@ h5{
 }
 }
 </style>
-
 
 
 

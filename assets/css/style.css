@@ -287,7 +287,8 @@ body {
     flex-wrap: wrap;
     width:80%;
     left: 11%;
-    margin-top: 2vh;
+    margin-top: 1vh;
+    font-size: 1.5em;
 }
 ul {
     list-style-type: none;
@@ -1729,7 +1730,7 @@ body{
     margin-top: 3vh;
 }
 .secondnav{
-    margin-top: 0px;
+    margin-top: -350px;
 }
 .promotionslogan2 {
     top:16%;
