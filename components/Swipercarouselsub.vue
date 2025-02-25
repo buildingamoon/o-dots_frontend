@@ -1,9 +1,9 @@
 <template>
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <router-link v-for="(item, index) in items" :key="index" :to="`/courses/${item.course_id._id}/watch`" class="swiper-slide">
-        <img :src="item.course_id && item.course_id.photos && item.course_id.photos.length ? item.course_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
-        <h3>{{ item.productName }}</h3>
+      <router-link v-for="(item, index) in items" :key="index" :to="`/courses/${item.course_id._id}/watch`" class="swiper-slide router-link-item">
+          <img :src="item.course_id && item.course_id.photos && item.course_id.photos.length ? item.course_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
+          <h3>{{ item.productName }}</h3>
       </router-link>
     </div>
     <div class="swiper-pagination"></div>
@@ -47,21 +47,21 @@ export default {
             slidesPerView: 3,
           },
           1200: {
-            slidesPerView: 8,
+            slidesPerView: 5,
           },
         },
       });
     };
 
     watch(() => props.items, (newItems) => {
-      console.log('New items:', newItems);
+      //console.log('New items:', newItems);
       if (newItems.length > 0) {
         initializeSwiper();
       }
     });
 
     onMounted(() => {
-      console.log('Mounted with items:', props.items);
+      //console.log('Mounted with items:', props.items);
       if (props.items.length > 0) {
         initializeSwiper();
       }
@@ -73,17 +73,22 @@ export default {
 <style scoped>
 .swiper-container {
   width: 100%;
-  height: 25%;
+  height: 96%;
 }
 .swiper-slide {
   display: flex;
   flex-direction: column;
   text-align: center;
-  font-size: 18px;
-  background: #fff;
+  font-size: 0.7em;
+  background: rgba(200, 196, 196, 0.4);
   justify-content: center;
   align-items: center;
-  text-decoration: none; /* Remove underline for links */
+  text-decoration: none;
+  height: 150px;
+  padding: vh 0vh;
+  color: white;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .swiper-slide img {
   width: 100%;
@@ -92,4 +97,12 @@ export default {
 .swiper-slide h3 {
   color: inherit; /* Inherit text color from parent */
 }
+.swiper-slide > router-link {
+  background:red;
+}
+.swiper-pagination-bullet-active{
+  color: white;
+  font-size: 0.5em;
+}
+
 </style>

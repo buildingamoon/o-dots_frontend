@@ -176,7 +176,7 @@ const fetchUserData = async () => {
     if (data.user.userIcon) {
       userIcon.value = data.user.userIcon;
     }
-    console.log('User data fetched:', data.user); // Log the fetched user data
+
   } catch (error) {
     console.error('Error fetching user data:', error);
     router.push('/users/signin');
@@ -197,7 +197,7 @@ const fetchUserPayments = async () => {
 
     if (response.ok) {
       const payments = await response.json();
-      console.log('Filtered Payments:', payments); // Log the filtered payments
+      
       paidProducts.value = payments;
     } else {
       const error = await response.json();
