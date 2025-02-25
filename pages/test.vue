@@ -1,28 +1,28 @@
 <template>
-  <div class="swiper-container">
+  <div v-if="isReady" class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="/public/picture/demo1.jpg">
+        <img src="/public/picture/demo1.jpg" alt="Demo 1">
         <h3>Hi there</h3>
       </div>
       <div class="swiper-slide">
-        <img src="/public/picture/demo2.jpg">
+        <img src="/public/picture/demo2.jpg" alt="Demo 2">
         <h3>Hi there</h3>
       </div>
       <div class="swiper-slide">
-        <img src="/public/picture/demo3.jpg">
+        <img src="/public/picture/demo3.jpg" alt="Demo 3">
         <h3>Hi there</h3>
       </div>
       <div class="swiper-slide">
-        <img src="/public/picture/demo1.jpg">
+        <img src="/public/picture/demo1.jpg" alt="Demo 1">
         <h3>Hi there</h3>
       </div>
       <div class="swiper-slide">
-        <img src="/public/picture/demo2.jpg">
+        <img src="/public/picture/demo2.jpg" alt="Demo 2">
         <h3>Hi there</h3>
       </div>
       <div class="swiper-slide">
-        <img src="/public/picture/demo1.jpg">
+        <img src="/public/picture/demo1.jpg" alt="Demo 1">
         <h3>Hi there</h3>
       </div>
     </div>
@@ -31,40 +31,51 @@
 </template>
 
 <script>
-import { onMounted } from 'vue';
+import { ref, onMounted, watch, nextTick } from 'vue';
 import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.css';
 
 export default {
-  name: 'SwiperCarousel',
+  name: 'Swipercarouselsub',
   setup() {
+    const isReady = ref(false);
+
     onMounted(() => {
-      new Swiper('.swiper-container', {
-        loop: true,
-        grabCursor: true,
-        spaceBetween: 30,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        keyboard: {
-          enabled: true,
-        },
-        mousewheel: {
-          thresholdDelta: 70,
-        },
-        breakpoints: {
-          0: {
-            slidesPerView: 3,
-          },
-          780: {
-            slidesPerView: 3,
-          },
-          1200: {
-            slidesPerView: 8,
-          },
-        },
+      nextTick(() => {
+        isReady.value = true;
       });
+    });
+
+    watch(isReady, (newVal) => {
+      if (newVal) {
+        nextTick(() => {
+          const swiperContainer = document.querySelector('.swiper-container');
+          if (swiperContainer) {
+            const swiper = new Swiper(swiperContainer, {
+              loop: true,
+              grabCursor: true,
+              spaceBetween: 30,
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+              keyboard: {
+                enabled: true,
+              },
+              mousewheel: {
+                thresholdDelta: 70,
+              },
+              breakpoints: {
+                0: { slidesPerView: 3 },
+                780: { slidesPerView: 3 },
+                1200: { slidesPerView: 8 },
+              },
+            });
+          } else {
+            console.error('Swiper container not found');
+          }
+        });
+      }
     });
   },
 };
@@ -81,7 +92,6 @@ export default {
   text-align: center;
   font-size: 18px;
   background: #fff;
-  /* Center slide text vertically */
   justify-content: center;
   align-items: center;
 }

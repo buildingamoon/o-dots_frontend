@@ -28,6 +28,7 @@
           </div>
           <textarea v-model="discussion.content" placeholder="type your content here..." required></textarea>
           <button class="confirm" type="submit">PULISH</button>
+          <Swipercarouselsub/>
         </form>
       </div>
     </div>
@@ -40,6 +41,7 @@ import { ref, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRuntimeConfig } from '#imports';
 import { useSession } from '@/composables/state';
+import Swipercarouselsub from '~/components/Swipercarouselsub.vue';
 
 
 const runtimeConfig = useRuntimeConfig();

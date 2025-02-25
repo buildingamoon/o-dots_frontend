@@ -116,7 +116,7 @@
           <div class="middle">
             <div>
               <h4>My Courses</h4>
-              <Swipercauroselforsubscription :items="paidProducts" />
+
             </div>
 
             <div class="loopbox">
@@ -142,7 +142,8 @@
 import { ref, onMounted } from 'vue';
 import gsap from 'gsap';
 
-import Swipercauroselforsubscription from '~/components/Swipercauroselforsubscription.vue';
+import Swipercarouselclean from '~/components/Swipercarouselclean.vue';
+import Swipercarouselsub from '~/components/Swipercarouselsub.vue';
 
 const session = useSession();
 const router = useRouter();
