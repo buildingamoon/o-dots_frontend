@@ -10,7 +10,7 @@
       <div>
         <label for="promotionUrl">Promotion Embed Link:</label>
         <textarea id="promotionUrl" v-model="course.promotionUrl" @blur="extractPromotionSrc"></textarea>
-        <input type="file" accept="video/mp4" @change="onPromotionFileChange" style="margin-top: 10px;">
+        <input type="file" accept="video/mp4,video/mov" @change="onPromotionFileChange" style="margin-top: 10px;">
       </div>
       <div>
         <label for="categories">Categories:</label>
@@ -47,7 +47,7 @@
           <input type="text" placeholder="Video Name" v-model="video.name" required>
           <input type="text" placeholder="Video Embed Link or Upload" v-model="video.url" @blur="extractVideoSrc(index)">
           <div>
-            <input type="file" accept="video/mp4" @change="onVideoFileChange(index)">
+            <input type="file" accept="video/mp4,video/mov" @change="onVideoFileChange(index)">
             <p v-if="video.fileName">{{ video.fileName }}</p>
           </div>
           <input type="text" placeholder="Tutor Remarks" v-model="video.tutorremarks">
@@ -112,9 +112,9 @@ const removePhoto = () => {
   photoPreview.value = null;
 };
 
-const validateFile = (file, allowedTypes = ['image/jpeg', 'image/png', 'image/gif'], maxSizeInMB = 2) => {
+const validateFile = (file, allowedTypes = ['image/jpeg', 'image/png', 'image/gif','video/mp4', 'video/quicktime'], maxSizeInMB = 15) => {
   if (!allowedTypes.includes(file.type)) {
-    alert('Invalid file type -- only JPEG, PNG, GIF images, or MP4 videos are allowed');
+    alert('Invalid file type -- only JPEG, PNG, GIF images, Mov or MP4 videos are allowed');
     return false;
   }
   const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
@@ -153,7 +153,7 @@ const uploadFile = async (file, endpoint) => {
   formData.append('file', file);
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:1337/api/posts/${endpoint}`, {
+    const response = await fetch(`http://localhost:1337/api/posts/imageupload`, {
       method: "POST",
       body: formData,
       headers: {
