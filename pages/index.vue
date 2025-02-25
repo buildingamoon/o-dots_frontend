@@ -115,8 +115,7 @@
           </div>
           <div class="middle">
             <div>
-              <h4>My Courses</h4>
-              <Swipercarouselclean />
+              <h4>My Pocket</h4>
               
             </div>
 
