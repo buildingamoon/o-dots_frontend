@@ -215,6 +215,7 @@
     width: 100%;
     right: 0px;
     margin: 0 auto;
+    margin-top: -17%;
   }
   
   @media screen and (min-width: 960px) {

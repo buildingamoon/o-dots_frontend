@@ -25,16 +25,6 @@
                   <div class="two">
                     <Swipercarouselclean />
                   </div>
-                  <div class="page1photolow">
-                    <div class="three">
-                      <div class="textboxcontent">123Hello World</div>
-                      <div class="datetag">datetag</div>
-                    </div>
-                    <div class="one">
-                      <img src="/public/picture/inner.png">
-                      <div class="acc">Name</div>
-                    </div>
-                  </div>
                 </div>
               </a>
             </div>
@@ -82,7 +72,31 @@
                   </div>
                 </router-link>
               </div>
-
+            </div>
+          </div>
+          <div class="page3cubewrap">
+            <div class="page3cube page3cube1">
+              <ul>
+                <li>cat1</li>
+                <li>cat2</li>
+                <li>cat3</li>
+                <li>cat4</li>
+                <li>cat5</li>
+                <li>cat6</li>
+              </ul>
+            </div>
+            <div class="page3cube page3cube2">
+              <h3>Tutors' Trend</h3>
+              <iframe src="/public/video/demo1.mp4"></iframe>
+            </div>
+            <div class="page3cube page3cube3">
+              <h3>Acheivements</h3>
+              <div class="acheivewrap">
+                <div class="acheive acheive1">1</div>
+                <div class="acheive acheive2">2</div>
+                <div class="acheive acheive3">3</div>
+                <div class="acheive acheive4">4</div>
+              </div>
             </div>
           </div>
         </div>
@@ -143,6 +157,7 @@ import { ref, onMounted } from 'vue';
 import gsap from 'gsap';
 
 import Swipercarouselclean from '~/components/Swipercarouselclean.vue';
+
 
 
 const session = useSession();
@@ -456,7 +471,7 @@ h5{
   .page2 .whole {
         width: 100%;
         flex-direction: column;
-        margin-top: -29vh;
+        margin-top: 86vh;
         margin-bottom: 10vh;
     }
   .page3cover .upperlayer{
@@ -501,7 +516,7 @@ h5{
     text-decoration: none;
     width: 100%;
     height: 100%;
-    margin-top: 30vh;
+    margin-top: 30.5vh;
 }
 .page2box {
     flex:none;
@@ -525,6 +540,7 @@ h5{
   overflow-x: hidden;
   overflow-y: auto;
   flex-direction: row;
+  margin-top: -12%;
 }
 .page1wrapper .lower .one{
   flex:0.2;

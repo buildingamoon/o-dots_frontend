@@ -86,6 +86,8 @@ export default defineNuxtConfig({
     renderJsonPayloads: false,
   },
 
+  
+
   router: {
     extendRoutes(routes, resolve) {
       routes.push({

@@ -10,15 +10,14 @@
       <div>
         <label for="promotionUrl">Promotion Embed Link:</label>
         <textarea id="promotionUrl" v-model="course.promotionUrl" @blur="extractPromotionSrc"></textarea>
-        <input type="file" accept="video/mp4,video/mov" @change="onPromotionFileChange" style="margin-top: 10px;">
+        <input type="file" @change="onPromotionFileChange" accept="video/mp4,video/mov">
       </div>
       <div>
         <label for="categories">Categories:</label>
         <input type="text" id="categories" v-model="categoriesInput" @blur="addCategory">
         <ul>
           <li v-for="(category, index) in course.categories" :key="index">
-            {{ category }}
-            <button type="button" @click="removeCategory(index)">Remove</button>
+            {{ category }} <button type="button" @click="removeCategory(index)">Remove</button>
           </li>
         </ul>
       </div>
@@ -29,7 +28,7 @@
       <div>
         <label for="photos">Photo URL:</label>
         <div class="image-preview">
-          <img :src="photoPreview || '/public/picture/inner.png'" @click="openFileDialog" width="250" height="250" alt="Course Photo" style="cursor: pointer;" />
+          <img :src="photoPreview || '/path/to/default-image.jpg'" @click="openFileDialog" width="250" height="250" alt="Course Photo" style="cursor: pointer;" />
           <input type="file" ref="fileInput" @change="onFileChange" style="display:none;">
           <div class="upload-controls">
             <p v-if="uploading">Uploading...</p>
@@ -45,11 +44,8 @@
         <label>Videos:</label>
         <div v-for="(video, index) in course.videos" :key="index">
           <input type="text" placeholder="Video Name" v-model="video.name" required>
-          <input type="text" placeholder="Video Embed Link or Upload" v-model="video.url" @blur="extractVideoSrc(index)">
-          <div>
-            <input type="file" accept="video/mp4,video/mov" @change="onVideoFileChange(index)">
-            <p v-if="video.fileName">{{ video.fileName }}</p>
-          </div>
+          <input type="text" placeholder="Video Embed Link" v-model="video.url" required>
+          <input type="file" @change="onVideoFileChange(index)" accept="video/mp4,video/mov">
           <input type="text" placeholder="Tutor Remarks" v-model="video.tutorremarks">
           <button type="button" @click="removeVideo(index)">Remove Video</button>
         </div>
@@ -59,6 +55,7 @@
     </form>
   </div>
 </template>
+
 
 <script setup>
 import { ref, nextTick, onMounted } from 'vue';

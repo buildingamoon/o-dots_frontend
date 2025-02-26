@@ -119,7 +119,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     box-sizing: border-box;
-    margin: 5px 20px;
+    margin: 17px 160px;
     justify-content: center;
     align-items: center;
     color: white;
@@ -131,7 +131,7 @@
     padding: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    min-width: calc(50% - 3em);
+    width: calc(50% - 3em);
     background-color: black;
     background-size: cover;
     background-position: center;
@@ -159,6 +159,8 @@
     justify-content: center;
     font-size: 1.5em;
     margin: 0;
+    box-sizing: border-box;
+    padding: 8vh;
   }
   
   .categories {
@@ -175,6 +177,7 @@
     background-color: rgb(237 48 48 / 60%);
     border-radius: 1em;
     font-size: 0.8em;
+ 
   }
   
   .pagination {
@@ -199,6 +202,19 @@
     min-width: calc(80% - 3em);
     max-width: calc(80% - 3em);
     height: 200px;
+  }
+  .title {
+    padding: 3vh;
+    background:rgba(0, 0, 0, 0.2);
+    width:100%;
+    height:80%;
+    border-radius:5%;
+
+  }
+  .coursesloop {
+
+    margin: 17px 0px;
+
   }
   }
   </style>

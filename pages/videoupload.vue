@@ -87,7 +87,7 @@ async function uploadFile(e, index) {
       uploading.value[index] = false;
     } catch (error) {
       console.error('Error uploading file:', error);
-      uploading.value[index] = false;Y
+      uploading.value[index] = false;
     }
   } else {
     alert('Error! Only JPEG, PNG, GIF, MP4, and MOV files are allowed. Maximum allowed size is 30MB for videos and 2MB for images.');

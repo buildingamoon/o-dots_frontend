@@ -2,13 +2,14 @@
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <router-link v-for="(item, index) in items" :key="index" :to="`/courses/${item.course_id._id}/watch`" class="swiper-slide router-link-item">
-          <img :src="item.course_id && item.course_id.photos && item.course_id.photos.length ? item.course_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
-          <h3>{{ item.productName }}</h3>
+        <img :src="item.course_id && item.course_id.photos && item.course_id.photos.length ? item.course_id.photos[0] : '/public/picture/inner.png'" alt="Product Photo">
+        <h3>{{ item.productName }}</h3>
       </router-link>
     </div>
     <div class="swiper-pagination"></div>
   </div>
 </template>
+
 
 <script>
 import Swiper from 'swiper/bundle';
@@ -20,7 +21,8 @@ export default {
   props: {
     items: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     }
   },
   setup(props) {
@@ -54,20 +56,19 @@ export default {
     };
 
     watch(() => props.items, (newItems) => {
-      //console.log('New items:', newItems);
       if (newItems.length > 0) {
         initializeSwiper();
       }
     });
 
     onMounted(() => {
-      //console.log('Mounted with items:', props.items);
       if (props.items.length > 0) {
         initializeSwiper();
       }
     });
   }
 };
+
 </script>
 
 <style scoped>

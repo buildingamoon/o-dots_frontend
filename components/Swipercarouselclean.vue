@@ -73,8 +73,14 @@ onMounted(() => {
       0: {
         slidesPerView: 1,
       },
-      1600: {
-        slidesPerView: 1,
+      600: {
+        slidesPerView: 2,
+      },
+      760: {
+        slidesPerView: 3,
+      },
+      1200: {
+        slidesPerView: 4,
       },
     },
   });
@@ -114,10 +120,9 @@ main {
 }
 
 @media screen and (min-width: 960px) {
-  main {
+main {
     display: flex;
     padding-inline: 0;
-  }
 }
 
 .swiper-container {
@@ -127,11 +132,21 @@ main {
   right: 0px;
   margin: 0 auto;
 }
+.swiper-container {
+    width: 60%;
+    right: -60px;
+  }
+  .swiper {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+}
 
 @media screen and (min-width: 960px) {
   .swiper-container {
-    width: 60%;
-    right: -60px;
+    width: 90%;
+    right: 0px;
   }
 }
 
