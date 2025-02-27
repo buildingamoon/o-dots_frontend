@@ -14,10 +14,14 @@
       </div>
       <div>
         <label for="categories">Categories:</label>
-        <input type="text" id="categories" v-model="categoriesInput" @blur="addCategory">
+        <select v-model="categoriesInput" @blur="addCategory">
+          <option>Interior Design</option>
+          <option>Creative Writing</option>
+          <option>Marketing</option>
+          <option>Design</option>
+        </select>
         <ul>
           <li v-for="(category, index) in course.categories" :key="index">
-            {{ category }} <button type="button" @click="removeCategory(index)">Remove</button>
           </li>
         </ul>
       </div>
@@ -56,22 +60,12 @@
   </div>
 </template>
 
-
 <script setup>
 import { ref, nextTick, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRuntimeConfig } from '#imports';
 
-const course = ref({
-  title: '',
-  promotionUrl: '',
-  categories: [],
-  description: '',
-  photos: '',
-  Price: null,
-  videos: [],
-  tutor: ''
-});
+const course = ref({ title: '', promotionUrl: '', categories: [], description: '', photos: '', Price: null, videos: [], tutor: '' });
 const categoriesInput = ref('');
 const photoPreview = ref(null);
 const uploading = ref(false);
@@ -81,7 +75,7 @@ const runtimeConfig = useRuntimeConfig();
 const user = getUser();
 
 const extractSrc = (embedLink) => {
-  const match = embedLink.match(/src\s*=\s*"([^"]+)"/);
+  const match = embedLink.match(/src\s*=\\s*"([^"]+)"/);
   return match ? match[1] : embedLink;
 };
 
@@ -109,7 +103,7 @@ const removePhoto = () => {
   photoPreview.value = null;
 };
 
-const validateFile = (file, allowedTypes = ['image/jpeg', 'image/png', 'image/gif','video/mp4', 'video/quicktime'], maxSizeInMB = 15) => {
+const validateFile = (file, allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/quicktime'], maxSizeInMB = 15) => {
   if (!allowedTypes.includes(file.type)) {
     alert('Invalid file type -- only JPEG, PNG, GIF images, Mov or MP4 videos are allowed');
     return false;

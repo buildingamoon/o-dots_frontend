@@ -10,13 +10,18 @@
       <div>
         <label for="promotionUrl">Promotion Embed Link:</label>
         <textarea id="promotionUrl" v-model="course.promotionUrl" @blur="extractPromotionSrc"></textarea>
+        <input type="file" @change="onPromotionFileChange" accept="video/mp4,video/mov">
       </div>
       <div>
         <label for="categories">Categories:</label>
-        <input type="text" id="categories" v-model="categoriesInput" @blur="addCategory">
+        <select v-model="categoriesInput" @blur="addCategory">
+          <option>Interior Design</option>
+          <option>Creative Writing</option>
+          <option>Marketing</option>
+          <option>Design</option>
+        </select>
         <ul>
           <li v-for="(category, index) in course.categories" :key="index">
-            {{ category }} <button type="button" @click="removeCategory(index)">Remove</button>
           </li>
         </ul>
       </div>
@@ -43,7 +48,8 @@
         <label>Videos:</label>
         <div v-for="(video, index) in course.videos" :key="index">
           <input type="text" placeholder="Video Name" v-model="video.name" required>
-          <input type="text" placeholder="Video Embed Link" v-model="video.url" required @blur="extractVideoSrc(index)">
+          <input type="text" placeholder="Video Embed Link" v-model="video.url" required>
+          <input type="file" @change="onVideoFileChange(index)" accept="video/mp4,video/mov">
           <input type="text" placeholder="Tutor Remarks" v-model="video.tutorremarks">
           <button type="button" @click="removeVideo(index)">Remove Video</button>
         </div>
@@ -54,34 +60,22 @@
   </div>
 </template>
 
-
 <script setup>
 import { ref, nextTick, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRuntimeConfig } from '#imports';
 
-const course = ref({
-  title: '',
-  promotionUrl: '',
-  categories: [],
-  description: '',
-  photos: '',
-  Price: null,
-  videos: [],
-  tutor: '' // Will be set dynamically
-});
-
+const course = ref({ title: '', promotionUrl: '', categories: [], description: '', photos: '', Price: null, videos: [], tutor: '' });
 const categoriesInput = ref('');
 const photoPreview = ref(null);
 const uploading = ref(false);
 const fileInput = ref(null);
-
 const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
-const user = getUser(); // Fetch the current user
+const user = getUser();
 
 const extractSrc = (embedLink) => {
-  const match = embedLink.match(/src\s*=\s*"([^"]+)"/);
+  const match = embedLink.match(/src\s*=\\s*"([^"]+)"/);
   return match ? match[1] : embedLink;
 };
 
@@ -109,33 +103,29 @@ const removePhoto = () => {
   photoPreview.value = null;
 };
 
-const validateFile = (file) => {
-  const allowedFileTypes = ['image/jpeg', 'image/png', 'image/gif'];
-  if (!allowedFileTypes.includes(file.type)) {
-    alert('Invalid file type -- only JPEG, PNG, and GIF images are allowed');
+const validateFile = (file, allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/quicktime'], maxSizeInMB = 15) => {
+  if (!allowedTypes.includes(file.type)) {
+    alert('Invalid file type -- only JPEG, PNG, GIF images, Mov or MP4 videos are allowed');
     return false;
   }
-
-  const maxSizeInMB = 2;
   const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
   if (file.size > maxSizeInBytes) {
     alert(`Exceed the maximum file size. Max. size: ${maxSizeInMB} MB`);
     return false;
   }
-
   return true;
 };
 
 const uploadImage = async (file) => {
   const formData = new FormData();
   formData.append('image', file);
-
   try {
-    const response = await fetch('http://localhost:1337/api/courses/imageupload', {
+    const token = localStorage.getItem('token');
+    const response = await fetch('http://localhost:1337/api/posts/imageupload', {
       method: "POST",
       body: formData,
       headers: {
-        "Authorization": "Bearer " + user?.accessToken
+        "Authorization": `Bearer ${token}`
       }
     });
     const data = await response.json();
@@ -149,10 +139,32 @@ const uploadImage = async (file) => {
   }
 };
 
+const uploadFile = async (file, endpoint) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:1337/api/posts/imageupload`, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+    return data.url;
+  } catch (error) {
+    console.error(`Error uploading ${endpoint}:`, error);
+    return null;
+  }
+};
+
 const onFileChange = async (event) => {
   const file = event.target.files[0];
   if (!file) return;
-
   if (validateFile(file)) {
     uploading.value = true;
     const imageUrl = await uploadImage(file);
@@ -168,8 +180,19 @@ const openFileDialog = () => {
   fileInput.value.click();
 };
 
+const onPromotionFileChange = async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (validateFile(file, ['video/mp4'], 100)) {
+    const videoUrl = await uploadFile(file, 'videoupload');
+    if (videoUrl) {
+      course.value.promotionUrl = videoUrl;
+    }
+  }
+};
+
 const addVideo = () => {
-  course.value.videos.push({ name: '', url: '', tutorremarks: '' });
+  course.value.videos.push({ name: '', url: '', tutorremarks: '', fileName: '' });
 };
 
 const removeVideo = (index) => {
@@ -177,35 +200,30 @@ const removeVideo = (index) => {
 };
 
 const getTutorId = () => {
-  // Replace with actual logic to fetch logged-in user's ID
-  return '606c6f5c8e2e2b0728fcbfc9'; // Example valid ObjectId
+  return '606c6f5c8e2e2b0728fcbfc9';
 };
 
 const submitCourse = async () => {
-  course.value.tutor = getTutorId(); // Set the valid tutor ID
-
+  course.value.tutor = getTutorId();
   try {
-    console.log('Submitting course:', course.value); // Log course data
+    console.log('Submitting course:', course.value);
     const response = await fetch(`${runtimeConfig.public.apiBase}/courses`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         "Authorization": "Bearer " + user?.accessToken
       },
-      body: JSON.stringify({
-        ...course.value,
-        Price: course.value.Price * 100 // Convert price to smallest currency unit (cents)
-      })
+      body: JSON.stringify({ ...course.value, Price: course.value.Price * 100 })
     });
     if (!response.ok) {
       throw new Error('Failed to add course');
     }
     const data = await response.json();
-    console.log('Course added:', data); // Log response
-    await nextTick(); // Ensure DOM is updated
+    console.log('Course added:', data);
+    await nextTick();
     router.push(`/courses/${data._id}`);
   } catch (error) {
-    console.error('Error adding course:', error); // Log error
+    console.error('Error adding course:', error);
   }
 };
 
@@ -220,7 +238,6 @@ onMounted(() => {
   });
 });
 </script>
-
 
 <style scoped>
 form {
@@ -253,12 +270,6 @@ form button {
   align-items: center;
   border: 1px solid #ddd;
   padding: 10px;
-}
-.image-preview img {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  cursor: pointer;
 }
 .upload-controls {
   text-align: center;

@@ -10,7 +10,7 @@
           <div v-else class="mediawrapper">
             <img :src="course.photos[0]" alt="Course Photo" width="100%" height="100%" />
           </div>
-          <h3>Course Title: {{ course.title }}</h3>
+          <h3>Title: {{ course.title }}</h3>
           <div class="course-info">
             <div class="tutor">Tutor: {{ course.tutor }}</div>
             <div class="categories">
@@ -231,7 +231,7 @@ onMounted(async () => {
   overflow-y: auto;
   margin: 5px 0%;
   flex:1;
-  max-height: 43%;
+  height: 275%;
 }
 .course-right {
   flex: 1;
@@ -284,7 +284,7 @@ button {
   background-color: #d9d927e0;
   color: white;
   cursor: pointer;
-  font-size:0.8em;
+  font-size:1em;
   border-radius:5px;
 }
 button:hover {
@@ -295,19 +295,23 @@ button:hover {
 .addedlayer {
   width: 85%;
 }
+.course-left h3{
+  text-align: center;
+    color: #d9d927e0;
+    font-size: 1.3em;
+}
 
 @media(max-width:600px){
   .coursedetailswhole{
     display: flex;
     background-color: black;
     margin-top: 17vh;
-    padding: 0px 5%;
     width: 100%;
 }
 .course-container{
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 3px;
     border: 1px dotted white;
     color: white;
     flex-direction: row;
@@ -325,7 +329,10 @@ button:hover {
     border: 1px dotted white;
     width: 50%;
     overflow: hidden;
-    height: 72vh;
+    height: 73vh;
+}
+.course-right h3{
+  font-size:1em;
 }
 .mediawrapper{
     margin-top: 10px;
@@ -334,29 +341,35 @@ button:hover {
     overflow: hidden;
     border: 1px solid #ddd;
     height: 150px;
-    flex: 5;
+    flex: 4;
 }
 .course-left h3{
-    flex: 1;
     font-size: 1em;
+    color:#d9d927e0;
+    text-align:center;
 }
 .course-info{
-    flex: 1;
     font-size: 0.8em;
 }
 .toname{
-    flex: 3;
-    height: 36%;
+
+    height: 40%;
+}
+.toname p{
+  font-size: 0.8em;
 }
 .coursedescription{
     padding: 4px;
     border: 1px dotted white;
     font-size: 0.8em;
-    max-height: 57%;
+    height: 57%;
     position: relative;
     overflow-y: auto;
     margin: 5px 0%;
     overflow-x: hidden;
+}
+button {
+  font-size:0.8em;
 }
 }
 </style>
