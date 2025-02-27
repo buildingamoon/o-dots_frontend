@@ -201,7 +201,7 @@
 
   @media(max-width:600px){
     .post {
-    min-width: calc(80% - 3em);
+    width: calc(80% - 3em);
   }
   .secondnav {
         opacity: 0;
