@@ -1,11 +1,13 @@
 <template>
-    <div>
+    <div class='paymentsucess'>
         <div v-if="loading">
-              <h1>確認中....</h1>
+              <h1>Processing your payment....</h1>
         </div>
         <div v-else-if="paymentStatus=='success'">
-            <h1>你的訂單已被確認!</h1>
+            <h1>Payment Sucess! !</h1>
             {{  sessionDetails.metadata }}
+            <h2>Start your pleasant journey now! Your subscription could be found <a href='https://o-dots.com/courses/mycourses'>HERE</a>
+            </h2>
         </div>
     </div>
  </template>
@@ -54,3 +56,12 @@
  
    
  </script>
+
+ <style>
+.paymentsucess{
+    height:100%;
+    width:100%;
+    padding:0;
+    margin:0;
+}
+</style>
