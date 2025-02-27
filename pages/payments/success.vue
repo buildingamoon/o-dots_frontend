@@ -4,10 +4,16 @@
               <h1>Processing your payment....</h1>
         </div>
         <div v-else-if="paymentStatus=='success'">
-            <h1>Payment Sucess! !</h1>
-            {{  sessionDetails.metadata }}
-            <h2>Start your pleasant journey now! Your subscription could be found <a href='https://o-dots.com/courses/mycourses'>HERE</a>
-            </h2>
+            <h1>Payment Success! </h1>
+            Name: {{  sessionDetails.metadata.name }}
+
+            items purchased: {{  sessionDetails.metadata.productName }}
+
+            Price: {{  sessionDetails.metadata.formatPrice(price) }}
+
+            Reference ID: {{  sessionDetails.metadata.bookingid }}
+            <h3>Start your journey now! Your subscription could be found <a href='https://o-dots.com/courses/mycourses'>HERE</a>
+            </h3>
         </div>
     </div>
  </template>
