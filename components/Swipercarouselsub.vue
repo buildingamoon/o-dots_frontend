@@ -85,7 +85,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  height: 150px;
+  height: 145px;
   padding: vh 0vh;
   color: white;
   border-radius: 5px;

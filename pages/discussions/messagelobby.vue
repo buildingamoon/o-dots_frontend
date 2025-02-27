@@ -57,9 +57,9 @@
                 </div>
               </router-link>
             </div>
+          </div>
         </div>
         <div class="addbtn"><a href="/discussions/addChitchat"> +NEW</a></div>
-        </div>
       </div>
     </div>
   </div>
@@ -413,12 +413,22 @@ onMounted(async () => {
   width:30%;
   margin-top: 2vh;
 }
-.addbtn a{
-  color: white;
-    border: 1px solid white;
+.addbtn a {
+    color: #090909;
+    border: 2px solid #c9d007;
     padding: 2vh;
-    background: rgb(255 255 255 / 20%);
-    border-radius: 10px;
+    background: rgb(248 244 244 / 21%);
+    border-radius: 11px;
+    margin: 2vh;
+    text-decoration:none;
+}
+.addbtn a:hover {
+    color: white;
+    border: 2px solid #c9d007;
+    padding: 2vh;
+    background: #c9d007;
+    border-radius: 11px;
+    margin: 2vh;
 }
 .newbox1 p{
   background: #00000099;

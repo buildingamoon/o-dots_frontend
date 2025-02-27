@@ -25,6 +25,7 @@
                   <div class="two">
                     <Swipercarouselclean />
                   </div>
+                  <p class="advtext">For advertistment, please contact us @ <a href="mailto:adv@o-dots.com">adv@o-dots.com</a></p>
                 </div>
               </a>
             </div>
@@ -462,6 +463,12 @@ h5{
     padding: 1vh;
     font-size: 1.5em;
 }
+.advtext{
+  margin-top: 20%;
+  margin-left: 72%;
+  background: black!important;
+  font-size: 0.9em!important;
+}
 
 @media (max-width: 600px) {
   .page2wrapper {
@@ -659,6 +666,26 @@ h5{
     border: 1px dotted white;
     padding: 1vh;
     font-size: 0.8em;
+}
+.page3cubewrap {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 482%;
+    justify-content: center;
+    margin-top: 143%;
+    position: relative;
+    width: 100%;
+    font-size:0.8em;
+}
+.page3cube{
+  font-size:0.8em;
+}
+.advtext {
+    margin-top: 54%;
+    margin-left: 12%;
+    background: black !important;
+    font-size: 0.8em !important;
 }
 }
 </style>

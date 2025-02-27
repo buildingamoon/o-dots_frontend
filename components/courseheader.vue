@@ -10,7 +10,7 @@
                 <ul>
                     <a href="/courses/mycourses"><li>My Courses</li></a>
                     <a href="/discussions/messagelobby"><li>classChitchat</li></a>
-                    <a href="#"><li>Dot Dot SKU</li></a>
+                    <a href="/courses/allcourses"><li>Courses</li></a>
                 </ul>
             </div>
             <div class="coursenavitems loginmsg menu">

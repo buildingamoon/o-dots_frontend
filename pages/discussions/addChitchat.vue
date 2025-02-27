@@ -1,5 +1,4 @@
 <template>
-  <div>
     <Courseheader />
     <div class="addchitchatwrapper">
       <div class="left">
@@ -14,25 +13,23 @@
       </div>
       <div class="right">
         <form @submit.prevent="createDiscussion" class="rightwrap">
-          <input v-model="discussion.roomId" placeholder="Roomname" required />
-          <input v-model="discussion.topic" placeholder="Topic" required />
+          <input class="chatRoomname" v-model="discussion.roomId" placeholder="Roomname" required />
+          <input class="chatTopic" v-model="discussion.topic" placeholder="Topic" required />
           <select v-model="discussion.type" @change="toggleDateInputs" required>
-            <option value="discussion">Discussion</option>
-            <option value="event">Event</option>
+            <option clss="chatdiscussion" value="discussion">Discussion</option>
+            <option clss="chatevent" value="event">Event</option>
           </select>
           <emoji-picker @emoji-click="addEmoji"style="opacity:0;height:0;">Emoji</emoji-picker>
           <div v-if="discussion.type === 'event'">
-            <input v-model="discussion.startDate" type="date" placeholder="Start Date" />
-            <input v-model="discussion.endDate" type="date" placeholder="End Date" />
-            <input v-model="discussion.startTime" type="time" placeholder="Start Time" />
+            <input class="chatstartdate" v-model="discussion.startDate" type="date" placeholder="Start Date" />
+            <input class="chatenddate" v-model="discussion.endDate" type="date" placeholder="End Date" />
+            <input class="chattime" v-model="discussion.startTime" type="time" placeholder="Start Time" />
           </div>
           <textarea v-model="discussion.content" placeholder="type your content here..." required></textarea>
           <button class="confirm" type="submit">PULISH</button>
-          <Swipercarouselsub/>
         </form>
       </div>
     </div>
-  </div>
 </template>
 
 
@@ -63,7 +60,7 @@ const discussion = ref({
 
 const router = useRouter();
 
-const featurePhoto = ref('/picture/ADDBG.png');
+const featurePhoto = ref('/picture/addblack2.png');
 const uploading = ref(false);
 const fileInput = ref(null);
 
@@ -205,14 +202,17 @@ const createDiscussion = async () => {
 
 <style>
 .addchitchatwrapper {
-  width: 100%;
-  height: 87vh;
-  padding: 0;
-  margin: 0;
-  background: white;
-  box-sizing: border-box;
-  margin-top: 13vh;
-  display: flex;
+    width: 100%;
+    height: 87vh;
+    padding: 0;
+    margin: -1px;
+    background: rgb(7, 7, 7);
+    box-sizing: border-box;
+    margin-top: 13vh;
+    display: flex;
+}
+.addchitchatwrapper p{
+    color: white;
 }
 .addchitchatwrapper .left {
   flex: 2;
@@ -224,18 +224,18 @@ const createDiscussion = async () => {
 }
 .addchitchatwrapper .left img {
   margin-top: 10%;
-  width: 50vh;
-  height: 50vh;
-  cursor: pointer;
+    width: 50vh;
+    height: 32vh;
 }
 .addchitchatwrapper .right {
   flex: 4;
-  justify-content: center;
-  text-align: center;
-  height: 100%;
-  display: flex;
-  border: 1px dotted black;
-  width: 100%;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    border: 1px dotted black;
+    width: 100%;
+    margin: 4vh 15vh;
 }
 .addchitchatwrapper .right .rightwrap {
   flex: 5;
@@ -246,9 +246,12 @@ const createDiscussion = async () => {
   border: 1px dotted black;
   width: 80%;
   padding-top: 2%;
+  margin-top: 15%;
 }
 .addchitchatwrapper .right .rightwrap textarea {
-  height: 81%;
+  height: 47%;
+  background: black;
+  color: white;
 }
 .emoji-picker {
   position: absolute;
@@ -261,11 +264,13 @@ const createDiscussion = async () => {
   display: block;
 }
 .image-preview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ddd;
-  padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5vh;
 }
 .upload-controls {
   text-align: center;
@@ -277,19 +282,95 @@ const createDiscussion = async () => {
     align-items: center;
     padding: 10px;
 }
+.chatRoomname, .chatTopic, .chatdiscussion,.chatevent{
+  background: black;
+  color:white;
+}
+.rightwrap select{
+  background: black;
+  color: white;
+}
+.confirm {
+        height: 6vh;
+        background: #fffde769;
+        border: 2px solid black;
+        width: 25%;
+        align-self: center;
+        margin: 1vh;
+        font-size: 0.8em;
+        border-radius: 5px;
+        padding: 1vh;
+        color: white;
+    }
+    .confirm:hover {
+        background:white;
+        color: black;
+    }
 
 
 @media(max-width:600px){
-    .confirm {
-      height: 6vh;
-      background: #fffde769;
-      border: #F9A825;
-  }
-  .addchitchatwrapper .left img {
-  margin-top: 10%;
-  width: 20vh;
-  height: 20vh;
-  cursor: pointer;
+  .confirm {
+        height: 6vh;
+        background: #fffde769;
+        border: 2px solid black;
+        width: 25%;
+        align-self: center;
+        margin: 1vh;
+        font-size: 0.8em;
+        border-radius: 5px;
+        padding: 1vh;
+        color: white;
+    }
+    .confirm:hover {
+        background:white;
+        color: black;
+    }
+
+    .addchitchatwrapper .left img {
+        margin-top: 10%;
+        width: 20vh;
+        height: 21vh;
+        cursor: pointer;
+        width: 30vh;
+    }
+
+.addchitchatwrapper {
+    width: 100%;
+    height: 87vh;
+    padding: 0;
+    margin: 0;
+    background: rgb(7, 7, 7);
+    box-sizing: border-box;
+    margin-top: 13vh;
+    display: flex;
+    flex-direction: column;
 }
-  }
+.rightwrap select{
+  background: black;
+  color: white;
+}
+.addchitchatwrapper .right .rightwrap {
+    flex: 5;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    width: 80%;
+    padding-top: 2%;
+    background: black;
+}
+.addchitchatwrapper .right {
+        flex: 2;
+        justify-content: center;
+        text-align: center;
+        min-height: 60%;
+        display: flex;
+        /* border: 1px dotted black; */
+        width: 86%;
+        align-self: center;
+        margin-top: -8vh;
+        border-radius: 10px;
+    }
+}
+
 </style>
