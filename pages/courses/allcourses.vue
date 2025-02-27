@@ -131,25 +131,26 @@
     padding: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    width: calc(50% - 3em);
+    width: calc(40% - 3em);
     background-color: black;
     background-size: cover;
     background-position: center;
-    height: 494px;
+    height: 266px;
     display: flex;
     flex-direction: column;
     color: white;
     position: relative;
-    text-decoration: none; /* Ensure links don't have underlines */
+    text-decoration: none;
   }
   
   .course-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: 120%;
     text-align: center;
-    z-index: 1; /* Ensure text is above background image */
+    z-index: 1;
+    background: #0000003d;
   }
   
   .title {
