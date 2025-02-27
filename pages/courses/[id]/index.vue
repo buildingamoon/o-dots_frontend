@@ -33,7 +33,7 @@
           </div>
           <div v-if="course.Price !== null && course.Price !== 0">
             <h3>Price: ${{ formatPrice(course.Price) }}</h3>
-            <button @click="redirectToStripe">Proceed to Payment</button>
+            <button @click="redirectToStripe">Buy it now</button>
           </div>
           <div v-else>
             <button @click="watchItNow">Watch it now</button>
@@ -275,13 +275,16 @@ onMounted(async () => {
 button {
   padding: 10px 20px;
   margin-top: 20px;
-  background-color: #4caf50;
+  background-color: #d9d927e0;
   color: white;
-  border: none;
   cursor: pointer;
+  font-size:0.8em;
+  border-radius:5px;
 }
 button:hover {
-  background-color: #45a049;
+  background-color:#F2F5D2;
+  color:black;
+  border:white;
 }
 .addedlayer {
   width: 85%;
