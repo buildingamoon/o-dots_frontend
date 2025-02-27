@@ -320,7 +320,7 @@ button:hover {
     height: 73vh;
 }
 .course-left{
-    flex: 2;
+    flex: 3.5;
     display: flex;
     flex-direction: column;
     gap: 5px;
