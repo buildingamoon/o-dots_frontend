@@ -53,11 +53,13 @@
                 <div class="row row1">
                   <div class="newbox1" :style="discussionBackgroundStyle(discussion.photos)">
                     <p>{{ discussion.topic }}</p>
+                    <div class="addbtn2"><a href="/discussions/addChitchat"> +NEW</a></div>
                   </div>
                 </div>
               </router-link>
             </div>
           </div>
+          <div class="addbtn2"><a href="/discussions/addChitchat"> +NEW</a></div>
         </div>
         <div class="addbtn"><a href="/discussions/addChitchat"> +NEW</a></div>
       </div>
@@ -412,6 +414,8 @@ onMounted(async () => {
 .addbtn{
   width:30%;
   margin-top: 2vh;
+  opacity:0;
+  width:0;
 }
 .addbtn a {
     color: #090909;
@@ -437,6 +441,17 @@ onMounted(async () => {
 .box1 ul{
   background: white;
 }
+.addbtn2{
+  width:30%;
+  margin-top: 2vh;
+}
+.addbtn2 a{
+  color: white;
+    border: 1px solid white;
+    padding: 2vh;
+    background: rgb(255 255 255 / 20%);
+    border-radius: 10px;
+}
 @media (max-width: 600px) {
 .app {
     overflow: hidden; /* Hide scrollbars */
@@ -448,6 +463,16 @@ onMounted(async () => {
   opacity: 0;
   width:0;
   height:0;
+}
+.addbtn{
+  width:30%;
+  margin-top: 2vh;
+  opacity:1;
+  width:100%;
+}
+.addbtn2{
+  width:0;
+  opacity:0;
 }
 }
 
