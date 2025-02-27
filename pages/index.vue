@@ -673,10 +673,10 @@ h5{
     flex-direction: column;
     height: 482%;
     justify-content: center;
-    margin-top: 143%;
     position: relative;
     width: 100%;
     font-size:0.8em;
+    margin-top: 155%;
 }
 .page3cube{
   font-size:0.8em;
