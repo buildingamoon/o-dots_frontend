@@ -19,7 +19,7 @@
               </span>
             </div>
           </div>
-          <div>
+          <div class="toname">
             <br>
             <p>Course Description</p>
             <div class="coursedescription">
@@ -193,40 +193,45 @@ onMounted(async () => {
 
 
 <style scoped>
-.coursedetailswhole {
-  display: flex;
-  background-color: black;
-  margin-top: 17vh;
-  padding: 0px 5%;
-  width: 100%;
+.coursedetailswhole{
+    display: flex;
+    background-color: black;
+    margin-top: 17vh;
+    padding: 0px 5%;
+    width: 100%;
 }
 .course-container {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  border: 1px dotted white;
-  color: white;
-  flex-direction: row;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border: 1px dotted white;
+    color: white;
+    flex-direction: row;
+    width: 150vh;
+    overflow: hidden;
+    height: 150vh;
 }
-.course-left {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  box-sizing: border-box;
-  padding: 1em;
-  border: 1px dotted white;
-  width: 50%;
+.course-left{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-sizing: border-box;
+    padding: 1em;
+    border: 1px dotted white;
+    width: 50%;
+    overflow: hidden;
+    height: 157%;
 }
 .coursedescription {
   padding: 4px;
   border: 1px dotted white;
   font-size: 1em;
-  max-height: 45%;
   position: relative;
   overflow-y: auto;
   margin: 5px 0%;
+  flex:1;
+  max-height: 43%;
 }
 .course-right {
   flex: 1;
@@ -254,12 +259,13 @@ onMounted(async () => {
   max-width: 50%;
   height: auto;
 }
-.mediawrapper {
-  margin-top: 10px;
-  aspect-ratio: 16/9;
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid #ddd;
+.mediawrapper{
+    margin-top: 10px;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    height: 487px;
 }
 .categories {
   display: flex;
@@ -288,6 +294,70 @@ button:hover {
 }
 .addedlayer {
   width: 85%;
+}
+
+@media(max-width:600px){
+  .coursedetailswhole{
+    display: flex;
+    background-color: black;
+    margin-top: 17vh;
+    padding: 0px 5%;
+    width: 100%;
+}
+.course-container{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border: 1px dotted white;
+    color: white;
+    flex-direction: row;
+    width: 100%;
+    overflow: hidden;
+    height: 73vh;
+}
+.course-left{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-sizing: border-box;
+    padding: 1em;
+    border: 1px dotted white;
+    width: 50%;
+    overflow: hidden;
+    height: 72vh;
+}
+.mediawrapper{
+    margin-top: 10px;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    height: 150px;
+    flex: 5;
+}
+.course-left h3{
+    flex: 1;
+    font-size: 1em;
+}
+.course-info{
+    flex: 1;
+    font-size: 0.8em;
+}
+.toname{
+    flex: 3;
+    height: 36%;
+}
+.coursedescription{
+    padding: 4px;
+    border: 1px dotted white;
+    font-size: 0.8em;
+    max-height: 57%;
+    position: relative;
+    overflow-y: auto;
+    margin: 5px 0%;
+    overflow-x: hidden;
+}
 }
 </style>
 
