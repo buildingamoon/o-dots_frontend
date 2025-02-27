@@ -5,6 +5,7 @@
         </div>
         <div v-else-if="paymentStatus=='success'">
             <h1>Payment Success! </h1>
+            <img src='/public/picture/logowordbg.png'>
             Name: {{  sessionDetails.metadata.name }}
 
             items purchased: {{  sessionDetails.metadata.productName }}
