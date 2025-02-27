@@ -17,8 +17,8 @@
         <h3>
           Start your journey now. Your subscription could be found
           <a href="https://o-dots.com/courses/mycourses">HERE</a><br>
-          <p>Enjoy Playing and Learning with O-dots!</p>
         </h3>
+        <p>Enjoy Playing and Learning with O-dots!</p>
       </div>
     </div>
   </template>
