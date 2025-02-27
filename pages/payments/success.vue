@@ -1,4 +1,5 @@
 <template>
+    <Mainheader/>
     <div class='paymentsucess'>
         <div v-if="loading">
               <h1>Processing your payment....</h1>
@@ -70,5 +71,13 @@
     width:100%;
     padding:0;
     margin:0;
+    
+}
+a{
+    text-decoration: none;
+    color:yellow;
+    font-size:1.5em;
+    font-weight:600;
+
 }
 </style>
