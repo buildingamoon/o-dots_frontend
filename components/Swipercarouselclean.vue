@@ -73,31 +73,34 @@ onMounted(() => {
       0: {
         slidesPerView: 1,
       },
-      600: {
+      650: {
         slidesPerView: 2,
       },
       760: {
         slidesPerView: 3,
       },
       1200: {
-        slidesPerView: 4,
+        slidesPerView: 1,
       },
     },
   });
 });
 </script>
-
-<style scoped>
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+<style>
+:root {
+  --swiper-pagination-bullet-size: 1.5rem;
+  --swiper-pagination-bullet-width: 1.5rem;
+  --swiper-pagination-bullet-height: 0.25rem;
+  --swiper-pagination-color: yellow;
+  --swiper-pagination-bullet-inactive-color: #CCC200;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-inactive-opacity: 0.2;
 }
+
 
 body {
   overflow-x: hidden;
+  overflow-y:auto;
   position: relative;
 }
 
@@ -109,46 +112,45 @@ ul {
 
 main {
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
   column-gap: 3rem;
   padding-block: min(20vh, 3rem);
   padding-inline: 2.3em;
   align-items: center;
   justify-content: center;
-  background: #100034;
-  overflow: hidden;
+  background: rgba(277,277,277,0.3);
 }
 
-@media screen and (min-width: 960px) {
-main {
-    display: flex;
-    padding-inline: 0;
+.swiper-pagination-bullet {
+  border-radius: 0;
+  width: var(--swiper-pagination-bullet-width);
+  height: var(--swiper-pagination-bullet-height);
+  background: var(--swiper-pagination-bullet-inactive-color);
 }
 
-.swiper-container {
+.swiper-pagination-bullet-active {
+  background: var(--swiper-pagination-color);
+  opacity: var(--swiper-pagination-bullet-opacity) !important;
+}
+
+.swiper-pagination {
   position: relative;
-  overflow: hidden;
-  width: 100%;
-  right: 0px;
-  margin: 0 auto;
-}
-.swiper-container {
-    width: 60%;
-    right: -60px;
-  }
-  .swiper {
-  position: relative;
-  width: 100%;
-  z-index: 2;
-}
+  bottom: -0.313rem;
+  text-align: center;
+  margin-top: 35px;
+  width: auto;
 }
 
-@media screen and (min-width: 960px) {
+
   .swiper-container {
     width: 90%;
     right: 0px;
   }
-}
+  main {
+    display: flex;
+    padding-inline: 0;
+  }
+
 
 .swiper {
   position: relative;
@@ -157,8 +159,8 @@ main {
 }
 
 .swiper-slide {
-  width: 10rem;
-  height: 24rem;
+  width: 8rem;
+  height: 27rem;
   display: flex;
   flex-direction: column;
   align-items: self-start;
@@ -259,34 +261,15 @@ main {
   opacity: 1;
 }
 
-.swiper-pagination {
-  position: relative;
-  bottom: -0.313rem;
-  text-align: center;
-  margin-top: 35px;
-  width: auto;
-}
-
-.swiper-pagination-bullet {
-  border-radius: 0;
-  width: 1.5rem;
-  height: 0.25rem;
-  background: #fff;
-}
-
-.swiper-pagination-bullet-active {
-  background: #fff;
-}
-
 .circle {
   position: absolute;
-  bottom: -5em;
+  bottom: 13em;
   left: -8em;
   width: clamp(150px, 40vw, 400px);
   height: clamp(150px, 40vw, 400px);
   background: black;
   border-radius: 50%;
   z-index: 1;
-  opacity: 0.7;
+  opacity: 0;
 }
 </style>

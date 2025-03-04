@@ -38,7 +38,7 @@ const images = [
 <style>
 .card-container {
   width: 100%;
-  min-height:36vh;
+  height:30vh;
   margin: auto;
 }
 
@@ -67,6 +67,7 @@ const images = [
   display: flex;
   justify-content: center;
   align-items: center;
+  height:40vh;
 }
 .swiper-button-prev{
   /*opacity: 0;*/

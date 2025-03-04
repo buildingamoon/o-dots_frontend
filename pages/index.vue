@@ -12,7 +12,7 @@
     <mainheader />
     <main>
       <div v-if="currentPage === 'page1'">
-        <section class="page page1 active">
+      <section class="page page1 active">
           <div class="pagewrapper page1wrapper">
             <div class="upper">
               <video autoplay muted loop>
@@ -20,17 +20,27 @@
               </video>
             </div>
             <div class="lower">
-              <a href="#">
                 <div class="page1loopbox box1">
                   <div class="two">
                     <Swipercarouselclean />
+                    <Swipercarouselsub />
                   </div>
-                  <p class="advtext">For advertistment, please contact us @ <a href="mailto:adv@o-dots.com">adv@o-dots.com</a></p>
                 </div>
-              </a>
+                <div class="page1loopbox page1loopbox2">
+                    Crowfunding programme
+                    <Crowdfund />
+                </div>
+                <div class="page1loopbox page1loopbox3">
+                      O-dots!Pick for you!
+                      <img src="/public/picture/demo1.jpg">
+                </div>
+                <div class="page1loopbox page1loopbox4">
+                      Wide Coverage
+                      <img src="/public/picture/demo1.jpg">
+                </div>
             </div>
           </div>
-        </section>
+      </section>
       </div>
       <section class="page page2">
         <div class="pagewrapper page2wrapper">
@@ -158,6 +168,10 @@ import { ref, onMounted } from 'vue';
 import gsap from 'gsap';
 
 import Swipercarouselclean from '~/components/Swipercarouselclean.vue';
+import Swipercarouselsub from '~/components/Swipercarouselsub.vue';
+import Crowdfund from '~/components/Crowdfund.vue';
+
+
 
 
 
@@ -435,12 +449,7 @@ h5{
   align-content: flex-end;
   align-items: end;
 }
-.page1wrapper .lower img{
-  width:5vh;
-  height:5vh;
-  border-radius: 50%;
-  margin: 1vh 1vh;
-}
+
 .page1wrapper .lower .two iframe{
 
   border: black;
@@ -546,7 +555,7 @@ h5{
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: -12%;
 }
 .page1wrapper .lower .one{

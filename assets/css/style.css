@@ -7,12 +7,6 @@ html {
 body a{
     text-decoration: none;
 }
-body{
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
-}
 body { 
     font-family: Arial, sans-serif; /* Universal font family */ 
     font-size: 15px; /* Universal font size */ color: #333; /* Universal text color */ 
@@ -20,7 +14,12 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Universal text shadow */ 
     margin: 0; 
     padding: 0; 
-    background-color: #f9f9f9; /* Universal background color */ }
+    background-color: #f9f9f9; /* Universal background color */ 
+    overflow-x: hidden;
+    height:100vh;
+    position:relative;
+    width: 100%;
+}
 
 /*loader*/
 .loader {
@@ -144,18 +143,6 @@ body {
 }
 
 /*Page*/
-.page{
-    position:absolute;
-    width:100%;
-    min-height:100vh;
-    height:100vh;
-    background:rgb(244, 242, 242);
-    top:0px;
-    left:0px;
-    display: none;
-    visibility: hidden;
-    opacity: 0; 
-}
 .page {
     position: absolute; 
     width: 100%; 
@@ -168,14 +155,15 @@ body {
     visibility: hidden; 
     opacity: 0; 
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Removed trailing comma */
+    overflow-y: auto;
 }
 .page1 { 
     display: block; /* Show the first page by default */ 
 }
-.active { 
-    display: block !important; /* Ensure the active page is displayed */ 
-    visibility: visible; 
-    opacity: 1; 
+.active {
+    display: block !important;
+    visibility: visible;
+    opacity: 1;
 }
 .secondnav a { 
     cursor: pointer;
@@ -257,11 +245,13 @@ body {
     justify-content: center;
     text-align: center;
     flex-wrap: wrap;
-    gap:1vh;
     position: relative;
     background: #000000a3;
     height: 100%;
     overflow: hidden;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    flex-direction: column;
 }
 .page1loopbox{
     flex:3;
@@ -275,6 +265,18 @@ body {
     flex-direction: column;
     height:100%;
     background: #000000a3;
+    width:100%;
+}
+.page1loopbox2{
+    min-height: 57vh;
+}
+.page1loopbox3{
+    min-height: 57vh;
+    background:rgb(255, 255, 255,0.3);
+}
+.page1loopbox4{
+    min-height: 57vh;
+    background:rgba(255, 255, 255, 0.019);
 }
 .secondnav{
     position:fixed;

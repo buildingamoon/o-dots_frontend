@@ -1,21 +1,5 @@
 <template>
-    <main>
-      <div class="content">
-        <h2>Welcome to O-dots Online Learning</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quam magnam obcaecati error consequatur repellat fugiat, deleniti nisi eum voluptates.</p>
-        <ul class="counter">
-          <li>
-            <h3><i class="fa-solid fa-book"></i>68+k</h3>
-            <span>book collections</span>
-          </li>
-          <li>
-            <h3><i class="fa-solid fa-user"></i>25,634</h3>
-            <span>customers</span>
-          </li>
-        </ul>
-        <button class="btn">Go to Collections <i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-  
+    <main>  
       <div class="swiper-container">
         <div class="swiper">
           <div class="swiper-wrapper">
@@ -130,6 +114,7 @@
     justify-content: center;
     background: #100034;
     overflow: hidden;
+    display:flex;
   }
   
   @media screen and (min-width: 960px) {
