@@ -19,7 +19,7 @@ const emit = defineEmits(['search']);
 
 const search = async () => {
   try {
-    const response = await fetch(`${config.public.apiBase}/search?q=${query.value}`);
+    const response = await fetch(`${config.public.apiBase}search?q=${query.value}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
