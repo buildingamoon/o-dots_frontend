@@ -1,40 +1,52 @@
 <template>
-  <div>
-    <SearchBar @search="performSearch" />
-    <div v-if="filteredResults.length">
-      <div v-for="item in filteredResults" :key="item.id" class="search-result">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.content }}</p>
-      </div>
-    </div>
-    <div v-else>
-      <p>No results found</p>
-    </div>
+  <div class="search-bar">
+    <input
+      type="text"
+      v-model="query"
+      placeholder="Search..."
+    />
+    <button @click="search">Search</button>
   </div>
 </template>
 
-<script>
-import SearchBar from '~/components/Searchbar.vue';
+<script setup>
+import { ref } from 'vue';
+import { useRuntimeConfig } from '#app';
 
-export default {
-  components: {
-    SearchBar,
-  },
-  data() {
-    return {
-      filteredResults: [],
-    };
-  },
-  methods: {
-    performSearch(results) {
-      this.filteredResults = results;
-    },
-  },
+const config = useRuntimeConfig();
+const query = ref('');
+const emit = defineEmits(['search']);
+
+const search = async () => {
+  try {
+    const apiUrl = `${config.public.apiBase}search?q=${query.value}`; // Ensure proper URL construction
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const results = await response.json();
+    emit('search', results);
+  } catch (error) {
+    console.error('Error during search:', error);
+  }
 };
 </script>
 
 <style>
-.search-result {
-  margin: 10px 0;
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+.search-bar input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+.search-bar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 </style>
