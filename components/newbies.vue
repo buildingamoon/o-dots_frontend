@@ -1,26 +1,25 @@
 <template>
-  <main class="card-container">
+  <main class="card-container card-container2 ">
     <Swiper
     :breakpoints="{
         602: {
-          slidesPerView: 3,
+          slidesPerView: 6,
           spaceBetween: 10
         },
         768: {
-          slidesPerView: 4,
+          slidesPerView: 6,
           spaceBetween: 20
         },
         1024: {
-          slidesPerView: 4,
+          slidesPerView: 6,
           spaceBetween: 30
         }
       }"
-      navigation
       mousewheel
-      class="mySwiper"
+      class="mySwiper2"
     >
-      <SwiperSlide v-for="(image, index) in images" :key="index" class="Sliderwrap">
-        <div class="card">
+      <SwiperSlide v-for="(image, index) in images" :key="index" class="Sliderwrap2">
+        <div class="card2">
           <a>hi</a>
           <img :src="image.src" :alt="image.alt">
         </div>
@@ -47,51 +46,51 @@ const images = [
 </script>
 
 <style>
-.card-container {
+.card-container2 {
   width: 100%;
-  height:60vh;
+  height:40vh;
   margin: auto;
   background:rgba(277,277,277,0);
   position: relative;
-  min-height: 59vh;
+  min-height: 40vh;
 }
-.swiper-slide{
-  height:70vh;
+.swiper-slide2{
+  height:40vh;
 }
 
-.card {
+.card2 {
   display: flex;
   flex-direction: column;
   align-items: center;
   background: rgba(255, 255, 255, 0.253);
   justify-content: center;
   color: white;
-  height: 70vh;
+  height: 40vh;
   padding: 0vh 0vh;
 }
 
-.mySwiper img {
+.mySwiper2 img {
   width: 45vh;
-  height: 40vh;
+  height: 35vh;
   background:rgba(0, 0, 0, 0.171);
 }
 
-.mySwiper {
+.mySwiper2 {
   width: 90%;
   height: 60vh;
   background:rgba(277,277,277,0);
   color:white;
   font-weight:500;
   font-size:1.5em;
-  height: 75vh;
+  height: 40vh;
   padding: 0vh 0vh;
 }
 
-.Sliderwrap {
+.Sliderwrap2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height:60vh;
+  height:40vh;
   background:rgba(277,277,277,0.3);
   position:relative;
   overflow:hidden;

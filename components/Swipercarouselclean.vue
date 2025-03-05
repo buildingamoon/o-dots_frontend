@@ -74,10 +74,10 @@ onMounted(() => {
         slidesPerView: 1,
       },
       650: {
-        slidesPerView: 2,
+        slidesPerView: 1,
       },
       760: {
-        slidesPerView: 3,
+        slidesPerView: 1,
       },
       1200: {
         slidesPerView: 1,

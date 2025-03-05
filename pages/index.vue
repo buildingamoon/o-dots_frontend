@@ -27,16 +27,38 @@
                   </div>
                 </div>
                 <div class="page1loopbox page1loopbox2">
-                    Crowfunding programme
+                    <h2>Crowfunding programme</h2>
                     <Crowdfund />
                 </div>
                 <div class="page1loopbox page1loopbox3">
-                      O-dots!Pick for you!
-                      <img src="/public/picture/demo1.jpg">
+                  <div class="box3flexwrap">
+                    <h2>O-dots!Pick for you!</h2>
+                    <span>Explore More>></span>
+                  </div>
+                  
+                      <Crowdfund />
                 </div>
                 <div class="page1loopbox page1loopbox4">
-                      Wide Coverage
-                      <img src="/public/picture/demo1.jpg">
+                      <h2>Cover your favourite</h2>
+                      <div class="box4wrap">
+                        <img src="/public/picture/ADDBG.png">
+                        <div class="coursecatwrap">
+                          <div class="coursecat coursecat1">1</div>
+                          <div class="coursecat coursecat1">1</div>
+                          <div class="coursecat coursecat1">1</div>
+                          <div class="coursecat coursecat1">1</div>
+                          <div class="coursecat coursecat1">1</div>
+                          <div class="coursecat coursecat1">1</div>
+                          <div class="coursecat coursecat1">1</div>
+                          <div class="coursecat coursecat1">1</div>
+                          <div class="coursecat coursecat1">1</div>
+                          <div class="coursecat coursecat1">1</div>
+                        </div>
+                      </div>
+                </div>
+                <div class="page1loopbox page1loopbox5">
+                      <h2>Shining Tutors</h2>
+                      <newbies />
                 </div>
             </div>
           </div>
@@ -170,6 +192,7 @@ import gsap from 'gsap';
 import Swipercarouselclean from '~/components/Swipercarouselclean.vue';
 import Swipercarouselsub from '~/components/Swipercarouselsub.vue';
 import Crowdfund from '~/components/Crowdfund.vue';
+import newbies from '~/components/newbies.vue';
 
 
 
@@ -478,6 +501,44 @@ h5{
   background: black!important;
   font-size: 0.9em!important;
 }
+.box3flexwrap{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  padding:3vh 10vh;
+  color: white; 
+}
+.coursecat{
+  width: calc(19% - 1vh);
+  height:45%;
+  background:rgba(207, 231, 176, 0.015);
+  border-radius: 5px;
+  border: 1px solid rgb(183, 215, 3);
+  position:relative;
+  overflow:hidden;
+}
+.coursecatwrap{
+  width:100%;
+  height:50vh;
+  background:rgba(255, 255, 0, 0.09);
+  display: flex;
+  flex-wrap: wrap;
+  gap:1vh;
+  position:relative;
+  overflow:hidden;
+}
+.box4wrap{
+  display: flex;
+  flex-direction: row;
+  margin-top:10vh;
+}
+.box4wrap img{
+  flex:2;
+  width:48vh;
+  height:48vh;
+  padding-right:2vh;
+}
+
 
 @media (max-width: 600px) {
   .page2wrapper {

@@ -268,15 +268,21 @@ body {
     width:100%;
 }
 .page1loopbox2{
-    min-height: 57vh;
+    min-height: 80vh;
+    padding:5vh;
+    background:rgba(277,277,277,0.3);
 }
 .page1loopbox3{
-    min-height: 57vh;
-    background:rgb(255, 255, 255,0.3);
+    min-height: 80vh;
+    background:rgba(228, 230, 142, 0.085);
 }
 .page1loopbox4{
-    min-height: 57vh;
-    background:rgba(255, 255, 255, 0.019);
+    min-height: 80vh;
+    background:rgba(216, 39, 39, 0.142);
+}
+.page1loopbox5{
+    min-height: 46vh;
+    background:rgba(123, 123, 3, 0.174);
 }
 .secondnav{
     position:fixed;
