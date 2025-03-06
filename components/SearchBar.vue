@@ -10,32 +10,29 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      keyword: '',
-      results: [],
-    };
-  },
-  methods: {
-    async search() {
-      if (this.keyword.trim() === '') {
-        this.results = [];
-        return;
-      }
-      try {
-        const params = new URLSearchParams({
-          keyword: this.keyword
-        });
-        const response = await fetch(`${runtimeConfig.public.apiBase}/search?${params.toString()}`);
-        const data = await response.json();
-        this.results = data;
-      } catch (error) {
-        console.error('Error fetching search results:', error);
-      }
-    },
-  },
+<script setup>
+import { ref } from 'vue';
+import { useRuntimeConfig } from '#app';
+
+const keyword = ref('');
+const results = ref([]);
+const config = useRuntimeConfig();
+
+const search = async () => {
+  if (keyword.value.trim() === '') {
+    results.value = [];
+    return;
+  }
+  try {
+    const params = new URLSearchParams({
+      keyword: keyword.value
+    });
+    const response = await fetch(`${config.public.apiBase}search?${params.toString()}`);
+    const data = await response.json();
+    results.value = data;
+  } catch (error) {
+    console.error('Error fetching search results:', error);
+  }
 };
 </script>
 
