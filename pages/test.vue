@@ -1,52 +1,15 @@
 <template>
-  <div class="search-bar">
-    <input
-      type="text"
-      v-model="query"
-      placeholder="Search..."
-    />
-    <button @click="search">Search</button>
+  <div>
+    <SearchComponent />
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import { useRuntimeConfig } from '#app';
+<script>
+import SearchComponent from '~/components/SearchBar.vue';
 
-const config = useRuntimeConfig();
-const query = ref('');
-const emit = defineEmits(['search']);
-
-const search = async () => {
-  try {
-    const apiUrl = `${config.public.apiBase}search?q=${query.value}`; // Ensure proper URL construction
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const results = await response.json();
-    emit('search', results);
-  } catch (error) {
-    console.error('Error during search:', error);
-  }
+export default {
+  components: {
+    SearchComponent,
+  },
 };
 </script>
-
-<style>
-.search-bar {
-  display: flex;
-  align-items: center;
-  margin: 20px;
-}
-.search-bar input {
-  width: 80%;
-  padding: 10px;
-  font-size: 16px;
-  margin-right: 10px;
-}
-.search-bar button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-</style>
