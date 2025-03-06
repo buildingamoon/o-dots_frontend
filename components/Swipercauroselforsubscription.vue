@@ -6,7 +6,6 @@
           <h3>{{ item.productName }}</h3>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
     </div>
   </template>
   
@@ -23,10 +22,6 @@
         loop: true,
         grabCursor: true,
         spaceBetween: 30,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
         keyboard: {
           enabled: true,
         },

@@ -82,4 +82,7 @@
         text-decoration: none;
         color: gray;
     }
+    .register{
+        background: black;
+    }
 </style>

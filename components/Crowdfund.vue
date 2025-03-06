@@ -2,6 +2,10 @@
   <main class="card-container">
     <Swiper
     :breakpoints="{
+        0: {
+          slidesPerView: 3,
+          spaceBetween: 10
+        },
         602: {
           slidesPerView: 3,
           spaceBetween: 10
@@ -106,5 +110,25 @@ const images = [
   /*opacity: 0;*/
   color: yellow;
   size:2vh;
+}
+
+@media (max-width: 600px) {
+  .card-container {
+    height: 11vh;
+    min-height: 0vh;
+}
+.Sliderwrap {
+    height: 23vh;
+}
+.mySwiper {
+    width: 90%;
+    height: 60vh;
+    background: rgba(277, 277, 277, 0);
+    color: white;
+    font-weight: 500;
+    font-size: 1.5em;
+    height: 26vh;
+    padding: 0vh 0vh;
+}
 }
 </style>

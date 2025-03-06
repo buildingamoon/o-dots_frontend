@@ -190,6 +190,7 @@ const saveUserIcon = async (icon) => {
 }
 .coursewrapper {
   display: flex;
+  background: black;
 }
 .coursecol.left {
   display: flex;

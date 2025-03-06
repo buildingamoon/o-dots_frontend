@@ -1773,7 +1773,7 @@ body{
 
 .page1wrapper { 
     padding-bottom: 70px;
-    height: 100vh;
+    height: auto;
     background: black;
  }
  .page2 .whole{

@@ -21,10 +21,7 @@
             </div>
             <div class="lower">
                 <div class="page1loopbox box1">
-                  <div class="two">
                     <Swipercarouselclean />
-                    <Swipercarouselsub />
-                  </div>
                 </div>
                 <div class="page1loopbox page1loopbox2">
                     <h2>Crowfunding programme</h2>
@@ -35,7 +32,6 @@
                     <h2>O-dots!Pick for you!</h2>
                     <span>Explore More>></span>
                   </div>
-                  
                       <Crowdfund />
                 </div>
                 <div class="page1loopbox page1loopbox4">
@@ -617,7 +613,7 @@ h5{
   overflow-x: hidden;
   overflow-y: auto;
   flex-direction: column;
-  margin-top: -12%;
+  margin-top: 17%;
 }
 .page1wrapper .lower .one{
   flex:0.2;
@@ -757,7 +753,52 @@ h5{
     background: black !important;
     font-size: 0.8em !important;
 }
+/*start*/
+.page1loopbox {
+  margin-top: -1vh;
 }
+.page1loopbox {
+flex: 3;
+background: white;
+border-radius: 0.2em;
+min-width: 20vh;
+min-height: 20vh;
+position: relative;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+height: 100%;
+background: #000000a3;
+width: 100%;
+}
+.page1loopbox2 {
+    min-height: 17vh;
+    /* padding: 5vh; */
+    background: rgba(277, 277, 277, 0.3);
+    margin-top: 2vh;
+}
+.page1loopbox3 {
+    min-height: 27vh;
+    background: rgba(228, 230, 142, 0.085);
+}
+.page1loopbox4 {
+    min-height: 53vh;
+    background: rgba(216, 39, 39, 0.142);
+}
+.box4wrap {
+  margin-top: 0vh;
+}
+.box4wrap img {
+    opacity: 0;
+    width: 0vh;
+
+}
+.page1loopbox5 {
+    min-height: 48vh;
+    background: rgba(123, 123, 3, 0.174);
+}
+}
+
 </style>
 
 
